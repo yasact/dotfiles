@@ -137,7 +137,7 @@ let g:indent_guides_enable_on_vim_startup = 1
 "Ctrl+eでNERDTreeを開いたり閉じたり
 nnore<silent><C-e> :NERDTreeToggle<CR>
 
-"activate  ColorScheme vim-hybrid
+"ColorSchemeをvim-hybridに設定
 set background=dark
 colorscheme hybrid
 
