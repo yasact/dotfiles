@@ -5,7 +5,7 @@ unlet! slip_defaults_vim
 "source $VIMRUNTIME/defaults.vim
 syntax enable
 "vim 8から導入されたデフォルトで設定の読み込み
-set fenc=utf-8 "文字コードをUTF-8に設定
+set enc=utf-8 "文字コードをUTF-8に設定
 set nobackup "バックアップファイルを作らない
 set noswapfile "スワップファイルを作らない
 set autoread "編集中のファイルが変更されたら自動で読み直す
