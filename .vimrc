@@ -5,7 +5,8 @@ unlet! slip_defaults_vim
 "source $VIMRUNTIME/defaults.vim
 syntax enable
 "vim 8から導入されたデフォルトで設定の読み込み
-set enc=utf-8 "文字コードをUTF-8に設定
+set encoding=utf-8 "文字コードをUTF-8に設定
+set fileencoding=utf-8 
 set nobackup "バックアップファイルを作らない
 set noswapfile "スワップファイルを作らない
 set autoread "編集中のファイルが変更されたら自動で読み直す
@@ -13,6 +14,7 @@ set hidden "バッファが編集中でもそのファイルが開けるよう�
 set showcmd "入力中のコマンドをステータス表示にする
 set visualbell "ビープ音を可視化
 set showmatch "括弧入力時の対応する括弧を表示
+" set matchtime=1 "showmatchのカーソルが飛ぶ時間
 set laststatus=2 "ステータスラインを常に表示
 set wildmode=list:longest "コマンドラインの補完
 set expandtab "tab文字を半角スペースにする
@@ -20,9 +22,13 @@ set tabstop=2 "行頭以外のTab文字の表示幅(スペース幾つか分)
 set shiftwidth=2 "行頭でのTab文字の表示幅
 
 "見た目系
+"ColorSchemeをvim-hybridに設定
+set background=dark
+colorscheme hybrid
 set number "行番号を表示
 set ruler "カーソル位置表示
 "set cursorline "現在の行を強調表示
+"hi clear CursorLine "上と合わせることで行番号のみハイライト
 "set cursorcolumn "現在の行を強調表示
 set virtualedit=onemore "行末の1文字先までカーソルを移動できるように
 set autoindent "自動インデント
@@ -56,52 +62,35 @@ augroup complete
 augroup END
 
 "----------------------------------------------------------------------------
-""dein.vimインストール用に追記180126
+""dein.vimインストール用に追記180713
 ""dein Scripts-----------------------------
-"if &compatible
-"  set nocompatible               " Be iMproved
-"endif
-"
-"" Required:
-"set runtimepath+=/home/yas/.cache/dein/repos/github.com/Shougo/dein.vim
-"
-"" Required:
-"if dein#load_state('/home/yas/.cache/dein')
-"  call dein#begin('/home/yas/.cache/dein')
-"  " Let dein manage dein
-"  " Required:
-"  call dein#add('/home/yas/.cache/dein/repos/github.com/Shougo/dein.vim')
-"
-"  " Add or remove your plugins here:
-"  call dein#add('Shougo/neosnippet.vim')
-"  call dein#add('Shougo/neosnippet-snippets')
-"  call dein#add('Shougo/neocomplete')
-"  call dein#add('Shougo/neosnippet')
-"  call dein#add('mattn/emmet-vim')
-"  call dein#add('tpope/vim-surround')
-"  call dein#add('nathanaelkane/vim-indent-guides')
-"  call dein#add('scrooloose/nerdtree')
-"  call dein#add('itchyny/vim-pdf')
-"
-"
-"  " You can specify revision/branch/tag.
-""  call dein#add('Shougo/deol.nvim', { 'rev': 'a1b5108fd'})
-"
-"  " Required:
-"  call dein#end()
-"  call dein#save_state()
-"endif
-"
-"" Required:
-"filetype plugin indent on
-"syntax enable
-"
-"" If you want to install not installed plugins on startup.
-"if dein#check_install()
-"  call dein#install()
-"endif
-"
-""End dein Scripts------------------
+if &compatible
+ set nocompatible
+endif
+" Add the dein installation directory into runtimepath
+set runtimepath+=~/.cache/dein/repos/github.com/Shougo/dein.vim
+
+if dein#load_state('~/.cache/dein')
+ call dein#begin('~/.cache/dein')
+
+ call dein#add('~/.cache/dein')
+ call dein#add('Shougo/deoplete.nvim')
+
+
+ if !has('nvim')
+   call dein#add('roxma/nvim-yarp')
+   call dein#add('roxma/vim-hug-neovim-rpc')
+ endif
+
+ call dein#end()
+ call dein#save_state()
+endif
+
+filetype plugin indent on
+syntax enable
+"-----------------------------------------------------
+
+
 " Plugin key-mappings.
 " Note: It must be "imap" and "smap".  It uses <Plug> mappings.
 imap <C-k>     <Plug>(neosnippet_expand_or_jump)
@@ -124,21 +113,3 @@ if has('conceal')
   let g:neocomplete#enable_at_startup =1
   let g:neosnippet#snippets_directory='/home/yas/.vim/snippets/'
  
-"---------------------------------------
-"vim-indent-guide用設定
-"http://wonderwall.hatenablog.com/entry/2016/03/21/205741
-"-------------------------------------
-set tabstop=2 shiftwidth=2 expandtab
-let g:indent_guides_enable_on_vim_startup = 1
-
-"------------------------------------
-"NERDTree設定
-"---------------------------
-"Ctrl+eでNERDTreeを開いたり閉じたり
-nnore<silent><C-e> :NERDTreeToggle<CR>
-
-"ColorSchemeをvim-hybridに設定
-set background=dark
-colorscheme hybrid
-
-
