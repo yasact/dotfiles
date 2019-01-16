@@ -158,4 +158,4 @@ LANG="en_US.utf8"
 
 export EDITOR=vim
 eval `/usr/local/opt/coreutils/libexec/gnubin/dircolors ~/dotfiles/dircolors/dircolors.ansi-dark`
-alias ls='gls --color=auto'
+# alias ls='gls --color=auto'
