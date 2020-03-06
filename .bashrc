@@ -116,7 +116,9 @@ fi
 export DISPLAY=localhost:0.0
 
 # the looks of prompt
-export PS1="\w:"
+# export PS1="\w:"
+# export PS1="\u:\u"
+export PS1="\[\e[36;40m\]\u:\W \\$ \[\e[0m\]"
 
 
 # some more ls aliases
