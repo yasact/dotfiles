@@ -151,11 +151,11 @@ export PATH=$HOME/.nodebrew/current/bin:$PATH
 # Ctrl + s でターミナルへの出力がロックされるのを解除
 stty stop undef
 
-## enable xcfe launch in WSL
-export DISPLAY=:0
-export XDG_RUNTIME_DIR=~/runtime
-export RUNLEVEL=3
-LANG="en_US.utf8"
+### enable xcfe launch in WSL
+# export DISPLAY=:0
+# export XDG_RUNTIME_DIR=~/runtime
+# export RUNLEVEL=3
+# LANG="en_US.utf8"
 
 
 export EDITOR=vim
