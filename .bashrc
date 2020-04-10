@@ -163,4 +163,4 @@ export EDITOR=vim
 # alias ls='gls --color=auto'
 
 # bashでviのキーバインドを使用する
-set -o vi
+# set -o vi
