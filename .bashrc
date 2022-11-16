@@ -43,7 +43,7 @@ esac
 # uncomment for a colored prompt, if the terminal has the capability; turned
 # off by default to not distract the user: the focus in a terminal window
 # should be on the output of commands, not on the prompt
-#force_color_prompt=yes
+force_color_prompt=yes
 
 if [ -n "$force_color_prompt" ]; then
   if [ -x /usr/bin/tput ] && tput setaf 1 >&/dev/null; then
@@ -57,11 +57,15 @@ if [ -n "$force_color_prompt" ]; then
 fi
 
 if [ "$color_prompt" = yes ]; then
-  PS1='${debian_chroot:+($debian_chroot)}\[\033[01;32m\]\u@\h\[\033[00m\]:\[\033[01;34m\]\w\[\033[00m\]\$ '
+  # Kali linuxのデフォルトが2段になっていてかっこよかったのでそれに変更221116
+  PS1='\[\e]0;\u@\h: \w\a\]\[\033[;32m\]┌──${debian_chroot:+($debian_chroot)──}${VIRTUAL_ENV:+(\[\033[0;1m\]$(basename $VIRTUAL_ENV)\[\033[;32m\])}(\[\033[1;34m\]\u@\h\[\033[;32m\])-[\[\033[0;1m\]\w\[\033[;32m\]]\n\[\033[;32m\]└─\[\033[1;34m\]\$\[\033[0m\]'
 else
   PS1='${debian_chroot:+($debian_chroot)}\u@\h:\w\$ '
 fi
 unset color_prompt force_color_prompt
+
+# the looks of prompt
+# export PS1="\[\e[36;40m\]\u:\W \\$ \[\e[0m\]"
 
 # If this is an xterm set the title to user@host:dir
 case "$TERM" in
@@ -115,10 +119,6 @@ fi
 # the display setting for xming
 export DISPLAY=localhost:0.0
 
-# the looks of prompt
-# export PS1="\w:"
-# export PS1="\u:\u"
-export PS1="\[\e[36;40m\]\u:\W \\$ \[\e[0m\]"
 
 
 # some more ls aliases
@@ -127,13 +127,13 @@ alias la='ls -A'
 alias l='ls -CF'
 
 # lsを色付きにする
-# if  [ "$(uname)" = 'Darwin' ]; then #OSがmacのとき
-#  export LSCOLORS=gxfxcxdxbxegedabagacad
-#  alias ll='ls -alFG'
-#else #OSがDebian系のとき
-#  eval 'dircolors ~/.colorrc'
-#  alias ll='ls -alF  --color=auto'
-# fi
+if  [ "$(uname)" = 'Darwin' ]; then #OSがmacのとき
+export LSCOLORS=gxfxcxdxbxegedabagacad
+alias ll='ls -alFG'
+else #OSがDebian系のとき
+eval 'dircolors ~/.colorrc'
+alias ll='ls -alF  --color=auto'
+fi
 
 # cdしたあと自動でls
 cdls ()
@@ -151,16 +151,6 @@ export PATH=$HOME/.nodebrew/current/bin:$PATH
 # Ctrl + s でターミナルへの出力がロックされるのを解除
 stty stop undef
 
-### enable xcfe launch in WSL
-# export DISPLAY=:0
-# export XDG_RUNTIME_DIR=~/runtime
-# export RUNLEVEL=3
-# LANG="en_US.utf8"
-
-
+# デフォルトエディターをVimにする
 export EDITOR=vim
-# eval `/usr/local/opt/coreutils/libexec/gnubin/dircolors ~/dotfiles/dircolors/dircolors.ansi-dark`
-# alias ls='gls --color=auto'
 
-# bashでviのキーバインドを使用する
-# set -o vi
