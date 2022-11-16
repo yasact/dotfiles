@@ -127,13 +127,14 @@ alias la='ls -A'
 alias l='ls -CF'
 
 # lsを色付きにする
-if  [ "$(uname)" = 'Darwin' ]; then #OSがmacのとき
-export LSCOLORS=gxfxcxdxbxegedabagacad
-alias ll='ls -alFG'
-else #OSがDebian系のとき
-eval 'dircolors ~/.colorrc'
-alias ll='ls -alF  --color=auto'
-fi
+# if  [ "$(uname)" = 'Darwin' ]; then #OSがmacのとき
+# export LSCOLORS=gxfxcxdxbxegedabagacad
+# alias ll='ls -alFG'
+# else #OSがDebian系のとき
+# # ここで~/.colorrcがない。と言われている。
+# eval 'dircolors ~/.colorrc'
+# alias ll='ls -alF  --color=auto'
+# fi
 
 # cdしたあと自動でls
 cdls ()
