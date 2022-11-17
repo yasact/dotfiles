@@ -4,8 +4,8 @@
 
 # If not running interactively, don't do anything
 case $- in
-  *i*) ;;
-  *) return;;
+*i*) ;;
+*) return ;;
 esac
 
 # don't put duplicate lines or lines starting with space in the history.
@@ -37,7 +37,7 @@ fi
 
 # set a fancy prompt (non-color, unless we know we "want" color)
 case "$TERM" in
-  xterm-color|*-256color) color_prompt=yes;;
+xterm-color | *-256color) color_prompt=yes ;;
 esac
 
 # uncomment for a colored prompt, if the terminal has the capability; turned
@@ -69,11 +69,11 @@ unset color_prompt force_color_prompt
 
 # If this is an xterm set the title to user@host:dir
 case "$TERM" in
-  xterm*|rxvt*)
-    PS1="\[\e]0;${debian_chroot:+($debian_chroot)}\u@\h: \w\a\]$PS1"
-    ;;
-  *)
-    ;;
+xterm* | rxvt*)
+  PS1="\[\e]0;${debian_chroot:+($debian_chroot)}\u@\h: \w\a\]$PS1"
+  ;;
+*) ;;
+
 esac
 
 # enable color support of ls and also add handy aliases
@@ -90,7 +90,6 @@ fi
 
 # colored GCC warnings and errors
 #export GCC_COLORS='error=01;31:warning=01;35:note=01;36:caret=01;32:locus=01:quote=01'
-
 
 # Add an "alert" alias for long running commands.  Use like so:
 #   sleep 10; alert
@@ -119,8 +118,6 @@ fi
 # the display setting for xming
 export DISPLAY=localhost:0.0
 
-
-
 # some more ls aliases
 alias ll='ls -alF'
 alias la='ls -A'
@@ -137,8 +134,7 @@ alias l='ls -CF'
 # fi
 
 # cdしたあと自動でls
-cdls ()
-{
+cdls() {
   \cd "$@" && ll
 }
 alias cd="cdls"
@@ -155,3 +151,8 @@ stty stop undef
 # デフォルトエディターをVimにする
 export EDITOR=vim
 
+# macのデフォルトシェルをbashにすると、
+# zshを使えというwarningがでてくるのでそれを表示させなくする
+if [ "$(uname)" = 'Darwin' ]; then #OSがmacのとき
+  export BASH_SILENCE_DEPRECATION_WARNING=1
+fi
