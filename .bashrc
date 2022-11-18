@@ -122,7 +122,7 @@ export DISPLAY=localhost:0.0
 
 
 # some more ls aliases
-alias ll='ls -alF'
+alias ll='ls -alFh'
 alias la='ls -A'
 alias l='ls -CF'
 
