@@ -119,19 +119,9 @@ fi
 export DISPLAY=localhost:0.0
 
 # some more ls aliases
-alias ll='ls -alFh --color'
+alias ll='ls -alFh --color=auto'
 alias la='ls -A'
 alias l='ls -CF'
-
-# lsを色付きにする
-# if  [ "$(uname)" = 'Darwin' ]; then #OSがmacのとき
-# export LSCOLORS=gxfxcxdxbxegedabagacad
-# alias ll='ls -alFG'
-# else #OSがDebian系のとき
-# # ここで~/.colorrcがない。と言われている。
-# eval 'dircolors ~/.colorrc'
-# alias ll='ls -alF  --color=auto'
-# fi
 
 # cdしたあと自動でls
 cdls() {
@@ -151,8 +141,19 @@ stty stop undef
 # デフォルトエディターをVimにする
 export EDITOR=vim
 
-# macのデフォルトシェルをbashにすると、
-# zshを使えというwarningがでてくるのでそれを表示させなくする
+# macOS用設定------------------
 if [ "$(uname)" = 'Darwin' ]; then #OSがmacのとき
+  # macのデフォルトシェルをbashにすると、
+  # zshを使えというwarningがでてくるのでそれを表示させなくする
   export BASH_SILENCE_DEPRECATION_WARNING=1
+fi
+
+# lsを色付きにする
+if [ "$(uname)" = 'Darwin' ]; then #OSがmacのとき
+  export LSCOLORS=gxfxcxdxbxegedabagacad
+  alias ll='ls -alFG'
+else #OSがDebian系のとき
+  # ここで~/.colorrcがない。と言われている。
+  eval 'dircolors ~/dotfiles/dircolors/dircolors.ansi-universal'
+  alias ll='ls -alF  --color=auto'
 fi
