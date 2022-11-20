@@ -119,7 +119,7 @@ fi
 export DISPLAY=localhost:0.0
 
 # some more ls aliases
-alias ll='ls -alFh'
+alias ll='ls -alFh --color'
 alias la='ls -A'
 alias l='ls -CF'
 
