@@ -154,6 +154,6 @@ if [ "$(uname)" = 'Darwin' ]; then #OSがmacのとき
   alias ll='ls -alFG'
 else #OSがDebian系のとき
   # ここで~/.colorrcがない。と言われている。
-  eval 'dircolors ~/dotfiles/dircolors/dircolors.ansi-universal'
+  eval 'dircolors ~/dotfiles/dircolors/dircolors.ansi-universal' > /dev/null
   alias ll='ls -alF  --color=auto'
 fi
