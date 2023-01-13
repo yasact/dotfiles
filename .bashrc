@@ -115,12 +115,6 @@ if ! shopt -oq posix; then
   fi
 fi
 
-# the display setting for xming
-#export DISPLAY=localhost:0.0
-# wslgを使うために以下を設定
-# https://broaden-your-horizons.com/ai-ss/pooping/err-xeyes/
-# export DISPLAY=:0.0
-
 # some more ls aliases
 alias ll='ls -alFh --color=auto'
 alias la='ls -A'
