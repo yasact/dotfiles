@@ -116,7 +116,10 @@ if ! shopt -oq posix; then
 fi
 
 # the display setting for xming
-export DISPLAY=localhost:0.0
+#export DISPLAY=localhost:0.0
+# wslgを使うために以下を設定
+# https://broaden-your-horizons.com/ai-ss/pooping/err-xeyes/
+# export DISPLAY=:0.0
 
 # some more ls aliases
 alias ll='ls -alFh --color=auto'
@@ -132,7 +135,6 @@ alias cd="cdls"
 # eval "$(pyenv init -)"
 # eval "$(pyenv virtualenv-init -)"
 
-export DISPLAY=localhost:0.0
 export PATH=$HOME/.nodebrew/current/bin:$PATH
 
 # Ctrl + s でターミナルへの出力がロックされるのを解除
