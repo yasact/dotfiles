@@ -153,3 +153,9 @@ else #OSがDebian系のとき
   eval 'dircolors ~/dotfiles/dircolors/dircolors.ansi-universal' > /dev/null
   alias ll='ls -alF  --color=auto'
 fi
+
+# nim用にPATHを追加
+export PATH=$HOME/.nimble/bin:$PATH
+
+# autocadCore Console用にPATHを追加
+export PATH=/mnt/c/"Program Files"/Autodesk/"AutoCAD 2023":$PATH
