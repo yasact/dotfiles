@@ -159,3 +159,17 @@ export PATH=$HOME/.nimble/bin:$PATH
 
 # autocadCore Console用にPATHを追加
 export PATH=/mnt/c/"Program Files"/Autodesk/"AutoCAD 2023":$PATH
+
+# Inventor用にPATHを追加
+# Inventor.exe でInventorが起動できるようにするため
+export PATH=/mnt/c/Program\ Files/Autodesk/Inventor\ 2023/Bin/:$PATH
+
+# OCamlのエイリアスを設定
+# OCamlでカーソル移動ができるようにrlwrap経由で起動する
+alias ocaml='rlwrap ocaml'
+
+
+
+export NVM_DIR="$HOME/.nvm"
+[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
+[ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion

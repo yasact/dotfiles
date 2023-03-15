@@ -34,3 +34,6 @@ if [ -d "${HOME}/.pyenv" ]; then
         eval "$(pyenv init -)"
     fi
 fi
+
+# opam configuration
+test -r /home/yas/.opam/opam-init/init.sh && . /home/yas/.opam/opam-init/init.sh > /dev/null 2> /dev/null || true
