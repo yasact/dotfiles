@@ -168,8 +168,13 @@ export PATH=/mnt/c/Program\ Files/Autodesk/Inventor\ 2023/Bin/:$PATH
 # OCamlでカーソル移動ができるようにrlwrap経由で起動する
 alias ocaml='rlwrap ocaml'
 
-
+# docker-compose用のエイリアスを設定
+alias fig='docker-compose'
 
 export NVM_DIR="$HOME/.nvm"
 [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
 [ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
+
+# asdf用に設定
+. "$HOME/.asdf/asdf.sh"
+. "$HOME/.asdf/completions/asdf.bash"
