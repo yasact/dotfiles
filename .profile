@@ -37,3 +37,5 @@ fi
 
 # opam configuration
 test -r /home/yas/.opam/opam-init/init.sh && . /home/yas/.opam/opam-init/init.sh > /dev/null 2> /dev/null || true
+
+eval "$(/opt/homebrew/bin/brew shellenv)"
