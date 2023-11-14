@@ -150,7 +150,7 @@ if [ "$(uname)" = 'Darwin' ]; then #OSがmacのとき
   alias ll='ls -alFG'
 else #OSがDebian系のとき
   # ここで~/.colorrcがない。と言われている。
-  eval 'dircolors ~/dotfiles/dircolors/dircolors.ansi-universal' > /dev/null
+  eval 'dircolors ~/dotfiles/dircolors/dircolors.ansi-universal' >/dev/null
   alias ll='ls -alF  --color=auto'
 fi
 
@@ -172,8 +172,11 @@ alias ocaml='rlwrap ocaml'
 alias fig='docker-compose'
 
 export NVM_DIR="$HOME/.nvm"
-[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
-[ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
+[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"                   # This loads nvm
+[ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion" # This loads nvm bash_completion
+
+# code-insiders用に設定
+alias code='code-insiders'
 
 # asdf用に設定
 . "$HOME/.asdf/asdf.sh"
