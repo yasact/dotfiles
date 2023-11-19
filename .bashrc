@@ -142,6 +142,8 @@ if [ "$(uname)" = 'Darwin' ]; then #OSがmacのとき
   # macのデフォルトシェルをbashにすると、
   # zshを使えというwarningがでてくるのでそれを表示させなくする
   export BASH_SILENCE_DEPRECATION_WARNING=1
+  # homebrewをPATHに追加
+  export PATH="$PATH:/opt/homebrew/bin"  
 fi
 
 # lsを色付きにする
@@ -176,5 +178,9 @@ export NVM_DIR="$HOME/.nvm"
 [ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
 
 # asdf用に設定
-. "$HOME/.asdf/asdf.sh"
-. "$HOME/.asdf/completions/asdf.bash"
+#. "$HOME/.asdf/asdf.sh"
+#. "$HOME/.asdf/completions/asdf.bash"
+
+# VScode-insidersをcodeで起動できるように設定
+alias code='code-insiders'
+. "$HOME/.cargo/env"
