@@ -1,5 +1,5 @@
-require("lua/base.lua")
-require("keymaps.lua")
-require("options.lua")
-require("plugins.lua")
+require("base")
+require("keymaps")
+require("options")
+require("plugins")
 

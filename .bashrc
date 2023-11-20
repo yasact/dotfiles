@@ -186,4 +186,8 @@ alias code='code-insiders'
 
 # VScode-insidersをcodeで起動できるように設定
 alias code='code-insiders'
-. "$HOME/.cargo/env"
+
+# cargo(Rustのパッケージマネージャー)があったらcargoのパスをシェルに追加
+if [ -f "$HOME/.cargo/env" ]; then
+	. "$HOME/.cargo/env"
+fi

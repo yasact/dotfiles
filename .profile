@@ -38,8 +38,14 @@ fi
 # opam configuration
 test -r /home/yas/.opam/opam-init/init.sh && . /home/yas/.opam/opam-init/init.sh > /dev/null 2> /dev/null || true
 
-eval "$(/opt/homebrew/bin/brew shellenv)"
-. "$HOME/.cargo/env"
+if [ "$(uname -s)" = "Darwin" ]; then
+	# macOS用の設定
+	eval "$(/opt/homebrew/bin/brew shellenv)"
+fi
+
+if [ -f "$HOME/.cargo/env" ]; then
+	. "$HOME/.cargo/env"
+fi
 
 # >>> coursier install directory >>>
 export PATH="$PATH:/Users/yas/Library/Application Support/Coursier/bin"
