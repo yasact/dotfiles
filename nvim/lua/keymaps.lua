@@ -18,7 +18,7 @@ vim.api.nvim_set_keymap('v','K','gK',{noremap= true,silent=true})
 
 
 -- hop(easymotion alternative)
-require'hop'.setup()
+-- require'hop'.setup()
 
 -- normal mode (easymotion-like)
 vim.api.nvim_set_keymap("n", "<Leader><Leader>b", "<cmd>HopWordBC<CR>", {noremap=true})
