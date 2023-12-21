@@ -30,7 +30,8 @@ init.luaとinit.vimが同じディレクトリ(~/.config/nvim)にあるとどっ
 
 ということで、init.luaをrenameすればOKか
 
-init.luaを_init.luaにrenameしたらとりあえずluaの設定は読み込まれなくなった。
+init.luaを'_init.lua'
+にrenameしたらとりあえずluaの設定は読み込まれなくなった。
 
 次は、init.vimを作る。
 ~/.config/nvim/init.vimを作って
