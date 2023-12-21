@@ -192,3 +192,6 @@ call plug#end()
 
 できた
 
+## ここからwindowsで作業
+
+できた

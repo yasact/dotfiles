@@ -1,3 +1,5 @@
 call plug#begin('~/.vim/plugged')
   Plug 'preservim/nerdtree'
+  Plug 'plasticboy/vim-markdown'
+
 call plug#end()
