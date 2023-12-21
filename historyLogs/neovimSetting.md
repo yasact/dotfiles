@@ -62,3 +62,44 @@ https://github.com/w0ng/vim-hybrid
 OK
 これをmacに持っていきたい
 のでまずはgit pushしておく。
+
+ここから、macで作業中
+
+git pullした
+
+まず現状を確認したい。
+luaが設定されているのか？
+
+```
+┌──(yas@YSN-MBA)-[~/.config]
+└─$cd nvim/
+total 24
+drwxr-xr-x  7 yas  staff   224B Nov 20 11:17 ./
+drwx------  9 yas  staff   288B Oct 29 11:06 ../
+-rw-r--r--@ 1 yas  staff   6.0K Nov 20 11:14 .DS_Store
+-rw-r--r--  1 yas  staff    11B Oct 29 11:12 _init.vim
+lrwxr-xr-x  1 yas  staff    33B Nov 20 11:16 init.lua@ -> /Users/yas/dotfiles/nvim/init.lua
+lrwxr-xr-x  1 yas  staff    28B Nov 20 11:16 lua@ -> /Users/yas/dotfiles/nvim/lua
+lrwxr-xr-x  1 yas  staff    32B Nov 20 11:17 plugin@ -> /Users/yas/dotfiles/nvim/plugin/
+```
+となっていたので
+
+```
+┌──(yas@YSN-MBA)-[~/.config/nvim]
+└─$mv init.lua _init.lua
+┌──(yas@YSN-MBA)-[~/.config/nvim]
+└─$mv _init.vim init.vim
+```
+
+とした
+
+``` init.vim
+source ~/.vimrc
+```
+と書いたので、.vimrcが読み込まれるようになった。
+
+
+最後にwindowsに設定する
+
+
+
