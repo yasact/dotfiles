@@ -101,5 +101,30 @@ source ~/.vimrc
 
 最後にwindowsに設定する
 
+ここからwindowsでの作業
+
+そもそもwindowsではdotfilesをcloneしていなかったのでまずcloneする
+
+debianやmacでは
+~/.config/nvim/init.vim
+だったがwindowsでは
+~/AppData/Local/nvim/init.vim
+になっているのでこっちを変更する
+
+windowsでも
+~/.vimrcを読み込みたいところなので
+
+```
+sudo New-Item -ItemType SymbolicLink -Path .vimrc -Target .\dotfiles\.vimrc
+```
+してsymbokic linkを作成した
+(sudo は普通は使えないけどなんかsudoでadministrator privilegesを与えられるutilityを入れていた気がする)
+
+
+``` init.vim
+source ~/.vimrc
+```
+
+と書いたことで無事読み込まれた。
 
 
