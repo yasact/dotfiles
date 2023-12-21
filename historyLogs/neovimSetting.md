@@ -64,7 +64,7 @@ OK
 これをmacに持っていきたい
 のでまずはgit pushしておく。
 
-ここから、macで作業中
+## ここから、macでの作業
 
 git pullした
 
@@ -102,7 +102,7 @@ source ~/.vimrc
 
 最後にwindowsに設定する
 
-ここからwindowsでの作業
+## ここからwindowsでの作業
 
 そもそもwindowsではdotfilesをcloneしていなかったのでまずcloneする
 
@@ -127,5 +127,65 @@ source ~/.vimrc
 ```
 
 と書いたことで無事読み込まれた。
+
+## ここからdebianでの作業
+
+neovimをmarkdownでnote takingできるようにする。
+
+と思ったが、とりあえずnotetakingはもうできるよね？
+previewはしたいが。
+やっぱりpluginを入れないといろいろできないっぽいので仕方ないplugin managerを検討しよう。
+調べたところ、packerかVim-Plugが初心者向けっぽい
+
+packerは一回面倒くさくなったので、Vim-Plugにする
+
+> https://dev.to/iamb4uc/neovim-customization-5fge
+
+を参考にして、やっていく。
+
+本来ならinit.vimに
+
+
+```
+call plug#begin([PLUGIN_DIR])
+
+call plug#end()
+```
+と書いてこの間にインストールしたいpluginを書くっぽい。
+
+なお、
+> " The default plugin directory will be as follows:
+> "   - Vim (Linux/macOS): '~/.vim/plugged'
+> "   - Vim (Windows): '~/vimfiles/plugged'
+
+が、init.vimは
+source ~/.vimrc
+しか書いていないし、gitの範囲外になってしまうので、面倒くさい。
+では、~/dotfile/vimPlugins/.vimPlugins
+というファイルを作って、
+init.vimに
+source ~/dotfile/vimPlugins/.vimPlugins
+と書けばよいのでは？
+
+https://github.com/junegunn/vim-plug
+公式のドキュメント見た方がよさそうだった。
+novimとvimでcurlのコマンドが違う。
+
+```
+call plug#begin([PLUGIN_DIR])
+  Plug 'preservim/nerdtree'
+call plug#end()
+
+```
+plug 'scrooloose/nerdtree'
+はdeprecatedみたいなので
+Plug 'preservim/nerdtree'
+にすること。
+call plug#end()
+と書いて、
+> Reload .vimrc and :PlugInstall to install plugins.
+でOKっぽい。
+
+とりあえずNERDTreeは入れられたので、macでも同様にやってみる
 
 
