@@ -153,3 +153,5 @@ else #OSがDebian系のとき
   eval 'dircolors ~/dotfiles/dircolors/dircolors.ansi-universal' > /dev/null
   alias ll='ls -alF  --color=auto'
 fi
+
+
