@@ -280,6 +280,7 @@ OSで分岐してpowerShell7のパスを与えることにした。
 
 
 ```vimscript
+
 "OSTypeを設定する
 if has('win32') || has('win64')
     let g:osType = "win"
@@ -289,8 +290,8 @@ else
     let g:osType="linux"
 endif
 
+" terminalをトグルする関数
 
-"terminalをトグルする関数
 function! ToggleTerminal()
     if exists('t:terminal_window_id')
         if bufwinnr(t:terminal_window_id) != -1
@@ -341,7 +342,13 @@ sで開くとvsplitして開くようだ
 
 ### easy-motionがほしい
 
+> Plug 'easymotion/vim-easymotion'
 
+でinstallできた。
+
+とりあえず<leader><leader> w, <leader><leader> bができるのでOK
+
+いくつかVSCode Vimのsettingを流用しておいた。
 
 
 

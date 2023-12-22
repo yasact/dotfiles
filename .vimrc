@@ -44,6 +44,9 @@ nnoremap k gk
 " 行頭と行末をHLで移動できるようにする
 nnoremap H 0
 nnoremap L $
+vnoremap H 0
+vnoremap L $
+
 set whichwrap=b,s,h,l,<,>,[,],~ "行頭、行末でのカーソル移動を可能にする
 set backspace=indent,eol,start "バックスペースでの行移動を可能にする
 
@@ -172,3 +175,13 @@ nnoremap <C-t> :call ToggleTerminal()<CR>
 " vim-markdown用設定
 " .mdを開いたときにunfoldedの状態で開く
 let g:vim_markdown_folding_disabled = 1
+
+
+" <leader> + h,j,k,lでウインドウ移動
+nnoremap <leader>h <C-w>h
+nnoremap <leader>j <C-w>j
+nnoremap <leader>k <C-w>k
+nnoremap <leader>l <C-w>l
+
+"jしたいときに、shift+Jを誤爆することがよくあるのでJを無効
+nnoremap J j

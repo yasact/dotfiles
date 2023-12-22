@@ -1,6 +1,5 @@
 call plug#begin('~/.vim/plugged')
   Plug 'preservim/nerdtree'
   Plug 'plasticboy/vim-markdown'
-  Plug 'phaazon/hop.nvim'
-
+  Plug 'easymotion/vim-easymotion'
 call plug#end()
