@@ -203,7 +203,6 @@ Ctrl+BでNERDTreeをToggleできるようにした
 ```
 noremap <C-b> :NERDTreeToggle
 ```
-
 hikaliumの.vimrcをみながらsettingの勉強をしよう
 
 > set nocompatible
@@ -254,7 +253,7 @@ OSを判別してる。
 
 OK大体できた。
 
-gt, grでウィンドウを動けるようにしたい
+### gt, grでウィンドウを動けるようにしたい
 
 > " Move between windows
 >nnoremap <Return><Return> <c-w><c-w>
@@ -264,12 +263,86 @@ gt, grでウィンドウを動けるようにしたい
 > Ctrl-w w : 次の画面に移動(Window) (Ctrl-w Ctrl-w でも可)
 > Ctrl-w W : 前の画面に移動(Window)
 なので
-nnoremap gt <c-w><c-w>
-nnoremap gr <c-w>W
+> nnoremap gt <c-w><c-w>
+> nnoremap gr <c-w>W
 でいいのでは?
 できた。
 
-:eでファイルを開くときに別のウインドウで開いてほしい。
+### :eでファイルを開くときに別のウインドウで開いてほしい。
+
 > nnoremap <leader>e :vnew|:e
 でいけた。
+
+### ctrl+tでterminalをtoggleしたい。
+
+windowsで:terminalを実行するとcmd.exeになってしまうので
+OSで分岐してpowerShell7のパスを与えることにした。
+
+
+```vimscript
+"OSTypeを設定する
+if has('win32') || has('win64')
+    let g:osType = "win"
+elseif has('macunix')
+    let g:osType='mac'
+else
+    let g:osType="linux"
+endif
+
+
+"terminalをトグルする関数
+function! ToggleTerminal()
+    if exists('t:terminal_window_id')
+        if bufwinnr(t:terminal_window_id) != -1
+            exec bufwinnr(t:terminal_window_id) . 'wincmd c'
+            unlet t:terminal_window_id
+            return
+        endif
+    endif
+    if g:osType=="win" 
+        belowright split | terminal "C:\Program Files\PowerShell\7\pwsh.exe"
+    elseif g:osType=="mac"
+        belowright split | terminal
+    elseif g:osType=="linux"
+        belowright split | terminal
+    endif
+    let t:terminal_window_id = bufnr('')
+endfunction
+
+" ctrl+tでterminalをtoggleする
+nnoremap <C-t> :call ToggleTerminal()<CR>
+```
+
+でもこれ、挙動があやしいし、
+うまく使えなそうなので結局tmax的なもの使った方がいい気がする。
+windowsTerminalに標準で機能があった。
+powershellはalt + shift + +でvsplitでpowershellが開く
+powershellはalt + shift + -でsplitでpowershellが開く
+ctrl + shift + w で閉じる
+でもdefaultProfileしか開かないっぽいのとカレントディレクトリがhomeになるっぽい
+
+とりあえずこれは後回しにしよう。
+
+### NERDTreeでファイルを開くときに今のウインドウで開いてしまう。
+
+よく考えたらこれ普通の挙動。
+たとえばShift + Enterでvsplitしたwindowで開けばいいのに。
+sでvsplitで開くっぽい
+previewとopenの違い？
+とりあえずpreviewの場合、フォーカスがNERDTreeに残ったままになる。
+sで開くとvsplitして開くようだ
+
+
+### markdownを開くとすべてfoldedされてしまっている問題
+
+> let g:vim_markdown_folding_disabled = 1
+これで解決するかな
+できた。
+
+### easy-motionがほしい
+
+
+
+
+
 

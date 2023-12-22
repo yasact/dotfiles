@@ -169,4 +169,6 @@ endfunction
 " ctrl+tでterminalをtoggleする
 nnoremap <C-t> :call ToggleTerminal()<CR>
 
-
+" vim-markdown用設定
+" .mdを開いたときにunfoldedの状態で開く
+let g:vim_markdown_folding_disabled = 1
