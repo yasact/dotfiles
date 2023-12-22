@@ -102,7 +102,7 @@ source ~/.vimrc
 
 最後にwindowsに設定する
 
-## ここからwindowsでの作業
+### ここからwindowsでの作業
 
 そもそもwindowsではdotfilesをcloneしていなかったのでまずcloneする
 
@@ -128,7 +128,7 @@ source ~/.vimrc
 
 と書いたことで無事読み込まれた。
 
-## ここからdebianでの作業
+### ここからdebianでの作業
 
 neovimをmarkdownでnote takingできるようにする。
 
@@ -188,10 +188,70 @@ call plug#end()
 
 とりあえずNERDTreeは入れられたので、macでも同様にやってみる
 
-## ここからmacで作業
+### ここからmacで作業
 
 できた
 
-## ここからwindowsで作業
+### ここからwindowsで作業
 
 できた
+
+## 231222
+
+とりあえず
+Ctrl+BでNERDTreeをToggleできるようにした
+```
+noremap <C-b> :NERDTreeToggle
+```
+
+hikaliumの.vimrcをみながらsettingの勉強をしよう
+
+> set nocompatible
+よくわからんが今は.vimrcがあるといらないっぽい
+
+> set backspace=indent,eol,start
+バックスペースでの行移動を可能にするらしい
+もう入っていた
+
+> set wildignore+=*.pdf,*.o,*.obj,*.jpg,*.png
+ファイルやディレクトリの補完時にこのパターンにマッチしたものを無視する
+
+> set splitbelow
+新しいウインドウを現在のウインドウの下に開く
+> set splitright
+新しいウインドウを現在のウインドウの右に開く
+
+これはいれておこう
+
+> set autoread
+vimが開いているか、vim上で変更のないファイルで、外部で変更があったときに、自動的に読み込みなおす。
+いれておこう->もう入ってた。
+
+> hi clear TabLine
+ハイライトグループをリセット
+
+まず、hiは構文ハイライト(syntax highliting)の略
+
+
+au はautocmdの省略形
+特定のイベントが発生したときに自動で実行されるコマンドを指定する。
+
+let g:はVimスクリプト内で変数を定義するときの構文
+> let g:myVariable = 5
+でglobal 変数(myVariable)が5になる。
+
+```vimscript
+if has('win32')
+	let s:ostype = "Win"
+elseif has('mac')
+	let s:ostype = "Mac"
+else
+	let s:ostype = "Linux"
+endif
+```
+OSを判別してる。
+けどhikaliumの.vimrc内ではostypeの値を使用していない。
+
+OK大体できた。
+
+
