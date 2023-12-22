@@ -156,9 +156,7 @@ else #OSがDebian系のとき
   alias ll='ls -alF  --color=auto'
 fi
 
-<<<<<<< HEAD
 
-=======
 # nim用にPATHを追加
 export PATH=$HOME/.nimble/bin:$PATH
 
