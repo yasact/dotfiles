@@ -142,6 +142,8 @@ if [ "$(uname)" = 'Darwin' ]; then #OSがmacのとき
   # macのデフォルトシェルをbashにすると、
   # zshを使えというwarningがでてくるのでそれを表示させなくする
   export BASH_SILENCE_DEPRECATION_WARNING=1
+  # homebrewをPATHに追加
+  export PATH="$PATH:/opt/homebrew/bin"  
 fi
 
 # lsを色付きにする
@@ -150,8 +152,46 @@ if [ "$(uname)" = 'Darwin' ]; then #OSがmacのとき
   alias ll='ls -alFG'
 else #OSがDebian系のとき
   # ここで~/.colorrcがない。と言われている。
-  eval 'dircolors ~/dotfiles/dircolors/dircolors.ansi-universal' > /dev/null
+  eval 'dircolors ~/dotfiles/dircolors/dircolors.ansi-universal' >/dev/null
   alias ll='ls -alF  --color=auto'
 fi
 
+<<<<<<< HEAD
+
+=======
+# nim用にPATHを追加
+export PATH=$HOME/.nimble/bin:$PATH
+
+# autocadCore Console用にPATHを追加
+export PATH=/mnt/c/"Program Files"/Autodesk/"AutoCAD 2023":$PATH
+
+# Inventor用にPATHを追加
+# Inventor.exe でInventorが起動できるようにするため
+export PATH=/mnt/c/Program\ Files/Autodesk/Inventor\ 2023/Bin/:$PATH
+
+# OCamlのエイリアスを設定
+# OCamlでカーソル移動ができるようにrlwrap経由で起動する
+alias ocaml='rlwrap ocaml'
+
+# docker-compose用のエイリアスを設定
+alias fig='docker-compose'
+
+export NVM_DIR="$HOME/.nvm"
+[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"                   # This loads nvm
+[ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion" # This loads nvm bash_completion
+
+# code-insiders用に設定
+alias code='code-insiders'
+
+# asdf用に設定
+#. "$HOME/.asdf/asdf.sh"
+#. "$HOME/.asdf/completions/asdf.bash"
+
+# VScode-insidersをcodeで起動できるように設定
+alias code='code-insiders'
+
+# cargo(Rustのパッケージマネージャー)があったらcargoのパスをシェルに追加
+if [ -f "$HOME/.cargo/env" ]; then
+	. "$HOME/.cargo/env"
+fi
 
