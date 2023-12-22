@@ -185,3 +185,13 @@ nnoremap <leader>l <C-w>l
 
 "jしたいときに、shift+Jを誤爆することがよくあるのでJを無効
 nnoremap J j
+
+
+" osがwindowsだったら、yankしたものをwindowsのclipboardに送る
+if g:osType=="win"
+    set clipboard^=unnamed
+    augroup Yank
+        autocmd!
+        autocmd TextYankPost * if v:event.operator == 'y' | call system('clip.exe', @@) | endif
+    augroup END
+endif
