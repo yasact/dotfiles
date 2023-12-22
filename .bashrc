@@ -192,3 +192,5 @@ if [ -f "$HOME/.cargo/env" ]; then
 	. "$HOME/.cargo/env"
 fi
 
+# vimでnvimが起動するようにする
+alias vim=nvim
