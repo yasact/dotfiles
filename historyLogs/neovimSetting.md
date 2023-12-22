@@ -254,4 +254,22 @@ OSを判別してる。
 
 OK大体できた。
 
+gt, grでウィンドウを動けるようにしたい
+
+> " Move between windows
+>nnoremap <Return><Return> <c-w><c-w>
+
+でできているのでできるはず
+
+> Ctrl-w w : 次の画面に移動(Window) (Ctrl-w Ctrl-w でも可)
+> Ctrl-w W : 前の画面に移動(Window)
+なので
+nnoremap gt <c-w><c-w>
+nnoremap gr <c-w>W
+でいいのでは?
+できた。
+
+:eでファイルを開くときに別のウインドウで開いてほしい。
+> nnoremap <leader>e :vnew|:e
+でいけた。
 

@@ -1,6 +1,9 @@
 unlet! slip_defaults_vim
 "source $VIMRUNTIME/defaults.vim
 syntax enable
+
+let mapleader=" "
+
 "vim 8から導入されたデフォルトで設定の読み込み
 set encoding=utf-8 "文字コードをUTF-8に設定
 set fileencoding=utf-8 
@@ -119,5 +122,51 @@ hi Visual cterm=NONE ctermfg=black ctermbg=191
 "hi SpecialKey ctermfg=23
 "hi SignColumn ctermbg=NONE
 "
+"gt, grでウィンドウを動けるようにしたい
+nnoremap gt <c-w><c-w>
+nnoremap gr <c-w>W
+
+"新しい垂直分割ウインドウでファイルを開く
+nnoremap <leader>e :vnew | :e
+
+" ctrl+vで矩形ビジュアルモードに入りたいが、
+" windows powerShellからvimに入っていると、ペーストされてしまうので
+" とりあえずc-qで矩形ビジュアルモードに入るようにする。
+nnoremap <c-q> <c-v>
+
+"ctrl+sで保存
+nnoremap <c-s> :w<CR>
+
+"OSTypeを設定する
+if has('win32') || has('win64')
+    let g:osType = "win"
+elseif has('macunix')
+    let g:osType='mac'
+else
+    let g:osType="linux"
+endif
+
+
+"terminalをトグルする関数
+function! ToggleTerminal()
+    if exists('t:terminal_window_id')
+        if bufwinnr(t:terminal_window_id) != -1
+            exec bufwinnr(t:terminal_window_id) . 'wincmd c'
+            unlet t:terminal_window_id
+            return
+        endif
+    endif
+    if g:osType=="win" 
+        belowright split | terminal "C:\Program Files\PowerShell\7\pwsh.exe"
+    elseif g:osType=="mac"
+        belowright split | terminal
+    elseif g:osType=="linux"
+        belowright split | terminal
+    endif
+    let t:terminal_window_id = bufnr('')
+endfunction
+
+" ctrl+tでterminalをtoggleする
+nnoremap <C-t> :call ToggleTerminal()<CR>
 
 
