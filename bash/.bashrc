@@ -73,20 +73,7 @@ xterm* | rxvt*)
   PS1="\[\e]0;${debian_chroot:+($debian_chroot)}\u@\h: \w\a\]$PS1"
   ;;
 *) ;;
-
 esac
-
-# enable color support of ls and also add handy aliases
-if [ -x /usr/bin/dircolors ]; then
-  test -r ~/.dircolors && eval "$(dircolors -b ~/.dircolors)" || eval "$(dircolors -b)"
-  alias ls='ls --color=auto'
-  #alias dir='dir --color=auto'
-  #alias vdir='vdir --color=auto'
-
-  alias grep='grep --color=auto'
-  alias fgrep='fgrep --color=auto'
-  alias egrep='egrep --color=auto'
-fi
 
 # colored GCC warnings and errors
 #export GCC_COLORS='error=01;31:warning=01;35:note=01;36:caret=01;32:locus=01:quote=01'
@@ -115,21 +102,20 @@ if ! shopt -oq posix; then
   fi
 fi
 
-# some more ls aliases
-alias ll='ls -alFh --color=auto'
-alias la='ls -A'
-alias l='ls -CF'
-
-# cdしたあと自動でls
-cdls() {
-  \cd "$@" && ll
-}
-alias cd="cdls"
+# PATHの追加-------------------------------------------
+export PATH=$HOME/.nodebrew/current/bin:$PATH
 # PATH="$HOME/.pyenv/bin:$PATH"
 # eval "$(pyenv init -)"
 # eval "$(pyenv virtualenv-init -)"
+# nim用にPATHを追加
+export PATH=$HOME/.nimble/bin:$PATH
 
-export PATH=$HOME/.nodebrew/current/bin:$PATH
+# autocadCore Console用にPATHを追加
+export PATH=/mnt/c/"Program Files"/Autodesk/"AutoCAD 2023":$PATH
+
+# Inventor用にPATHを追加
+# Inventor.exe でInventorが起動できるようにするため
+export PATH=/mnt/c/Program\ Files/Autodesk/Inventor\ 2023/Bin/:$PATH
 
 # Ctrl + s でターミナルへの出力がロックされるのを解除
 stty stop undef
@@ -143,54 +129,16 @@ if [ "$(uname)" = 'Darwin' ]; then #OSがmacのとき
   # zshを使えというwarningがでてくるのでそれを表示させなくする
   export BASH_SILENCE_DEPRECATION_WARNING=1
   # homebrewをPATHに追加
-  export PATH="$PATH:/opt/homebrew/bin"  
+  export PATH="$PATH:/opt/homebrew/bin"
 fi
+# ---------------------------------
 
-# lsを色付きにする
-if [ "$(uname)" = 'Darwin' ]; then #OSがmacのとき
-  export LSCOLORS=gxfxcxdxbxegedabagacad
-  alias ll='ls -alFG'
-else #OSがDebian系のとき
-  # ここで~/.colorrcがない。と言われている。
-  eval 'dircolors ~/dotfiles/dircolors/dircolors.ansi-universal' >/dev/null
-  alias ll='ls -alF  --color=auto'
-fi
-
-# nim用にPATHを追加
-export PATH=$HOME/.nimble/bin:$PATH
-
-# autocadCore Console用にPATHを追加
-export PATH=/mnt/c/"Program Files"/Autodesk/"AutoCAD 2023":$PATH
-
-# Inventor用にPATHを追加
-# Inventor.exe でInventorが起動できるようにするため
-export PATH=/mnt/c/Program\ Files/Autodesk/Inventor\ 2023/Bin/:$PATH
-
-# OCamlのエイリアスを設定
-# OCamlでカーソル移動ができるようにrlwrap経由で起動する
-alias ocaml='rlwrap ocaml'
-
-# docker-compose用のエイリアスを設定
-alias fig='docker-compose'
-
+# NVM(NodePackageManager)用の設定
 export NVM_DIR="$HOME/.nvm"
 [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"                   # This loads nvm
 [ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion" # This loads nvm bash_completion
 
-# code-insiders用に設定
-alias code='code-insiders'
-
-# asdf用に設定
-#. "$HOME/.asdf/asdf.sh"
-#. "$HOME/.asdf/completions/asdf.bash"
-
-# VScode-insidersをcodeで起動できるように設定
-alias code='code-insiders'
-
 # cargo(Rustのパッケージマネージャー)があったらcargoのパスをシェルに追加
 if [ -f "$HOME/.cargo/env" ]; then
-	. "$HOME/.cargo/env"
+  . "$HOME/.cargo/env"
 fi
-
-# vimでnvimが起動するようにする
-alias vim=nvim
