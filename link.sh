@@ -8,6 +8,9 @@ ln -sf ~/dotfiles/bash/.bash_aliases ~/.bash_aliases
 mkdir -p ~/.vim
 ln -sf ~/dotfiles/colors ~/.vim/colors
 
+# nvim用のinit.vimをlinkする
+ln -sf ~/dotfiles/vim/nvim/init.vim ~/.config/nvim/init.vim
+
 # mkdir -p ~/.config/nvim/lua
 # ln -sf ~/dotfiles/nvim/init.lua ~/.config/nvim/init.lua
 # ln -sf ~/dotfiles/nvim/lua/base.lua ~/.config/nvim/lua/base.lua
