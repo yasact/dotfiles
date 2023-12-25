@@ -130,7 +130,7 @@ nnoremap gt <c-w><c-w>
 nnoremap gr <c-w>W
 
 "新しい垂直分割ウインドウでファイルを開く
-nnoremap <leader>e :vnew | :e
+"nnoremap <leader>e :vnew | :e
 
 " ctrl+vで矩形ビジュアルモードに入りたいが、
 " windows powerShellからvimに入っていると、ペーストされてしまうので
