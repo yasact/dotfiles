@@ -115,7 +115,7 @@ debianやmacでは
 windowsでも
 ~/.vimrcを読み込みたいところなので
 
-```
+```powershell
 sudo New-Item -ItemType SymbolicLink -Path .vimrc -Target .\dotfiles\.vimrc
 ```
 してsymbokic linkを作成した
@@ -352,4 +352,11 @@ sで開くとvsplitして開くようだ
 
 
 
+
+## 231225
+
+dotfiles以下のdirectory構成を変更した
+
+これで、link.shのリンク先を変更した。
+powershellもやらないといけない。
 
