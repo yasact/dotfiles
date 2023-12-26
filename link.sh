@@ -1,9 +1,17 @@
 #!/bin/sh
+
+# bash
 ln -sf ~/dotfiles/vim/.vimrc ~/.vimrc
 ln -sf ~/dotfiles/bash/.bashrc ~/.bashrc
 ln -sf ~/dotfiles/bash/.profile ~/.profile
 ln -sf ~/dotfiles/bash/.inputrc ~/.inputrc
 ln -sf ~/dotfiles/bash/.bash_aliases ~/.bash_aliases
+
+# zsh
+ln -sf ~/dotfiles/zsh/.zshrc ~/.zshrc
+ln -sf ~/dotfiles/zsh/.zsh_aliases ~/.zsh_aliases
+ln -sf ~/dotfiles/zsh/.zshenv ~/.zshenv
+
 
 mkdir -p ~/.vim
 ln -sf ~/dotfiles/colors ~/.vim/colors
