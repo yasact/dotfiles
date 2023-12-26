@@ -1,3 +1,4 @@
+
 # Set up the prompt
 
 autoload -Uz promptinit
@@ -97,4 +98,7 @@ zinit light-mode for \
 ### End of Zinit's installer chunk
 
 
+if [ -f ~/dotfiles/zsh/.zshPlugins ]; then
+    . ~/dotfiles/zsh/.zshPlugins
+fi
 
