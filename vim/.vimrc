@@ -195,3 +195,11 @@ if g:osType=="win"
         autocmd TextYankPost * if v:event.operator == 'y' | call system('clip.exe', @@) | endif
     augroup END
 endif
+
+"vim-commentary用のキーバインディングを変更する
+"Ctrl + / でworkするのに<C-_>と書かなければいけないのはなぜ？
+"ターミナルの入力処理: 多くのターミナルエミュレータは、古いASCII制御コードの仕組みに基づいてキー入力を処理します。Ctrl + / は ASCII コードで 0x1F に対応しますが、これは同じコードを持つ Ctrl + _（アンダースコア）に等しいです。したがって、ターミナルはこれらのキー入力を区別せず、同じコードとして扱います。
+nnoremap <C-_> :Commentary<CR>
+vnoremap <C-_> :Commentary<CR>
+
+

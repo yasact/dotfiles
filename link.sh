@@ -17,3 +17,6 @@ ln -sf ~/dotfiles/vim/nvim/init.vim ~/.config/nvim/init.vim
 # ln -sf ~/dotfiles/nvim/lua/keymaps.lua ~/.config/nvim/lua/keymaps.lua
 # ln -sf ~/dotfiles/nvim/lua/options.lua ~/.config/nvim/lua/options.lua
 # ln -sf ~/dotfiles/nvim/lua/plugins.lua ~/.config/nvim/lua/plugins.lua
+
+# tmax用の.tmux.confをlinkする
+ln -sf ~/dotfiles/tmux/.tmux.conf ~/.tmux.conf
