@@ -360,3 +360,8 @@ dotfiles以下のdirectory構成を変更した
 これで、link.shのリンク先を変更した。
 powershellもやらないといけない。
 
+## 231226
+
+powershellのPSSctiptsをdotfilesに一緒にしたい。
+
+
