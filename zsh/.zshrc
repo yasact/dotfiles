@@ -4,10 +4,8 @@ autoload -Uz promptinit
 promptinit
 # prompt adam1
 
-# PROMPT='[%n@%m]# '
-# RPROMPT='[%d]'
-PROMPT='[%F{magenta}%B%n%b%f@%F{blue}%U%m%u%f]# '
-RPROMPT='[%F{green}%d%f]'
+PROMPT='(%F{magenta}%n%f@%F{blue}%c%f)%# '
+RPROMPT='[%D %T]'
 
 setopt histignorealldups sharehistory
 
@@ -22,6 +20,7 @@ HISTFILE=~/.zsh_history
 # Use modern completion system
 autoload -Uz compinit
 compinit
+setopt correct
 
 zstyle ':completion:*' auto-description 'specify: %d'
 zstyle ':completion:*' completer _expand _complete _correct _approximate
