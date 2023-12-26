@@ -4,7 +4,7 @@ autoload -Uz promptinit
 promptinit
 # prompt adam1
 
-PROMPT='%F{green}┌%f(%F{magenta}%n%f%F{green})-[%f%F{blue}%U%c%u%f%F{green}]
+PROMPT='%F{green}┌(%f%F{magenta}%n%f%F{green})-[%f%F{blue}%U%c%u%f%F{green}]
 └%#%f '
 RPROMPT='%K{magenta}%F{cyan}[%D %T]%f%k'
 
