@@ -4,8 +4,10 @@ autoload -Uz promptinit
 promptinit
 # prompt adam1
 
-PROMPT='(%F{magenta}%n%f@%F{blue}%c%f)%# '
-RPROMPT='[%D %T]'
+PROMPT='%F{green}┌%f(%F{magenta}%n%f%F{green})-[%f%F{blue}%U%c%u%f%F{green}]
+└%#%f '
+RPROMPT='%K{magenta}%F{cyan}[%D %T]%f%k'
+
 
 setopt histignorealldups sharehistory
 
