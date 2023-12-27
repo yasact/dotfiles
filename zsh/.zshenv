@@ -16,8 +16,8 @@ export PATH=/mnt/c/Program\ Files/Autodesk/Inventor\ 2023/Bin/:$PATH
 # Ctrl + s でターミナルへの出力がロックされるのを解除
 stty stop undef
 
-# デフォルトエディターをVimにする
-export EDITOR=vim
+# デフォルトエディターをneoVimにする
+export EDITOR=nvim
 
 # macOS用設定------------------
 if [ "$(uname)" = 'Darwin' ]; then #OSがmacのとき
