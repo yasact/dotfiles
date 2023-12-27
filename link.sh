@@ -1,20 +1,22 @@
 #!/bin/sh
 
 # bash
-ln -sf ~/dotfiles/vim/.vimrc ~/.vimrc
-ln -sf ~/dotfiles/bash/.bashrc ~/.bashrc
-ln -sf ~/dotfiles/bash/.profile ~/.profile
-ln -sf ~/dotfiles/bash/.inputrc ~/.inputrc
-ln -sf ~/dotfiles/bash/.bash_aliases ~/.bash_aliases
+ln -sf ~/dotfiles/shell/bash/.bashrc ~/.bashrc
+ln -sf ~/dotfiles/shell/bash/.profile ~/.profile
+ln -sf ~/dotfiles/shell/bash/.inputrc ~/.inputrc
 
 # zsh
-ln -sf ~/dotfiles/zsh/.zshrc ~/.zshrc
-ln -sf ~/dotfiles/zsh/.zsh_aliases ~/.zsh_aliases
-ln -sf ~/dotfiles/zsh/.zshenv ~/.zshenv
+ln -sf ~/dotfiles/shell/zsh/.zshrc ~/.zshrc
+ln -sf ~/dotfiles/shell/zsh/.zshenv ~/.zshenv
 
+# aliases
+ln -sf ~/dotfiles/shell/.aliases ~/.aliases
 
 mkdir -p ~/.vim
 ln -sf ~/dotfiles/colors ~/.vim/colors
+
+# .vimrc
+ln -sf ~/dotfiles/vim/.vimrc ~/.vimrc
 
 # nvim用のinit.vimをlinkする
 ln -sf ~/dotfiles/vim/nvim/init.vim ~/.config/nvim/init.vim

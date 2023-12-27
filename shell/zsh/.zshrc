@@ -5,7 +5,7 @@ autoload -Uz promptinit
 promptinit
 # prompt adam1
 
-PROMPT='%F{green}┌(%f%F{magenta}%n%f%F{green})-[%f%F{blue}%U%c%u%f%F{green}]
+PROMPT='%F{green}┌(%f%F{magenta}%n%f%F{green})-[%f%F{blue}%U%~%u%f%F{green}]
 └%#%f '
 RPROMPT='%K{magenta}%F{cyan}[%D %T]%f%k'
 
@@ -62,8 +62,11 @@ setopt pushd_ignore_dups
 setopt hist_ignore_all_dups
 
 # .zsh_aliasesがあったら読み込む
-if [ -f ~/.zsh_aliases ]; then
-  . ~/.zsh_aliases
+# if [ -f ~/.zsh_aliases ]; then
+#   . ~/.zsh_aliases
+# fi
+if [ -f ~/.aliases ]; then
+  . ~/.aliases
 fi
 
 # disable beep
@@ -98,7 +101,7 @@ zinit light-mode for \
 ### End of Zinit's installer chunk
 
 
-if [ -f ~/dotfiles/zsh/.zshPlugins ]; then
-    . ~/dotfiles/zsh/.zshPlugins
+if [ -f ~/dotfiles/shell/zsh/.zshPlugins ]; then
+    . ~/dotfiles/shell/zsh/.zshPlugins
 fi
 
