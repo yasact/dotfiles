@@ -1,25 +1,23 @@
 # osを判別する
 # macの場合
-if [[ "$ostype" == "darwin"* ]]; then
+if [[ "$OSTYPE" == "darwin"* ]]; then
     ostype="mac"
 # それ以外の場合
 else 
     ostype="linux"
 fi
 
-
-# set up the prompt
-autoload -uz promptinit
+# Set up the prompt
+autoload -Uz promptinit
 promptinit
 # prompt adam1
-
-prompt='%f{green}┌(%f%f{magenta}%n%f%f{green})-[%f%f{blue}%u%~%u%f%f{green}]
+PROMPT='%F{green}┌(%f%F{magenta}%n%f%F{green})-[%f%F{blue}%U%~%u%f%F{green}]
 └%#%f '
-rprompt='%k{magenta}%f{cyan}[%d %t]%f%k'
+RPROMPT='%K{magenta}%F{cyan}[%D %T]%f%k'
 
 setopt histignorealldups sharehistory
 
-# use emacs keybindings even if our editor is set to vi
+# use emacs keybindings even if our EDITOR is set to vi
 bindkey -v
 
 # keep 1000 lines of history within the shell and save it to ~/.zsh_history:
@@ -55,7 +53,7 @@ zstyle ':completion:*:kill:*' command 'ps -u $user -o pid,%cpu,tty,cputime,cmd'
 
 # 自動補完を有効にする
 # autoload -u compinit: compinit
-autoload -uz compinit
+autoload -Uz compinit
 compinit -i
 
 # コマンドの打ち間違いがあったら修正案を提示する
@@ -84,29 +82,25 @@ setopt no_beep
 # disable beep sound after completion
 setopt nolistbeep
 
-
-### added by zinit's installer
-if [[ ! -f $home/.local/share/zinit/zinit.git/zinit.zsh ]]; then
-    print -p "%f{33} %f{220}installing %f{33}zdharma-continuum%f{220} initiative plugin manager (%f{33}zdharma-continuum/zinit%f{220})…%f"
-    command mkdir -p "$home/.local/share/zinit" && command chmod g-rwx "$home/.local/share/zinit"
-    command git clone https://github.com/zdharma-continuum/zinit "$home/.local/share/zinit/zinit.git" && \
-        print -p "%f{33} %f{34}installation successful.%f%b" || \
-        print -p "%f{160} the clone has failed.%f%b"
+### Added by Zinit's installer
+if [[ ! -f $HOME/.local/share/zinit/zinit.git/zinit.zsh ]]; then
+    print -P "%F{33} %F{220}Installing %F{33}ZDHARMA-CONTINUUM%F{220} Initiative Plugin Manager (%F{33}zdharma-continuum/zinit%F{220})…%f"
+    command mkdir -p "$HOME/.local/share/zinit" && command chmod g-rwX "$HOME/.local/share/zinit"
+    command git clone https://github.com/zdharma-continuum/zinit "$HOME/.local/share/zinit/zinit.git" && \
+        print -P "%F{33} %F{34}Installation successful.%f%b" || \
+        print -P "%F{160} The clone has failed.%f%b"
 fi
-
-source "$home/.local/share/zinit/zinit.git/zinit.zsh"
-autoload -uz _zinit
+source "$HOME/.local/share/zinit/zinit.git/zinit.zsh"
+autoload -Uz _zinit
 (( ${+_comps} )) && _comps[zinit]=_zinit
-
-# load a few important annexes, without turbo
+# Load a few important annexes, without Turbo
 # (this is currently required for annexes)
 zinit light-mode for \
     zdharma-continuum/zinit-annex-as-monitor \
     zdharma-continuum/zinit-annex-bin-gem-node \
     zdharma-continuum/zinit-annex-patch-dl \
     zdharma-continuum/zinit-annex-rust
-
-### end of zinit's installer chunk
+### End of Zinit's installer chunk
 
 
 if [ -f ~/dotfiles/shell/zsh/.zshplugins ]; then
@@ -121,14 +115,14 @@ fi
 # 現在のモードがわからない問題(insなのかcmdなのか)対応
 # for vi mode
 function zle-keymap-select {
-    if [[ $keymap = vicmd ]] || [[ $1 = block ]]; then
+    if [[ $KEYMAP = vicmd ]] || [[ $1 = block ]]; then
         echo -ne "\e[2 q" # コマンドモードでブロックカーソル
     else
         echo -ne "\e[6 q" # インサートモードでiビームカーソル
     fi
 }
 
-zle -n zle-keymap-select
+zle -N zle-keymap-select
 zle-keymap-select # 初期状態のカーソル形状を設定
 
 # ターミナルを終了するときにカーソルを通常状態に戻す
@@ -138,6 +132,6 @@ function zshext {
 
 # insert modeでbackspaceが効かない問題対応
 bindkey "^?" backward-delete-char
-bindkey "^h" backward-delete-char
+bindkey "^H" backward-delete-char
 
 
