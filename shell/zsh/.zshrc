@@ -1,6 +1,6 @@
-# OSを判別する
+# osを判別する
 # macの場合
-if [[ "$OSTYPE" == "darwin"* ]]; then
+if [[ "$ostype" == "darwin"* ]]; then
     ostype="mac"
 # それ以外の場合
 else 
@@ -8,29 +8,29 @@ else
 fi
 
 
-# Set up the prompt
-autoload -Uz promptinit
+# set up the prompt
+autoload -uz promptinit
 promptinit
 # prompt adam1
 
-PROMPT='%F{green}┌(%f%F{magenta}%n%f%F{green})-[%f%F{blue}%U%~%u%f%F{green}]
+prompt='%f{green}┌(%f%f{magenta}%n%f%f{green})-[%f%f{blue}%u%~%u%f%f{green}]
 └%#%f '
-RPROMPT='%K{magenta}%F{cyan}[%D %T]%f%k'
+rprompt='%k{magenta}%f{cyan}[%d %t]%f%k'
 
 setopt histignorealldups sharehistory
 
-# Use emacs keybindings even if our EDITOR is set to vi
+# use emacs keybindings even if our editor is set to vi
 bindkey -v
 
-# Keep 1000 lines of history within the shell and save it to ~/.zsh_history:
-HISTSIZE=1000
-SAVEHIST=1000
-HISTFILE=~/.zsh_history
+# keep 1000 lines of history within the shell and save it to ~/.zsh_history:
+histsize=1000
+savehist=1000
+histfile=~/.zsh_history
 
 
 zstyle ':completion:*' auto-description 'specify: %d'
 zstyle ':completion:*' completer _expand _complete _correct _approximate
-zstyle ':completion:*' format 'Completing %d'
+zstyle ':completion:*' format 'completing %d'
 zstyle ':completion:*' group-name ''
 zstyle ':completion:*' menu select=2
 
@@ -41,21 +41,21 @@ else
     eval "$(dircolors -b)"
 fi
 
-zstyle ':completion:*:default' list-colors ${(s.:.)LS_COLORS}
+zstyle ':completion:*:default' list-colors ${(s.:.)ls_colors}
 zstyle ':completion:*' list-colors ''
-zstyle ':completion:*' list-prompt %SAt %p: Hit TAB for more, or the character to insert%s
-zstyle ':completion:*' matcher-list '' 'm:{a-z}={A-Z}' 'm:{a-zA-Z}={A-Za-z}' 'r:|[._-]=* r:|=* l:|=*'
+zstyle ':completion:*' list-prompt %sat %p: hit tab for more, or the character to insert%s
+zstyle ':completion:*' matcher-list '' 'm:{a-z}={a-z}' 'm:{a-za-z}={a-za-z}' 'r:|[._-]=* r:|=* l:|=*'
 zstyle ':completion:*' menu select=long
-zstyle ':completion:*' select-prompt %SScrolling active: current selection at %p%s
+zstyle ':completion:*' select-prompt %sscrolling active: current selection at %p%s
 zstyle ':completion:*' use-compctl false
 zstyle ':completion:*' verbose true
 
 zstyle ':completion:*:*:kill:*:processes' list-colors '=(#b) #([0-9]#)*=0=01;31'
-zstyle ':completion:*:kill:*' command 'ps -u $USER -o pid,%cpu,tty,cputime,cmd'
+zstyle ':completion:*:kill:*' command 'ps -u $user -o pid,%cpu,tty,cputime,cmd'
 
 # 自動補完を有効にする
-# autoload -U compinit: compinit
-autoload -Uz compinit
+# autoload -u compinit: compinit
+autoload -uz compinit
 compinit -i
 
 # コマンドの打ち間違いがあったら修正案を提示する
@@ -85,20 +85,20 @@ setopt no_beep
 setopt nolistbeep
 
 
-### Added by Zinit's installer
-if [[ ! -f $HOME/.local/share/zinit/zinit.git/zinit.zsh ]]; then
-    print -P "%F{33} %F{220}Installing %F{33}ZDHARMA-CONTINUUM%F{220} Initiative Plugin Manager (%F{33}zdharma-continuum/zinit%F{220})…%f"
-    command mkdir -p "$HOME/.local/share/zinit" && command chmod g-rwX "$HOME/.local/share/zinit"
-    command git clone https://github.com/zdharma-continuum/zinit "$HOME/.local/share/zinit/zinit.git" && \
-        print -P "%F{33} %F{34}Installation successful.%f%b" || \
-        print -P "%F{160} The clone has failed.%f%b"
+### added by zinit's installer
+if [[ ! -f $home/.local/share/zinit/zinit.git/zinit.zsh ]]; then
+    print -p "%f{33} %f{220}installing %f{33}zdharma-continuum%f{220} initiative plugin manager (%f{33}zdharma-continuum/zinit%f{220})…%f"
+    command mkdir -p "$home/.local/share/zinit" && command chmod g-rwx "$home/.local/share/zinit"
+    command git clone https://github.com/zdharma-continuum/zinit "$home/.local/share/zinit/zinit.git" && \
+        print -p "%f{33} %f{34}installation successful.%f%b" || \
+        print -p "%f{160} the clone has failed.%f%b"
 fi
 
-source "$HOME/.local/share/zinit/zinit.git/zinit.zsh"
-autoload -Uz _zinit
+source "$home/.local/share/zinit/zinit.git/zinit.zsh"
+autoload -uz _zinit
 (( ${+_comps} )) && _comps[zinit]=_zinit
 
-# Load a few important annexes, without Turbo
+# load a few important annexes, without turbo
 # (this is currently required for annexes)
 zinit light-mode for \
     zdharma-continuum/zinit-annex-as-monitor \
@@ -106,11 +106,11 @@ zinit light-mode for \
     zdharma-continuum/zinit-annex-patch-dl \
     zdharma-continuum/zinit-annex-rust
 
-### End of Zinit's installer chunk
+### end of zinit's installer chunk
 
 
-if [ -f ~/dotfiles/shell/zsh/.zshPlugins ]; then
-    . ~/dotfiles/shell/zsh/.zshPlugins
+if [ -f ~/dotfiles/shell/zsh/.zshplugins ]; then
+    . ~/dotfiles/shell/zsh/.zshplugins
 fi
 
 
@@ -121,14 +121,14 @@ fi
 # 現在のモードがわからない問題(insなのかcmdなのか)対応
 # for vi mode
 function zle-keymap-select {
-    if [[ $KEYMAP = vicmd ]] || [[ $1 = block ]]; then
+    if [[ $keymap = vicmd ]] || [[ $1 = block ]]; then
         echo -ne "\e[2 q" # コマンドモードでブロックカーソル
     else
-        echo -ne "\e[6 q" # インサートモードでIビームカーソル
+        echo -ne "\e[6 q" # インサートモードでiビームカーソル
     fi
 }
 
-zle -N zle-keymap-select
+zle -n zle-keymap-select
 zle-keymap-select # 初期状態のカーソル形状を設定
 
 # ターミナルを終了するときにカーソルを通常状態に戻す
@@ -138,6 +138,6 @@ function zshext {
 
 # insert modeでbackspaceが効かない問題対応
 bindkey "^?" backward-delete-char
-bindkey "^H" backward-delete-char
+bindkey "^h" backward-delete-char
 
 
