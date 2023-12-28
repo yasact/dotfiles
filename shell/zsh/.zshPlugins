@@ -1,8 +1,7 @@
-
 ## コマンド補完
 # zsh-completions
 zinit ice wait'0'; zinit light zsh-users/zsh-completions
-autoload -Uz compinit && compinit
+# autoload -Uz compinit && compinit
 
 ## 補完で小文字でも大文字にマッチさせる
 zstyle ':completion:*' matcher-list 'm:{a-z}={A-Z}'
@@ -21,5 +20,5 @@ zinit light zsh-users/zsh-autosuggestions
 
 # サジェストのカラー変更
 # https://github.com/zsh-users/zsh-autosuggestions#suggestion-highlight-style
-# ZSH_AUTOSUGGEST_HIGHLIGHT_STYLE="fg=244"
-ZSH_AUTOSUGGEST_HIGHLIGHT_STYLE="fg=#ff00ff,bg=cyan,bold,underline"
+# ZSH_AUTOSUGGEST_HIGHLIGHT_STYLE="fg=#ff00ff,bg=cyan,bold,underline"
+ZSH_AUTOSUGGEST_HIGHLIGHT_STYLE="fg=#ff00ff,fg=black,bold"

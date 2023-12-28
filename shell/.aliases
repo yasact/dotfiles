@@ -12,15 +12,16 @@ if [ -x /usr/bin/dircolors ]; then
 fi
 
 # some more ls aliases
+alias ls='ls -alFh --color=auto'
 alias ll='ls -alFh --color=auto'
 alias la='ls -A'
 alias l='ls -CF'
 
-# cdしたあと自動でls
-cdls() {
-    \cd "$@" && ll
-}
-alias cd="cdls"
+# # cdしたあと自動でls
+# cdls() {
+#     \cd "$@" && ll
+# }
+# alias cd="cdls"
 
 # OCamlのエイリアスを設定
 # OCamlでカーソル移動ができるようにrlwrap経由で起動する
@@ -41,3 +42,23 @@ else #OSがDebian系のとき
     eval 'dircolors ~/dotfiles/dircolors/dircolors.ansi-universal' >/dev/null
     alias ll='ls -alF  --color=auto'
 fi
+
+if [ -n "$BASH_VERSION" ]; then
+    # open ~/.bashrc in using the default editor specified in $EDITOR
+    alias bashconfig="$EDITOR $HOME/.bashrc"
+
+    # source ~/.bashshrc
+    alias bashreload="source $HOME/.bashrc"
+fi
+
+if [ -n "$ZSH_VERSION" ]; then
+    # open ~/.zshrc in using the default editor specified in $EDITOR
+    alias zshconfig="$EDITOR $HOME/.zshrc"
+
+    # source ~/.zshrc
+    alias zshreload="source $HOME/.zshrc"
+fi 
+
+
+# aliases for git
+alias gaa="git add ."

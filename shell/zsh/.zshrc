@@ -1,14 +1,21 @@
+# OSを判別する
+# macの場合
+if [[ "$OSTYPE" == "darwin"* ]]; then
+    ostype="mac"
+# それ以外の場合
+else 
+    ostype="linux"
+fi
+
 
 # Set up the prompt
-
 autoload -Uz promptinit
 promptinit
 # prompt adam1
 
-PROMPT='%F{green}┌(%f%F{magenta}%n%f%F{green})-[%f%F{blue}%U%c%u%f%F{green}]
+PROMPT='%F{green}┌(%f%F{magenta}%n%f%F{green})-[%f%F{blue}%U%~%u%f%F{green}]
 └%#%f '
 RPROMPT='%K{magenta}%F{cyan}[%D %T]%f%k'
-
 
 setopt histignorealldups sharehistory
 
@@ -20,17 +27,20 @@ HISTSIZE=1000
 SAVEHIST=1000
 HISTFILE=~/.zsh_history
 
-# Use modern completion system
-autoload -Uz compinit
-compinit
-setopt correct
 
 zstyle ':completion:*' auto-description 'specify: %d'
 zstyle ':completion:*' completer _expand _complete _correct _approximate
 zstyle ':completion:*' format 'Completing %d'
 zstyle ':completion:*' group-name ''
 zstyle ':completion:*' menu select=2
-eval "$(dircolors -b)"
+
+# macだとgdircolorsになってる
+if [[ $ostype == "mac" ]]; then
+    eval "$(gdircolors -b)"
+else
+    eval "$(dircolors -b)"
+fi
+
 zstyle ':completion:*:default' list-colors ${(s.:.)LS_COLORS}
 zstyle ':completion:*' list-colors ''
 zstyle ':completion:*' list-prompt %SAt %p: Hit TAB for more, or the character to insert%s
@@ -43,11 +53,13 @@ zstyle ':completion:*' verbose true
 zstyle ':completion:*:*:kill:*:processes' list-colors '=(#b) #([0-9]#)*=0=01;31'
 zstyle ':completion:*:kill:*' command 'ps -u $USER -o pid,%cpu,tty,cputime,cmd'
 
-
-
-
 # 自動補完を有効にする
-autoload -U compinit: compinit
+# autoload -U compinit: compinit
+autoload -Uz compinit
+compinit -i
+
+# コマンドの打ち間違いがあったら修正案を提示する
+setopt correct
 
 # 入力したコマンドが存在せず、かつディレクトリ名と一致するなら、ディレクトリにcdする
 setopt auto_cd
@@ -62,8 +74,8 @@ setopt pushd_ignore_dups
 setopt hist_ignore_all_dups
 
 # .zsh_aliasesがあったら読み込む
-if [ -f ~/.zsh_aliases ]; then
-  . ~/.zsh_aliases
+if [ -f ~/.aliases ]; then
+  . ~/.aliases
 fi
 
 # disable beep
@@ -71,7 +83,6 @@ setopt no_beep
 
 # disable beep sound after completion
 setopt nolistbeep
-
 
 
 ### Added by Zinit's installer
@@ -98,7 +109,35 @@ zinit light-mode for \
 ### End of Zinit's installer chunk
 
 
-if [ -f ~/dotfiles/zsh/.zshPlugins ]; then
-    . ~/dotfiles/zsh/.zshPlugins
+if [ -f ~/dotfiles/shell/zsh/.zshPlugins ]; then
+    . ~/dotfiles/shell/zsh/.zshPlugins
 fi
+
+
+# eval "$(jump shell)"
+# eval "$(jump shell --bind=z)"
+
+
+# 現在のモードがわからない問題(insなのかcmdなのか)対応
+# for vi mode
+function zle-keymap-select {
+    if [[ $KEYMAP = vicmd ]] || [[ $1 = block ]]; then
+        echo -ne "\e[2 q" # コマンドモードでブロックカーソル
+    else
+        echo -ne "\e[6 q" # インサートモードでIビームカーソル
+    fi
+}
+
+zle -N zle-keymap-select
+zle-keymap-select # 初期状態のカーソル形状を設定
+
+# ターミナルを終了するときにカーソルを通常状態に戻す
+function zshext {
+    echo -ne "\e[1 q" # カーソルを通常状態に戻す
+}
+
+# insert modeでbackspaceが効かない問題対応
+bindkey "^?" backward-delete-char
+bindkey "^H" backward-delete-char
+
 

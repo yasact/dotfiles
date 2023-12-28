@@ -17,6 +17,7 @@ set showmatch "括弧入力時の対応する括弧を表示
 set matchtime=1 "showmatchのカーソルが飛ぶ時間
 set laststatus=2 "ステータスラインを常に表示
 set wildmode=list:longest "コマンドラインの補完
+set wildmode=list
 set expandtab "tab文字を半角スペースにする
 set tabstop=4 "行頭以外のTab文字の表示幅(スペース幾つか分)
 set shiftwidth=4 "行頭でのTab文字の表示幅
@@ -195,6 +196,8 @@ if g:osType=="win"
         autocmd TextYankPost * if v:event.operator == 'y' | call system('clip.exe', @@) | endif
     augroup END
 endif
+
+set clipboard+=unnamedplus
 
 "vim-commentary用のキーバインディングを変更する
 "Ctrl + / でworkするのに<C-_>と書かなければいけないのはなぜ？
