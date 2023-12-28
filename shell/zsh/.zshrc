@@ -105,3 +105,6 @@ if [ -f ~/dotfiles/shell/zsh/.zshPlugins ]; then
     . ~/dotfiles/shell/zsh/.zshPlugins
 fi
 
+
+# eval "$(jump shell)"
+eval "$(jump shell --bind=z)"
