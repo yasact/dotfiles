@@ -2,11 +2,9 @@
 # macの場合
 if [[ "$OSTYPE" == "darwin"* ]]; then
     ostype="mac"
-    echo "mac"
 # それ以外の場合
 else 
     ostype="linux"
-    echo "linux"
 fi
 
 
@@ -18,7 +16,6 @@ promptinit
 PROMPT='%F{green}┌(%f%F{magenta}%n%f%F{green})-[%f%F{blue}%U%~%u%f%F{green}]
 └%#%f '
 RPROMPT='%K{magenta}%F{cyan}[%D %T]%f%k'
-
 
 setopt histignorealldups sharehistory
 
@@ -119,7 +116,6 @@ fi
 
 # eval "$(jump shell)"
 # eval "$(jump shell --bind=z)"
-
 
 
 # 現在のモードがわからない問題(insなのかcmdなのか)対応
