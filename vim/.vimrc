@@ -205,4 +205,19 @@ set clipboard+=unnamedplus
 nnoremap <C-_> :Commentary<CR>
 vnoremap <C-_> :Commentary<CR>
 
+" NERDTree用設定
+" ファイルを開いたらNERDTreeを閉じる
+let g:NERDTreeQuitOnOpen=1
 
+" 隠しファイルを表示
+let g:NERDTreeShowHidden=1
+
+" 非表示ファイル
+let g:NERDTreeIgnore=['\.git$', '\.clean$', '\.swp$', '\.bak$', '\~$']
+
+augroup vimrc_nerdtree
+  autocmd!
+  " 他のバッファをすべて閉じた時にNERDTreeが開いていたらNERDTreeも一緒に閉じる。
+  autocmd bufenter * if (winnr('$') == 1 && exists('b:NERDTree') && b:NERDTree.isTabTree()) | q | endif
+
+augroup END
