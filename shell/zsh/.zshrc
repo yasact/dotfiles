@@ -1,6 +1,16 @@
+# OSを判別する
+# macの場合
+if [[ "$OSTYPE" == "darwin"* ]]; then
+    ostype="mac"
+    echo "mac"
+# それ以外の場合
+else 
+    ostype="linux"
+    echo "linux"
+fi
+
 
 # Set up the prompt
-
 autoload -Uz promptinit
 promptinit
 # prompt adam1
@@ -26,7 +36,14 @@ zstyle ':completion:*' completer _expand _complete _correct _approximate
 zstyle ':completion:*' format 'Completing %d'
 zstyle ':completion:*' group-name ''
 zstyle ':completion:*' menu select=2
-eval "$(dircolors -b)"
+
+# macだとgdircolorsになってる
+if [[ $ostype == "mac" ]]; then
+    eval "$(gdircolors -b)"
+else
+    eval "$(dircolors -b)"
+fi
+
 zstyle ':completion:*:default' list-colors ${(s.:.)LS_COLORS}
 zstyle ':completion:*' list-colors ''
 zstyle ':completion:*' list-prompt %SAt %p: Hit TAB for more, or the character to insert%s
