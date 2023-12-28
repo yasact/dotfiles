@@ -20,10 +20,6 @@ HISTSIZE=1000
 SAVEHIST=1000
 HISTFILE=~/.zsh_history
 
-# Use modern completion system
-autoload -Uz compinit
-compinit
-setopt correct
 
 zstyle ':completion:*' auto-description 'specify: %d'
 zstyle ':completion:*' completer _expand _complete _correct _approximate
@@ -43,11 +39,13 @@ zstyle ':completion:*' verbose true
 zstyle ':completion:*:*:kill:*:processes' list-colors '=(#b) #([0-9]#)*=0=01;31'
 zstyle ':completion:*:kill:*' command 'ps -u $USER -o pid,%cpu,tty,cputime,cmd'
 
-
-
-
 # 自動補完を有効にする
-autoload -U compinit: compinit
+# autoload -U compinit: compinit
+autoload -Uz compinit
+compinit -i
+
+# コマンドの打ち間違いがあったら修正案を提示する
+setopt correct
 
 # 入力したコマンドが存在せず、かつディレクトリ名と一致するなら、ディレクトリにcdする
 setopt auto_cd
@@ -71,7 +69,6 @@ setopt no_beep
 
 # disable beep sound after completion
 setopt nolistbeep
-
 
 
 ### Added by Zinit's installer
@@ -104,7 +101,7 @@ fi
 
 
 # eval "$(jump shell)"
-eval "$(jump shell --bind=z)"
+# eval "$(jump shell --bind=z)"
 
 
 
@@ -129,3 +126,5 @@ function zshext {
 # insert modeでbackspaceが効かない問題対応
 bindkey "^?" backward-delete-char
 bindkey "^H" backward-delete-char
+
+
