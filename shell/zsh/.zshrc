@@ -13,7 +13,7 @@ RPROMPT='%K{magenta}%F{cyan}[%D %T]%f%k'
 setopt histignorealldups sharehistory
 
 # Use emacs keybindings even if our EDITOR is set to vi
-bindkey -e
+bindkey -v
 
 # Keep 1000 lines of history within the shell and save it to ~/.zsh_history:
 HISTSIZE=1000
@@ -62,9 +62,6 @@ setopt pushd_ignore_dups
 setopt hist_ignore_all_dups
 
 # .zsh_aliasesがあったら読み込む
-# if [ -f ~/.zsh_aliases ]; then
-#   . ~/.zsh_aliases
-# fi
 if [ -f ~/.aliases ]; then
   . ~/.aliases
 fi
@@ -108,3 +105,27 @@ fi
 
 # eval "$(jump shell)"
 eval "$(jump shell --bind=z)"
+
+
+
+# 現在のモードがわからない問題(insなのかcmdなのか)対応
+# for vi mode
+function zle-keymap-select {
+    if [[ $KEYMAP = vicmd ]] || [[ $1 = block ]]; then
+        echo -ne "\e[2 q" # コマンドモードでブロックカーソル
+    else
+        echo -ne "\e[6 q" # インサートモードでIビームカーソル
+    fi
+}
+
+zle -N zle-keymap-select
+zle-keymap-select # 初期状態のカーソル形状を設定
+
+# ターミナルを終了するときにカーソルを通常状態に戻す
+function zshext {
+    echo -ne "\e[1 q" # カーソルを通常状態に戻す
+}
+
+# insert modeでbackspaceが効かない問題対応
+bindkey "^?" backward-delete-char
+bindkey "^H" backward-delete-char
