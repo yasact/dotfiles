@@ -22,3 +22,7 @@ zinit light zsh-users/zsh-autosuggestions
 # https://github.com/zsh-users/zsh-autosuggestions#suggestion-highlight-style
 # ZSH_AUTOSUGGEST_HIGHLIGHT_STYLE="fg=#ff00ff,bg=cyan,bold,underline"
 ZSH_AUTOSUGGEST_HIGHLIGHT_STYLE="fg=#ff00ff,fg=black,bold"
+
+# zsh-vi-mode
+zinit ice depth=1
+zinit light jeffreytse/zsh-vi-mode
