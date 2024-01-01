@@ -62,8 +62,5 @@ fi
 
 # aliases for git
 # https://opensource.com/article/20/11/git-aliases
-git config --global alias.p 'push'
-git config --global alias.st 'status -sb'
-git config --global alias.cm 'commit -m'
-git config --global alias.cmup 'commit -m "update" '
 git config --global alias.aa 'add .'
+git config --global alias.p 'push'
