@@ -12,7 +12,7 @@ if [ -x /usr/bin/dircolors ]; then
 fi
 
 # some more ls aliases
-alias ls='ls -alFh --color=auto'
+alias ls='ls --color=auto'
 alias ll='ls -alFh --color=auto'
 alias la='ls -A'
 alias l='ls -CF'
