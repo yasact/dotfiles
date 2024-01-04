@@ -112,26 +112,28 @@ fi
 # eval "$(jump shell --bind=z)"
 
 # 231229 zsh-vi-modeを入れたら不要かもしれない
+# zsh-vi-modeはよくわからないので一回コメントアウトした(at .zshPlugins)
+# のでこのsnippetを復活240104
 # 現在のモードがわからない問題(insなのかcmdなのか)対応
 # for vi mode
-# function zle-keymap-select {
-#     if [[ $KEYMAP = vicmd ]] || [[ $1 = block ]]; then
-#         echo -ne "\e[2 q" # コマンドモードでブロックカーソル
-#     else
-#         echo -ne "\e[6 q" # インサートモードでiビームカーソル
-#     fi
-# }
-# 
-# zle -N zle-keymap-select
-# zle-keymap-select # 初期状態のカーソル形状を設定
-# 
-# # ターミナルを終了するときにカーソルを通常状態に戻す
-# function zshext {
-#     echo -ne "\e[1 q" # カーソルを通常状態に戻す
-# }
-# 
-# # insert modeでbackspaceが効かない問題対応
-# bindkey "^?" backward-delete-char
-# bindkey "^H" backward-delete-char
-# 
+ function zle-keymap-select {
+     if [[ $KEYMAP = vicmd ]] || [[ $1 = block ]]; then
+         echo -ne "\e[2 q" # コマンドモードでブロックカーソル
+     else
+         echo -ne "\e[6 q" # インサートモードでiビームカーソル
+     fi
+ }
+ 
+ zle -N zle-keymap-select
+ zle-keymap-select # 初期状態のカーソル形状を設定
+ 
+ # ターミナルを終了するときにカーソルを通常状態に戻す
+ function zshext {
+     echo -ne "\e[1 q" # カーソルを通常状態に戻す
+ }
+ 
+ # insert modeでbackspaceが効かない問題対応
+ bindkey "^?" backward-delete-char
+ bindkey "^H" backward-delete-char
+ 
 
