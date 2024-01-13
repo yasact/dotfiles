@@ -108,6 +108,14 @@ if [ -f ~/dotfiles/shell/zsh/.zshplugins ]; then
 fi
 
 
+# Debian用の変換キーの設定
+if [[ $ostype == "linux" ]]; then
+    xmodmap -e "keycode 131 = Muhenkan"
+    xmodmap -e "keycode 130= Henkan_Mode"
+else
+    echo ¨¨
+fi
+
 # eval "$(jump shell)"
 # eval "$(jump shell --bind=z)"
 
