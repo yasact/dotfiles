@@ -2,6 +2,9 @@
 # macの場合
 if [[ "$OSTYPE" == "darwin"* ]]; then
     ostype="mac"
+# WSLの場合
+elif grep -qi microsoft /proc/version; then
+    ostype='wsl'
 # それ以外の場合
 else 
     ostype="linux"
@@ -113,7 +116,6 @@ if [[ $ostype == "linux" ]]; then
     xmodmap -e "keycode 131 = Muhenkan"
     xmodmap -e "keycode 130= Henkan_Mode"
 else
-    echo ¨¨
 fi
 
 # eval "$(jump shell)"
