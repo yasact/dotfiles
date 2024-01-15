@@ -25,9 +25,7 @@ set ambiwidth=double "全角文字を正しく表示するための設定
 set mouse=a " ターミナル内のvimでマウススクロールを有効にする
 
 "見た目系
-"ColorSchemeをvim-hybridに設定
 "set background=dark
-"colorscheme hybrid
 set number "行番号を表示
 set relativenumber "行番号を相対番号で表示
 set ruler "カーソル位置表示

@@ -12,8 +12,6 @@ ln -sf ~/dotfiles/shell/zsh/.zshenv ~/.zshenv
 # aliases
 ln -sf ~/dotfiles/shell/.aliases ~/.aliases
 
-mkdir -p ~/.vim
-ln -sf ~/dotfiles/colors ~/.vim/colors
 
 # .vimrc
 ln -sf ~/dotfiles/vim/.vimrc ~/.vimrc
