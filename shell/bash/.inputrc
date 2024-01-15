@@ -37,4 +37,9 @@ set vi-cmd-mode-string \1\e[2 q\2
 # optionally:
 # switch to block cursor before executing a command
  set keymap vi-insert
+
+# Debian用の設定
+# xmodmap -e "keycode 131 = Muhenkan"
+# xmodmap -e "keycode 130= Henkan_Mode"
+
  RETURN: "\e\n"
