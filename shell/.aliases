@@ -43,6 +43,7 @@ else #OSがDebian系のとき
     alias ll='ls -alF  --color=auto'
 fi
 
+# shellがbashだった場合
 if [ -n "$BASH_VERSION" ]; then
     # open ~/.bashrc in using the default editor specified in $EDITOR
     alias bashconfig="$EDITOR $HOME/.bashrc"
@@ -51,6 +52,8 @@ if [ -n "$BASH_VERSION" ]; then
     alias bashreload="source $HOME/.bashrc"
 fi
 
+
+# shellがzshだった場合
 if [ -n "$ZSH_VERSION" ]; then
     # open ~/.zshrc in using the default editor specified in $EDITOR
     alias zshconfig="$EDITOR $HOME/.zshrc"
@@ -64,3 +67,11 @@ fi
 # https://opensource.com/article/20/11/git-aliases
 git config --global alias.aa 'add .'
 git config --global alias.p 'push'
+
+# windowsでwslの時にelでexplorerを起動したい
+# macだったらfinderで表示したいのでopenにすればいいか
+if [ "$(uname)" = 'Darwin' ]; then #OSがmacのとき
+    alias el='open'
+else #OSがDebian系のとき
+    alias el='explorer.exe'
+fi

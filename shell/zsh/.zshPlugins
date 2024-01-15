@@ -1,4 +1,4 @@
-## コマンド補完
+# コマンド補完
 # zsh-completions
 zinit ice wait'0'; zinit light zsh-users/zsh-completions
 # autoload -Uz compinit && compinit
@@ -24,5 +24,5 @@ zinit light zsh-users/zsh-autosuggestions
 ZSH_AUTOSUGGEST_HIGHLIGHT_STYLE="fg=#ff00ff,fg=black,bold"
 
 # zsh-vi-mode
-zinit ice depth=1
-zinit light jeffreytse/zsh-vi-mode
+# zinit ice depth=1
+# zinit light jeffreytse/zsh-vi-mode

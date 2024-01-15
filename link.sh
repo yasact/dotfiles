@@ -12,12 +12,13 @@ ln -sf ~/dotfiles/shell/zsh/.zshenv ~/.zshenv
 # aliases
 ln -sf ~/dotfiles/shell/.aliases ~/.aliases
 
-mkdir -p ~/.vim
-ln -sf ~/dotfiles/colors ~/.vim/colors
 
 # .vimrc
 ln -sf ~/dotfiles/vim/.vimrc ~/.vimrc
 
+# nvim
+# nvim用のディレクトリがない場合は作成する
+mkdir -p ~/.config/nvim
 # nvim用のinit.vimをlinkする
 ln -sf ~/dotfiles/vim/nvim/init.vim ~/.config/nvim/init.vim
 
