@@ -75,3 +75,10 @@ if [ "$(uname)" = 'Darwin' ]; then #OSがmacのとき
 else #OSがDebian系のとき
     alias el='explorer.exe'
 fi
+
+# batが入っていたらcatの代わりにbatをつかう
+if [ $ostype = mac ]; then #OSがmacのとき
+    if [ -e /opt/homebrew/bin/bat ]; then
+        alias cat='bat'
+    fi
+fi
