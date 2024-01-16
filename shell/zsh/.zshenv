@@ -3,14 +3,16 @@ export PATH=$HOME/.nodebrew/current/bin:$PATH
 # PATH="$HOME/.pyenv/bin:$PATH"
 # eval "$(pyenv init -)"
 # eval "$(pyenv virtualenv-init -)"
+
+
 # nim用にPATHを追加
-export PATH=$HOME/.nimble/bin:$PATH
+#export PATH=$HOME/.nimble/bin:$PATH
 
 # autocadCore Console用にPATHを追加
 export PATH=/mnt/c/"Program Files"/Autodesk/"AutoCAD 2023":$PATH
 
 # Inventor用にPATHを追加
-# Inventor.exe でInventorが起動できるようにするため
+# Inventor.exe でInventorを起動できるようにするため
 export PATH=/mnt/c/Program\ Files/Autodesk/Inventor\ 2023/Bin/:$PATH
 
 # Ctrl + s でターミナルへの出力がロックされるのを解除
