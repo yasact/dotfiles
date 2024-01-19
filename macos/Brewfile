@@ -1,19 +1,30 @@
 # usage
+#
+# リストにあるものをinstall
 # > brew bundle
 #
-tap "coursier/formulas"
+# 不要なものを削除
+# > brew bundle cleanup
+
+# taps
+# tap "coursier/formulas"
 tap "homebrew/bundle"
 tap "homebrew/cask-fonts"
+tap "homebrew/cask-versions"
+
+# brew
 brew "coreutils"
 # brew "asdf"
 brew "axel"
-# brew "bat"
+brew "bat"
+brew "lsd"
+brew "cpufetch"
 # brew "fish"
 # brew "ncdu"
 brew "neofetch"
 brew "neovim"
 brew "node"
-brew "python@3.11"
+brew "python@3.12"
 # brew "ranger"
 brew "rename"
 brew "scala"
@@ -22,6 +33,8 @@ brew "tree"
 brew "unar"
 brew "yarn"
 brew "coursier/formulas/coursier"
+
+# cask
 cask "font-fira-code"
 cask "iterm2"
 cask "librewolf"
@@ -39,7 +52,7 @@ cask "brave-browser"
 cask "deepl"
 cask "docker"
 cask "dropbox"
-cask "dropzone"
+# cask "dropzone"
 cask "google-chrome"
 cask "iina"
 cask "karabiner-elements"
@@ -60,9 +73,31 @@ cask "todoist"
 cask "tor-browser"
 cask "transcribe"
 cask "elektron-transfer"
-cask "elektron-overbridge"
+# cask "elektron-overbridge"
 cask "vlc"
-cask "visual-studio-code"
 cask "waterfox"
 cask "iterm2"
 cask "zoom"
+
+cask "visual-studio-code-insiders"
+
+# mas
+# masを使うにはmasをinstallしてから
+brew "mas"
+mas "Magnet", id: 441258766
+mas "Display Menu" , id:549083868
+mas "Dropover", id:1355679052
+mas "Music Converter Pro", id:468990782
+
+
+# fonts
+cask "font-Hack-nerd-font"
+cask "font-noto-sans-cjk"
+cask "font-fira-code"
+# cask 'font-lato'
+# cask 'font-open-sans'
+# cask 'font-roboto'
+# cask 'font-source-code-pro-for-powerline'
+# cask 'font-source-code-pro'
+# cask 'font-source-sans-pro'
+# cask 'font-source-serif-pro'
