@@ -350,9 +350,6 @@ sで開くとvsplitして開くようだ
 
 いくつかVSCode Vimのsettingを流用しておいた。
 
-
-
-
 ## 231225
 
 dotfiles以下のdirectory構成を変更した
@@ -362,6 +359,20 @@ powershellもやらないといけない。
 
 ## 231226
 
-powershellのPSSctiptsをdotfilesに一緒にしたい。
+### vim-commentaryを入れた
 
+これ、gccでコメント切り替えだけど、VSCodeみたいに Ctrl + /でできないかな？
+
+```vimscript
+nnoremap <C-_> :Commentary<CR>
+vnoremap <C-_> :Commentary<CR>
+```
+これでできた。
+
+>ターミナルの入力処理: 多くのターミナルエミュレータは、古いASCII制御コードの仕組みに基づいてキー入力を処理します。Ctrl + / は ASCII コードで 0x1F に対応しますが、これは同じコードを持つ Ctrl + _（アンダースコア）に等しいです。したがって、ターミナルはこれらのキー入力を区別せず、同じコードとして扱います。
+
+### vim-polyglotを入れてみる
+
+これはsyntax highlightのplugin
+とりあえず入れておいた。
 
