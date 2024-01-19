@@ -1,27 +1,10 @@
+# この.aliasはbashとzshで共通
+# ostype declared at .zshrc
+# macの場合:ostype="mac"
+# wslの場合:ostype='wsl'
+#それ以外:ostype="linux"
 
-# enable color support of ls and also add handy aliases
-if [ -x /usr/bin/dircolors ]; then
-    test -r ~/.dircolors && eval "$(dircolors -b ~/.dircolors)" || eval "$(dircolors -b)"
-    alias ls='ls --color=auto'
-    #alias dir='dir --color=auto'
-    #alias vdir='vdir --color=auto'
 
-    alias grep='grep --color=auto'
-    alias fgrep='fgrep --color=auto'
-    alias egrep='egrep --color=auto'
-fi
-
-# some more ls aliases
-alias ls='ls --color=auto'
-alias ll='ls -alFh --color=auto'
-alias la='ls -A'
-alias l='ls -CF'
-
-# # cdしたあと自動でls
-# cdls() {
-#     \cd "$@" && ll
-# }
-# alias cd="cdls"
 
 # OCamlのエイリアスを設定
 # OCamlでカーソル移動ができるようにrlwrap経由で起動する
@@ -32,25 +15,6 @@ alias fig='docker-compose'
 
 # VScode-insidersをcodeで起動できるように設定
 alias code='code-insiders'
-
-# lsを色付きにする
-if [ "$(uname)" = 'Darwin' ]; then #OSがmacのとき
-    export LSCOLORS=gxfxcxdxbxegedabagacad
-    alias ll='ls -alFG'
-else #OSがDebian系のとき
-    # ここで~/.colorrcがない。と言われている。
-    eval 'dircolors ~/dotfiles/dircolors/dircolors.ansi-universal' >/dev/null
-    alias ll='ls -alF  --color=auto'
-fi
-
-# osがmacでlsd(ls Desulx)が入っていたらllをls -alFGにする
-#
-if [[ $ostype == "mac" ]]; then
-    if [ -e /opt/homebrew/bin/lsd ]; then
-        alias ll='lsd -alFG'
-    fi
-fi
-
 
 
 # shellがbashだった場合
@@ -80,15 +44,87 @@ git config --global alias.p 'push'
 
 # windowsでwslの時にelでexplorerを起動したい
 # macだったらfinderで表示したいのでopenにすればいいか
-if [ "$(uname)" = 'Darwin' ]; then #OSがmacのとき
+# linuxの場合もopenで起動できる
+# if [ "$(uname)" = 'Darwin' ]; then #OSがmacのとき
+if [[ $ostype = "mac" ]]; then #OSがmacのとき
     alias el='open'
-else #OSがDebian系のとき
+elif [[ $ostype = "wsl" ]]; then # wslの時
     alias el='explorer.exe'
+elif [[ $ostype = "linux" ]]; then # linuxの時
+    alias el='open'
 fi
 
+
 # batが入っていたらcatの代わりにbatをつかう
-if [ $ostype = mac ]; then #OSがmacのとき
-    if [ -e /opt/homebrew/bin/bat ]; then
+if [[ $ostype = "mac" ]]; then #OSがmacのとき
+    if [[ -e /opt/homebrew/bin/bat ]]; then
+        alias cat='bat'
+    fi
+elif [[ $ostype == "wsl" ]]; then
+    if [[ -e /usr/sbin/bat ]]; then 
+        alias cat='bat'
+    fi
+elif [[ $ostype == "linux" ]]; then
+    if [[ -e /usr/sbin/bat ]]; then 
         alias cat='bat'
     fi
 fi
+
+
+# ls関係
+
+# # enable color support of ls and also add handy aliases
+# if [ -x /usr/bin/dircolors ]; then
+#     test -r ~/.dircolors && eval "$(dircolors -b ~/.dircolors)" || eval "$(dircolors -b)"
+#     alias ls='ls --color=auto'
+#     #alias dir='dir --color=auto'
+#     #alias vdir='vdir --color=auto'
+
+#     alias grep='grep --color=auto'
+#     alias fgrep='fgrep --color=auto'
+#     alias egrep='egrep --color=auto'
+# fi
+
+# some more ls aliases
+# alias ls='ls --color=auto'
+# alias ll='ls -alFh --color=auto'
+# alias la='ls -A'
+# alias l='ls -CF'
+
+# # cdしたあと自動でls
+# cdls() {
+#     \cd "$@" && ll
+# }
+# alias cd="cdls"
+
+# lsを色付きにする
+# if [ "$(uname)" = 'Darwin' ]; then #OSがmacのとき
+# if [ $ostype == "mac" ]; then #OSがmacのとき
+#     export LSCOLORS=gxfxcxdxbxegedabagacad
+#     alias ll='ls -alFG'
+# else #OSがDebian系のとき
+#     # ここで~/.colorrcがない。と言われている。
+#     eval 'dircolors ~/dotfiles/dircolors/dircolors.ansi-universal' >/dev/null
+#     # alias ll='ls -alF  --color=auto'
+# fi
+
+# lsd(ls Deluxe)が入っていたらllをlsd -alFにする
+# 入っていなかったらllでls -alfG --color=autoにする
+# lsでlsdにする
+if [[ $ostype == "mac" ]]; then # macのとき
+    if [[ -e /opt/homebrew/bin/lsd ]]; then
+        alias ls=lsd
+        alias ll='lsd -alF'
+    else 
+        alias ll='ls -alFG --color=auto'
+    fi
+elif [[ $ostype == "wsl" ]]; then # wslのとき
+    if [[ -e /usr/sbin/lsd ]]; then
+        alias ls=lsd
+        alias ll='lsd -alF'
+    else
+        alias ll='ls -alFG --color=auto'
+    fi
+fi
+
+# echo ".aliases is loaded"

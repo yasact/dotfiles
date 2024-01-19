@@ -10,6 +10,10 @@ else
     ostype="linux"
 fi
 
+echo "ostype=$ostype"
+
+
+
 # Set up the prompt
 autoload -Uz promptinit
 promptinit
@@ -74,8 +78,8 @@ setopt pushd_ignore_dups
 # 入力したコマンドがすでにコマンド履歴に含まれる場合、履歴から古い方のコマンドを削除する
 setopt hist_ignore_all_dups
 
-# .zsh_aliasesがあったら読み込む
-if [ -f ~/.aliases ]; then
+# .aliasesがあったら読み込む
+if [ -e ~/.aliases ]; then
   . ~/.aliases
 fi
 
@@ -151,3 +155,7 @@ fi
 export NVM_DIR="$HOME/.nvm"
 [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
 [ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
+
+
+
+# echo ".zshrc is loaded"
