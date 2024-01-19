@@ -10,8 +10,7 @@ else
     ostype="linux"
 fi
 
-echo "ostype=$ostype"
-
+# echo "ostype=$ostype"
 
 
 # Set up the prompt

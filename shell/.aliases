@@ -4,8 +4,6 @@
 # wslの場合:ostype='wsl'
 #それ以外:ostype="linux"
 
-
-
 # OCamlのエイリアスを設定
 # OCamlでカーソル移動ができるようにrlwrap経由で起動する
 alias ocaml='rlwrap ocaml'
@@ -19,20 +17,13 @@ alias code='code-insiders'
 
 # shellがbashだった場合
 if [ -n "$BASH_VERSION" ]; then
-    # open ~/.bashrc in using the default editor specified in $EDITOR
     alias bashconfig="$EDITOR $HOME/.bashrc"
-
-    # source ~/.bashshrc
     alias bashreload="source $HOME/.bashrc"
 fi
 
-
 # shellがzshだった場合
 if [ -n "$ZSH_VERSION" ]; then
-    # open ~/.zshrc in using the default editor specified in $EDITOR
     alias zshconfig="$EDITOR $HOME/.zshrc"
-
-    # source ~/.zshrc
     alias zshreload="source $HOME/.zshrc"
 fi 
 
@@ -45,86 +36,43 @@ git config --global alias.p 'push'
 # windowsでwslの時にelでexplorerを起動したい
 # macだったらfinderで表示したいのでopenにすればいいか
 # linuxの場合もopenで起動できる
-# if [ "$(uname)" = 'Darwin' ]; then #OSがmacのとき
 if [[ $ostype = "mac" ]]; then #OSがmacのとき
-    alias el='open'
-elif [[ $ostype = "wsl" ]]; then # wslの時
-    alias el='explorer.exe'
-elif [[ $ostype = "linux" ]]; then # linuxの時
-    alias el='open'
-fi
-
-
-# batが入っていたらcatの代わりにbatをつかう
-if [[ $ostype = "mac" ]]; then #OSがmacのとき
-    if [[ -e /opt/homebrew/bin/bat ]]; then
-        alias cat='bat'
-    fi
+        alias el='open'
 elif [[ $ostype == "wsl" ]]; then
-    if [[ -e /usr/sbin/bat ]]; then 
-        alias cat='bat'
-    fi
+        alias el='explorer.exe'
 elif [[ $ostype == "linux" ]]; then
-    if [[ -e /usr/sbin/bat ]]; then 
-        alias cat='bat'
-    fi
+        alias el='open'
+fi
+# 代替コマンドの実行ファイルがあるかどうか確認する
+# 代替コマンドのパスを格納する
+bat_path=""
+lsd_path=""
+if [[ $ostype = "mac" ]]; then #OSがmacのとき
+    bat_path="/opt/homebrew/bin/bat"
+    lsd_path="/opt/homebrew/bin/lsd"
+elif [[ $ostype == "wsl" ]]; then
+    bat_path="/usr/sbin/bat"
+    lsd_path="/usr/sbin/lsd"
+elif [[ $ostype == "linux" ]]; then
+    bat_path="/usr/sbin/bat"
+    lsd_path="/usr/sbin/lsd"
 fi
 
+# batがinstallされていたら、catの代わりにbatをつかう
+if [[ -e $bat_path ]]; then
+    alias cat='bat'
+fi
 
-# ls関係
-
-# # enable color support of ls and also add handy aliases
-# if [ -x /usr/bin/dircolors ]; then
-#     test -r ~/.dircolors && eval "$(dircolors -b ~/.dircolors)" || eval "$(dircolors -b)"
-#     alias ls='ls --color=auto'
-#     #alias dir='dir --color=auto'
-#     #alias vdir='vdir --color=auto'
-
-#     alias grep='grep --color=auto'
-#     alias fgrep='fgrep --color=auto'
-#     alias egrep='egrep --color=auto'
-# fi
-
-# some more ls aliases
-# alias ls='ls --color=auto'
-# alias ll='ls -alFh --color=auto'
-# alias la='ls -A'
-# alias l='ls -CF'
-
-# # cdしたあと自動でls
-# cdls() {
-#     \cd "$@" && ll
-# }
-# alias cd="cdls"
-
-# lsを色付きにする
-# if [ "$(uname)" = 'Darwin' ]; then #OSがmacのとき
-# if [ $ostype == "mac" ]; then #OSがmacのとき
-#     export LSCOLORS=gxfxcxdxbxegedabagacad
-#     alias ll='ls -alFG'
-# else #OSがDebian系のとき
-#     # ここで~/.colorrcがない。と言われている。
-#     eval 'dircolors ~/dotfiles/dircolors/dircolors.ansi-universal' >/dev/null
-#     # alias ll='ls -alF  --color=auto'
-# fi
-
-# lsd(ls Deluxe)が入っていたらllをlsd -alFにする
-# 入っていなかったらllでls -alfG --color=autoにする
-# lsでlsdにする
-if [[ $ostype == "mac" ]]; then # macのとき
-    if [[ -e /opt/homebrew/bin/lsd ]]; then
-        alias ls=lsd
-        alias ll='lsd -alF'
-    else 
-        alias ll='ls -alFG --color=auto'
-    fi
-elif [[ $ostype == "wsl" ]]; then # wslのとき
-    if [[ -e /usr/sbin/lsd ]]; then
-        alias ls=lsd
-        alias ll='lsd -alF'
-    else
-        alias ll='ls -alFG --color=auto'
-    fi
+# lsd(ls Deluxe)が入っていたら
+#   ll->lsd -alF
+#   ls->lsd
+# 入っていなかったら
+#   ll->ls -alFG --color=auto
+if [[ -e $lsd_path ]]; then
+    alias ls='lsd'
+    alias ll='lsd -alF'
+else
+    alias ll="ls -alFG --color=auto"
 fi
 
 # echo ".aliases is loaded"
