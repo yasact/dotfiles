@@ -5,8 +5,13 @@ set-Alias vi "C:\Program Files\Noevim\bin\nvim.exe"
 # Set-Alias vim 'C:\Program Files\Vim\vim90\vim.exe'
 set-Alias vim "C:\Program Files\Neovim\bin\nvim.exe"
 Set-Alias touch New-Item
-Set-Alias ll Get-ChildItem
+# Set-Alias ll Get-ChildItem
 Set-Alias code code-insiders.cmd
+
+# lsdがインストールされてたらllでlsdをつかう
+if (Get-Command lsd -ErrorAction SilentlyContinue) {
+     Set-Alias ll lsd.exe
+}
 
 
 # https://blog.mamansoft.net/2020/05/31/windows-terminal-and-power-shell-makes-beautiful/
