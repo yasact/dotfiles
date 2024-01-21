@@ -37,6 +37,13 @@ brew cask install コマンドに対応している．
 
 masを使うとapp store経由のappをbrewfileでインストールできる
 
+今、AppStore経由でインストールされているappのリストとIDは
+
+```zsh
+mas list
+```
+
+で出せる。
 
 
 
