@@ -184,6 +184,7 @@ nnoremap <leader>l <C-w>l
 
 "jしたいときに、shift+Jを誤爆することがよくあるのでJを無効
 nnoremap J j
+vnoremap J j
 
 
 " osがwindowsだったら、yankしたものをwindowsのclipboardに送る
