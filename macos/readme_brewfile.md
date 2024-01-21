@@ -33,6 +33,11 @@ brew tap コマンドに対応している．以下のサンプルは mkr や mo
 cask 構文を使うと，Google Chrome など，Mac アプリをインストールできる．
 brew cask install コマンドに対応している．
 
+## mas
+
+masを使うとapp store経由のappをbrewfileでインストールできる
+
+
 
 
 

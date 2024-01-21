@@ -5,13 +5,13 @@
         "revision": "3f5f743839e6806ef51115a5017d5d6ef1736956"
       },
       "homebrew/bundle": {
-        "revision": "6d1a6ed3f99fcb54605593a73e605acb7c195a21"
+        "revision": "d44243fe191e962fce60cbf8e25b6f2e3c1248b3"
       },
       "homebrew/cask-fonts": {
-        "revision": "781c67a24149c2ad6d96695d0293a798d7bd963f"
+        "revision": "69eb48b9d6879a0f359fd3fbd830dbad952e1166"
       },
       "homebrew/cask-versions": {
-        "revision": "11e59cd116c5a87be56de576e85aa78b9900da98"
+        "revision": "a54891e76df774182b17362cc41c79cdcdcab91b"
       }
     },
     "brew": {
@@ -1017,6 +1017,10 @@
       "Music Converter Pro": {
         "id": "468990782",
         "version": "1.6.3"
+      },
+      "LINE": {
+        "id": "539883307",
+        "version": "8.5.3"
       }
     }
   },
