@@ -60,7 +60,6 @@ fi
 
 # batがinstallされていたら、catの代わりにbatをつかう
 if [[ -e $bat_path ]]; then
-    echo 'bat available'
     alias cat='bat'
 fi
 
@@ -70,11 +69,9 @@ fi
 # 入っていなかったら
 #   ll->ls -alFG --color=auto
 if [[ -e $lsd_path ]]; then
-    echo 'lsd available'
     alias ls='lsd'
     alias ll='lsd -alF'
 else
-    echo 'lsd unavailable'
     alias ll="ls -alFG --color=auto"
 fi
 

@@ -83,7 +83,7 @@ setopt hist_ignore_all_dups
 
 # .aliasesがあったら読み込む
 if [ -e ~/.aliases ]; then
-  . ~/.aliases
+  source ~/.aliases
 fi
 
 # disable beep
