@@ -13,13 +13,16 @@ fi
 # echo "ostype=$ostype"
 
 
-#
 # .zshPromptを読み込む
 #
 if [ -f ~/dotfiles/shell/zsh/.zshPrompt ]; then
     . ~/dotfiles/shell/zsh/.zshPrompt
 fi
 
+# .git-completion.zshを読み込む
+if [ -f ~/dotfiles/shell/common/.git-completion.zsh ]; then
+    . ~/dotfiles/shell/common/.git-completion.zsh
+fi
 
 
 setopt histignorealldups sharehistory
