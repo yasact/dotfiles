@@ -14,7 +14,7 @@ PS1='%F{green}%n@%m%f: %F{cyan}%~%f %F{red}$(__git_ps1 "(%s)")%f
 \$ '
 autoload -Uz promptinit
 promptinit
-PROMPT='%F{green}┌(%f%F{magenta}%n@%m%f%F{green})-[%f%F{blue}%U%~%u%f%F{green}]-[%f%F{red}$(__git_ps1 "(%s)")%f%F{green}]
+PROMPT='%F{green}┌(%f%F{magenta}%n@%m%f%F{green})-[%f%F{blue}%U%~%u%f%F{green}%f%F{red}$(__git_ps1 "(%s)")%f%F{green}]
 └%#%f '
 RPROMPT='%K{magenta}%F{cyan}[%D %T]%f%k'
 
