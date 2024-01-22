@@ -13,13 +13,14 @@ fi
 # echo "ostype=$ostype"
 
 
-# Set up the prompt
-autoload -Uz promptinit
-promptinit
-# prompt adam1
-PROMPT='%F{green}┌(%f%F{magenta}%n@%m%f%F{green})-[%f%F{blue}%U%~%u%f%F{green}]
-└%#%f '
-RPROMPT='%K{magenta}%F{cyan}[%D %T]%f%k'
+#
+# .zshPromptを読み込む
+#
+if [ -f ~/dotfiles/shell/zsh/.zshPrompt ]; then
+    . ~/dotfiles/shell/zsh/.zshPrompt
+fi
+
+
 
 setopt histignorealldups sharehistory
 
