@@ -999,6 +999,12 @@
         "options": {
           "full_name": "font-noto-sans-cjk"
         }
+      },
+      "ocenaudio": {
+        "version": "3.13.3",
+        "options": {
+          "full_name": "ocenaudio"
+        }
       }
     },
     "mas": {

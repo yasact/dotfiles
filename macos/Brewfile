@@ -78,8 +78,8 @@ cask "vlc"
 cask "waterfox"
 cask "iterm2"
 cask "zoom"
-
 cask "visual-studio-code-insiders"
+cask "ocenaudio"
 
 # mas
 # masを使うにはmasをinstallしてから
