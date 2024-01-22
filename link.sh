@@ -10,7 +10,7 @@ ln -sf ~/dotfiles/shell/zsh/.zshrc ~/.zshrc
 ln -sf ~/dotfiles/shell/zsh/.zshenv ~/.zshenv
 
 # aliases
-ln -sf ~/dotfiles/shell/.aliases ~/.aliases
+ln -sf ~/dotfiles/shell/common/.aliases ~/.aliases
 
 
 # .vimrc
