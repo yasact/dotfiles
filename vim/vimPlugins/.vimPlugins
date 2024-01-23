@@ -8,4 +8,5 @@ call plug#begin('~/.vim/plugged')
   Plug 'junegunn/fzf.vim'
   Plug 'nvim-treesitter/nvim-treesitter'
   Plug 'nvim-treesitter/nvim-treesitter-context'
+  Plug 'christoomey/vim-tmux-navigator'
 call plug#end()

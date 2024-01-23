@@ -85,7 +85,8 @@ au BufRead,BufNewFile *.md set filetype=markdown
 " 231222
 " Ctrl+BでNERDTreeを開く
 "nnoremap <C-b> :NERDTree<CR>
-nnoremap <C-b> :NERDTreeToggle<CR>
+" nnoremap <C-b> :NERDTreeToggle<CR>
+nnoremap <C-e> :NERDTreeToggle<CR>
 
 "新しいウインドウを現在のウインドウの下に開く
 set splitbelow
@@ -220,7 +221,4 @@ augroup vimrc_nerdtree
   autocmd bufenter * if (winnr('$') == 1 && exists('b:NERDTree') && b:NERDTree.isTabTree()) | q | endif
 
 augroup END
-
-
-
 
