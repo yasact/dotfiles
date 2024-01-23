@@ -33,6 +33,8 @@ brew "tree"
 brew "unar"
 brew "yarn"
 brew "coursier/formulas/coursier"
+brew "fzf"
+
 
 # cask
 cask "font-fira-code"
