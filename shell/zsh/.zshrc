@@ -159,6 +159,22 @@ export NVM_DIR="$HOME/.nvm"
 [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
 [ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
 
-eval "$(zoxide init zsh)"
+# zoxideを初期化
+# zoxideの実行ファイルがあるかどうか確認する
+# zoxideのpathを格納する
+zoxide_path=""
+if [[ $ostype = "mac" ]]; then
+    zoxide_path="/opt/homebrew/bin/zoxide"
+elif [[ $ostype =  "wsl" ]]; then
+    zoxide_path="/usr/sbin/zoxide"
+elif [[ $ostype = "linux" ]]; then
+    zoxide_path="/usr/sbin/zoxide"
+fi
+
+# zoxideがinstallされていたらzoxideを初期化する
+if [[ -e $zoxide_path ]]; then
+    echo "zoxide is available"
+    eval "$(zoxide init zsh)"
+fi
 
 # echo ".zshrc is loaded"
