@@ -11,7 +11,10 @@
         "revision": "96121ef07559f3018e61144a69695841948e0a36"
       },
       "homebrew/cask-versions": {
-        "revision": "f676e5fb33dac118bb2707c4a26a0eeb0dc64546"
+        "revision": "d6ade5e293febd3f786244f484fddd968a627331"
+      },
+      "koekeishiya/formulae": {
+        "revision": "ec2d2dd91fc480144413739af12d5c45637d5b76"
       }
     },
     "brew": {
@@ -849,6 +852,18 @@
             }
           }
         }
+      },
+      "koekeishiya/formulae/yabai": {
+      },
+      "koekeishiya/formulae/skhd": {
+      },
+      "yabai": {
+        "version": "6.0.6",
+        "bottle": false
+      },
+      "skhd": {
+        "version": "0.3.9",
+        "bottle": false
       }
     },
     "cask": {
@@ -865,7 +880,7 @@
         }
       },
       "librewolf": {
-        "version": "121.0,1",
+        "version": "122.0,1",
         "options": {
           "full_name": "librewolf"
         }

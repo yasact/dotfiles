@@ -11,6 +11,7 @@
 tap "homebrew/bundle"
 tap "homebrew/cask-fonts"
 tap "homebrew/cask-versions"
+tap "koekeishiya/formulae"
 
 # brew
 brew "coreutils"
@@ -35,6 +36,9 @@ brew "yarn"
 brew "coursier/formulas/coursier"
 brew "fzf"
 brew "zoxide"
+brew "yabai"
+brew "skhd"
+
 
 
 # cask
