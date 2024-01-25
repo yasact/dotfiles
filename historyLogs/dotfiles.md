@@ -1,7 +1,5 @@
 # dotfiles Setting
 
-
-
 ## 231225
 
 ### bashrc setting
@@ -40,4 +38,16 @@ dotfiles以下へのリンクを辞めたい。
 
 zshの設定ファイルを.config/zshにコピーして、ここへのリンクを張ることにする。
 同様にbashの設定ファイルも.config/bashにコピーして、ここへのリンクを張ることにする。
+
+## 230125
+
+yabaiとskhdのconfigファイルをdotfile管理したい。
+link.macos.shに
+まずmacos以下にyabai/yabaircとskhd/skhdrcをつくるようにする。
+link.shから$ostype=macosのときにlink.macos.shを呼ぶようにする
+
+
+
+あとで、link.shの方もXDG_CONFIG_DIR以下に持っていきたい
+
 

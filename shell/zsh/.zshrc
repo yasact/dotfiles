@@ -1,20 +1,8 @@
 # osを判別する
-# macの場合
-if [[ "$OSTYPE" == "darwin"* ]]; then
-    ostype="mac"
-# WSLの場合
-elif grep -qi microsoft /proc/version; then
-    ostype='wsl'
-# それ以外の場合
-else 
-    ostype="linux"
-fi
-
-# echo "ostype=$ostype"
-
+source ~/dotfiles/utils/setOsType.sh
+setOsType
 
 # .zshPromptを読み込む
-#
 if [ -f ~/dotfiles/shell/zsh/.zshPrompt ]; then
     . ~/dotfiles/shell/zsh/.zshPrompt
 fi
