@@ -1,7 +1,5 @@
 # git-prompt.shを読み込む
-# if [ -f ~/dotfiles/shell/common/git-prompt.sh ]; then
-if [ -f $DOTFILES_ROOT/shell/common/git-prompt.sh ]; then
-    # shellcheck source=/Users/ysn/dotfiles/shell/common/git-prompt.sh
+if [ -f ~/dotfiles/shell/common/git-prompt.sh ]; then
     source ~/dotfiles/shell/common/git-prompt.sh
 fi
 
@@ -21,3 +19,5 @@ PROMPT='%F{green}┌(%f%F{magenta}%n@%m%f%F{green})-[%f%F{blue}%U%~%u%f%F{green}
 RPROMPT='%K{magenta}%F{cyan}[%D %T]%f%k'
 
 setopt PROMPT_SUBST
+
+echo ".zshPrompt Loaded"

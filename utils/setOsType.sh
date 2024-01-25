@@ -1,5 +1,3 @@
-#!/bin/bash -xe
-
 # setOsType
 #
 # osを判別する
