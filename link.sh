@@ -52,5 +52,5 @@ ln -sf "$DOTFILES_ROOT/tmux/.tmux.conf" ~/.tmux.conf
 
 # macos用のsymbolicLinkを作成する
 if [ "$ostype" = "mac" ]; then
-    . ~/dotfiles/macos/link.macos.sh
+    . $DOTFILES_ROOT/macos/link.macos.sh
 fi
