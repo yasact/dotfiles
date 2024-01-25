@@ -9,8 +9,9 @@ Set-Alias touch New-Item
 Set-Alias code code-insiders.cmd
 
 # lsdがインストールされてたらllでlsdをつかう
-if (Get-Command lsd -ErrorAction SilentlyContinue) {
-     Set-Alias ll lsd.exe
+if (Get-Command lsd -ErrorAction SilentlyContinue)
+{
+     function ll { lsd.exe -alF }
 }
 
 
