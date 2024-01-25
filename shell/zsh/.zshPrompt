@@ -1,5 +1,6 @@
 # git-prompt.shを読み込む
 if [ -f ~/dotfiles/shell/common/git-prompt.sh ]; then
+    # shellcheck source=/Users/ysn/dotfiles/shell/common/git-prompt.sh
     source ~/dotfiles/shell/common/git-prompt.sh
 fi
 

@@ -1,7 +1,8 @@
 #!/bin/sh -xe
 #
 # osを判別する
-source ~/dotfiles/utils/setOsType.sh
+# shellcheck source=/Users/ysn/dotfiles/utils/setOsType.sh
+. ~/dotfiles/utils/setOsType.sh
 setOsType
 
 # dotfilesのルートディレクトリに移動する
@@ -55,8 +56,6 @@ ln -sf "$DOTFILES_ROOT/vim/nvim/init.vim" ~/.config/nvim/init.vim
 ln -sf "$DOTFILES_ROOT/tmux/.tmux.conf" ~/.tmux.conf
 
 # macos用のsymbolicLinkを作成する
-if [[ $ostype="mac" ]]; then
-    source ~/dotfiles/macos/link.macos.sh
+if [ "$ostype" = "mac" ]; then
+    . ~/dotfiles/macos/link.macos.sh
 fi
-
-
