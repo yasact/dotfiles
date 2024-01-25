@@ -23,11 +23,11 @@ function setDotfilesRoot() {
     echo "$DOTFILES_ROOT" # 絶対パスを出力
 }
 
-# 関数の使用例
-script_path="$0" # このスクリプトのパス
-dotfiles_root=$(find_dotfiles_root "$script_path")
-if [ $? -eq 0 ]; then
-    echo "Dotfiles root: $dotfiles_root"
-else
-    echo "Error finding dotfiles root."
-fi
+# # 関数の使用例
+# script_path="$0" # このスクリプトのパス
+# dotfiles_root=$(setDotfilesRoot "$script_path")
+# if [ $? -eq 0 ]; then
+#     echo "Dotfiles root: $dotfiles_root"
+# else
+#     echo "Error finding dotfiles root."
+# fi

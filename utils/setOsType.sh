@@ -4,10 +4,8 @@
 #
 # osを判別する
 function setOsType() {
-    if # echo "function setOsType runned"
-        # macの場合
-        [[ "$OSTYPE" == "darwin"* ]]
-    then
+    # macの場合
+    if [[ "$OSTYPE" == "darwin"* ]]; then
         ostype="mac"
     # WSLの場合
     elif grep -qi microsoft /proc/version; then

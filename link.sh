@@ -1,27 +1,22 @@
-#!/bin/sh -xe
+#!/bin/bash -xe
 #
+# dotfilesのルートディレクトリへの絶対パス(DOTFILES_ROOT)を取得
+script_path="$0" # このスクリプトのパス
+source "$(dirname "$0")"/utils/setDotfilesRoot.sh
+DOTFILES_ROOT=$(setDotfilesRoot "$script_path")
+if [ $? -eq 0 ]; then
+    echo "Dotfiles root: $DOTFILES_ROOT"
+else
+    echo "Error finding dotfiles root."
+fi
+
 # osを判別する
 # shellcheck source=/Users/ysn/dotfiles/utils/setOsType.sh
-. ~/dotfiles/utils/setOsType.sh
-setOsType
-
-# dotfilesのルートディレクトリに移動する
-# ここでは .git ディレクトリがプロジェクトのルートにあると仮定
-cd "$(dirname "$0")"
-while [ ! -d .git ]; do
-    if [ "$PWD" = "/" ]; then
-        # ルートディレクトリに到達した場合、.git が見つからなかったことを意味する
-        echo "Error: .git directory not found. Are you in a Git repository?"
-        exit 1
-    fi
-    cd ..
-done
-
-# dotfilesのルートディレクトリへの絶対パスを取得
-DOTFILES_ROOT=$(git rev-parse --show-toplevel)
-if [ $? -ne 0 ]; then
-    echo "Error: Failed to get absolute path to repository root."
-    exit 1
+if [ -e ~/dotfiles/utils/setOsType.sh ]; then
+    . $DOTFILES_ROOT/utils/setOsType.sh
+    setOsType
+else
+    echo "setOsType.sh notfound"
 fi
 
 # bash
