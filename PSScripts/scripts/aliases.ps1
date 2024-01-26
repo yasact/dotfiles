@@ -6,7 +6,7 @@ set-Alias vi "C:\Program Files\Noevim\bin\nvim.exe"
 set-Alias vim "C:\Program Files\Neovim\bin\nvim.exe"
 Set-Alias touch New-Item
 # Set-Alias ll Get-ChildItem
-Set-Alias code code-insiders.cmd
+# Set-Alias code code-insiders.cmd
 
 # lsdがインストールされてたらllでlsdをつかう
 if (Get-Command lsd -ErrorAction SilentlyContinue)
