@@ -12,7 +12,7 @@ alias ocaml='rlwrap ocaml'
 alias fig='docker-compose'
 
 # VScode-insidersをcodeで起動できるように設定
-alias code='code-insiders'
+# alias code='code-insiders'
 
 
 # shellがbashだった場合
