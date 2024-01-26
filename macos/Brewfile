@@ -85,7 +85,8 @@ cask "vlc"
 cask "waterfox"
 cask "iterm2"
 cask "zoom"
-cask "visual-studio-code-insiders"
+# cask "visual-studio-code-insiders"
+cask "visual-studio-code"
 cask "ocenaudio"
 
 # mas

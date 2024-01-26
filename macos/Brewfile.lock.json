@@ -8,10 +8,10 @@
         "revision": "d44243fe191e962fce60cbf8e25b6f2e3c1248b3"
       },
       "homebrew/cask-fonts": {
-        "revision": "96121ef07559f3018e61144a69695841948e0a36"
+        "revision": "9cfef62b9aa4d467d265a253149252a17f11ecdd"
       },
       "homebrew/cask-versions": {
-        "revision": "d6ade5e293febd3f786244f484fddd968a627331"
+        "revision": "fcd6b224e4166f599ef3e268dbe87ef34ab79a93"
       },
       "koekeishiya/formulae": {
         "revision": "ec2d2dd91fc480144413739af12d5c45637d5b76"
@@ -904,7 +904,7 @@
         }
       },
       "ableton-live-suite": {
-        "version": "11.3.20",
+        "version": "11.3.21",
         "options": {
           "full_name": "ableton-live-suite"
         }
@@ -946,7 +946,7 @@
         }
       },
       "brave-browser": {
-        "version": "1.61.120.0",
+        "version": "1.62.153.0",
         "options": {
           "full_name": "brave-browser"
         }
@@ -964,7 +964,7 @@
         }
       },
       "dropbox": {
-        "version": "190.4.6383",
+        "version": "191.4.4995",
         "options": {
           "full_name": "dropbox"
         }
@@ -1054,7 +1054,7 @@
         }
       },
       "todoist": {
-        "version": "8.15.1",
+        "version": "8.15.4",
         "options": {
           "full_name": "todoist"
         }
@@ -1117,6 +1117,12 @@
         "version": "3.13.3",
         "options": {
           "full_name": "ocenaudio"
+        }
+      },
+      "visual-studio-code": {
+        "version": "1.85.2",
+        "options": {
+          "full_name": "visual-studio-code"
         }
       }
     },
