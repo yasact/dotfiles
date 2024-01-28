@@ -136,8 +136,10 @@ fi
 
 # Debian用の変換キーの設定
 if [[ $ostype == "linux" ]]; then
-    xmodmap -e "keycode 131 = Muhenkan"
-    xmodmap -e "keycode 130= Henkan_Mode"
+    # xmodmap -e "keycode 131 = Muhenkan"
+    # xmodmap -e "keycode 130= Henkan_Mode"
+    # xmodmap -e "keycode 131 = Muhenkan"
+    # xmodmap -e "keycode 130= Henkan_Mode"
 else
 fi
 
