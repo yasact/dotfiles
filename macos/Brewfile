@@ -40,7 +40,6 @@ brew "yabai"
 brew "skhd"
 
 
-
 # cask
 cask "font-fira-code"
 cask "iterm2"
@@ -88,6 +87,7 @@ cask "zoom"
 # cask "visual-studio-code-insiders"
 cask "visual-studio-code"
 cask "ocenaudio"
+cask "warp"
 
 # mas
 # masを使うにはmasをinstallしてから

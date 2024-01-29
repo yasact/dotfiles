@@ -5,16 +5,16 @@
         "revision": "3f5f743839e6806ef51115a5017d5d6ef1736956"
       },
       "homebrew/bundle": {
-        "revision": "d44243fe191e962fce60cbf8e25b6f2e3c1248b3"
+        "revision": "092a87834411b10357b0cb7ad1a54b6618fe4a79"
       },
       "homebrew/cask-fonts": {
-        "revision": "9cfef62b9aa4d467d265a253149252a17f11ecdd"
+        "revision": "3715cf445c694efdd020b3dff7d349af566c5e7e"
       },
       "homebrew/cask-versions": {
-        "revision": "fcd6b224e4166f599ef3e268dbe87ef34ab79a93"
+        "revision": "8097d8f17fe104e59f974bbd70f6cf52023df2f1"
       },
       "koekeishiya/formulae": {
-        "revision": "ec2d2dd91fc480144413739af12d5c45637d5b76"
+        "revision": "a403c90037df45e6a86576322fcc85863ef771fb"
       }
     },
     "brew": {
@@ -858,7 +858,7 @@
       "koekeishiya/formulae/skhd": {
       },
       "yabai": {
-        "version": "6.0.6",
+        "version": "6.0.7",
         "bottle": false
       },
       "skhd": {
@@ -880,7 +880,7 @@
         }
       },
       "librewolf": {
-        "version": "122.0,1",
+        "version": "122.0,2",
         "options": {
           "full_name": "librewolf"
         }
@@ -892,7 +892,7 @@
         }
       },
       "stats": {
-        "version": "2.9.21",
+        "version": "2.9.22",
         "options": {
           "full_name": "stats"
         }
@@ -958,7 +958,7 @@
         }
       },
       "docker": {
-        "version": "4.26.1,131620",
+        "version": "4.27.0,135262",
         "options": {
           "full_name": "docker"
         }
@@ -1042,7 +1042,7 @@
         }
       },
       "surfshark": {
-        "version": "4.12.5,2083",
+        "version": "4.13.0,2099",
         "options": {
           "full_name": "surfshark"
         }
@@ -1123,6 +1123,12 @@
         "version": "1.85.2",
         "options": {
           "full_name": "visual-studio-code"
+        }
+      },
+      "warp": {
+        "version": "0.2024.01.16.16.31.stable_01",
+        "options": {
+          "full_name": "warp"
         }
       }
     },
