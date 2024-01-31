@@ -49,3 +49,5 @@ yabai -m rule --add label="mpv" app="^mpv$" manage=off
 yabai -m rule --add label="IINA" app="^IINA$" manage=off
 # yabai -m rule --add label="HHKB Keymap Tool" app="^hhkb-keymap-tool$" manage=off
 yabai -m rule --add app="^Happy Hacking Keyboard Keymap Tool$" manage=off
+yabai -m rule --add app="^DeepL$" manage=off
+yabai -m rule --add app="^1Password$" manage=off
