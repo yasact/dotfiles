@@ -34,6 +34,11 @@ ln -sf "$DOTFILES_ROOT/shell/common/.aliases" ~/.aliases
 # .vimrc
 ln -sf "$DOTFILES_ROOT/vim/.vimrc" ~/.vimrc
 
+# lsd
+# lsd用のディレクトリが無い場合は作成する
+mkdir -p ~/.config/lsd
+ln -sf "$DOTFILES_ROOT/lsd/config.yaml" ~/.config/lsd/config.yaml
+
 # nvim
 # nvim用のディレクトリがない場合は作成する
 mkdir -p ~/.config/nvim
