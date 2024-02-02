@@ -4,7 +4,8 @@
   	co = checkout
   	br = branch
 	loga = log --graph --oneline
-	ci = commit
+	com = commit
+	p = push
 [user]
 	name = ysn
 	email = ysn3844@skiff.com
