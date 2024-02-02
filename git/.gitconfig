@@ -2,7 +2,6 @@
 	aa = add .
 	st = status -sb
   	co = checkout
-	cob = checkout -b
   	br = branch
 	loga = log --graph --oneline
 	ci = commit
