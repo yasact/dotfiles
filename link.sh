@@ -31,6 +31,9 @@ ln -sf "$DOTFILES_ROOT/shell/zsh/.zshenv" ~/.zshenv
 # aliases
 ln -sf "$DOTFILES_ROOT/shell/common/.aliases" ~/.aliases
 
+# git
+ln -sf "$DOTFILES_ROOT/git/.gitconfig" ~/.gitconfig
+
 # .vimrc
 ln -sf "$DOTFILES_ROOT/vim/.vimrc" ~/.vimrc
 

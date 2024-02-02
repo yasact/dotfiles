@@ -1,0 +1,8 @@
+[alias]
+	aa = add .
+	p = push
+[use]
+	email = ysn3844@skiff.com
+[user]
+	name = ysn
+	email = ysn3844@skiff.com
