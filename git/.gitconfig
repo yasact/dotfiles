@@ -1,8 +1,11 @@
 [alias]
 	aa = add .
 	p = push
-[use]
-	email = ysn3844@skiff.com
+	st = status -sb
+  	co = checkout
+	cob = checkout -b
+  	br = branch
+	loga = log --graph --oneline
 [user]
 	name = ysn
 	email = ysn3844@skiff.com
