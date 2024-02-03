@@ -8,6 +8,9 @@
 # OCamlでカーソル移動ができるようにrlwrap経由で起動する
 alias ocaml='rlwrap ocaml'
 
+# tmux
+alias tm='tmux'
+
 # docker-compose用のエイリアスを設定
 alias fig='docker-compose'
 
