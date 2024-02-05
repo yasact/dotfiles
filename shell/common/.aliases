@@ -18,8 +18,9 @@ alias dl="~/Downloads"
 alias dt="~/Desktop"
 alias doc="~/Documents"
 
-
-
+# 
+alias :q='exit'
+#
 # OCamlのエイリアスを設定
 # OCamlでカーソル移動ができるようにrlwrap経由で起動する
 alias ocaml='rlwrap ocaml'
