@@ -9,4 +9,5 @@ call plug#begin('~/.vim/plugged')
   Plug 'nvim-treesitter/nvim-treesitter'
   Plug 'nvim-treesitter/nvim-treesitter-context'
   Plug 'christoomey/vim-tmux-navigator'
+  Plug 'neoclide/coc.nvim', {'branch': 'release'}
 call plug#end()

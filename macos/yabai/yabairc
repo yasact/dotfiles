@@ -51,3 +51,4 @@ yabai -m rule --add label="IINA" app="^IINA$" manage=off
 yabai -m rule --add app="^Happy Hacking Keyboard Keymap Tool$" manage=off
 yabai -m rule --add app="^DeepL$" manage=off
 yabai -m rule --add app="^1Password$" manage=off
+yabai -m rule --add app="^Anki$" manage=off
