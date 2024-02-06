@@ -63,6 +63,7 @@ fi
 # 代替コマンドのパスを格納する
 bat_path=""
 lsd_path=""
+zoxide_path=""
 if [[ $ostype = "mac" ]]; then #OSがmacのとき
     bat_path="/opt/homebrew/bin/bat"
     lsd_path="/opt/homebrew/bin/lsd"
