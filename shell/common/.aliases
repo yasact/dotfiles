@@ -48,10 +48,6 @@ if [ -n "$ZSH_VERSION" ]; then
 fi 
 
 
-# aliases for git
-# https://opensource.com/article/20/11/git-aliases
-git config --global alias.aa 'add .'
-git config --global alias.p 'push'
 
 # windowsでwslの時にelでexplorerを起動したい
 # macだったらfinderで表示したいのでopenにすればいいか
@@ -70,12 +66,15 @@ lsd_path=""
 if [[ $ostype = "mac" ]]; then #OSがmacのとき
     bat_path="/opt/homebrew/bin/bat"
     lsd_path="/opt/homebrew/bin/lsd"
+    zoxide_path="/opt/homebrew/bin/zoxide"
 elif [[ $ostype == "wsl" ]]; then
     bat_path="/usr/sbin/bat"
     lsd_path="/usr/sbin/lsd"
+    zoxide_path="/usr/sbin/zoxide"
 elif [[ $ostype == "linux" ]]; then
     bat_path="/usr/sbin/bat"
     lsd_path="/usr/sbin/lsd"
+    zoxide_path="/usr/sbin/zoxide_path"
 fi
 
 # batがinstallされていたら、catの代わりにbatをつかう
@@ -94,5 +93,12 @@ if [[ -e $lsd_path ]]; then
 else
     alias ll="ls -alFG --color=auto"
 fi
+
+# zoxideが入っていたらcdをzに置き換える
+if [[ -e $zoxide_path ]]; then
+    alias cd='z'
+    alias cdi='zi'
+fi
+
 
 echo ".aliases is loaded"
