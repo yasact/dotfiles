@@ -10,7 +10,7 @@ zinit light zsh-users/zsh-syntax-highlighting
 
 ## 
 # zinit light marlonrichert/zsh-autocomplete
-zinit load marlonrichert/zsh-autocomplete
+#zinit load marlonrichert/zsh-autocomplete
 
 ## 履歴補完
 # zsh-autosuggestions
