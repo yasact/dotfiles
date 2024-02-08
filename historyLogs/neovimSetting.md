@@ -376,3 +376,9 @@ vnoremap <C-_> :Commentary<CR>
 これはsyntax highlightのplugin
 とりあえず入れておいた。
 
+## 240208
+
+Telescopeをいれた
+<leader> ffで現在のディレクトリ以下のファイルを検索できるっぽい
+
+
