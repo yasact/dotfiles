@@ -6,17 +6,16 @@ $applications = @(
     "Anki.Anki"
     # "AutoHotkey.AutoHotkey"
     "Brave.Brave"
-    "DeepL.DeepL"
-    "Docker.DockerDesktop"
+    # "DeepL.DeepL"
+    # "Docker.DockerDesktop"
     "Dropbox.Dropbox"
-    "Foxit.FoxitReader"
+    # "Foxit.FoxitReader"
     "Git.Git"
     "Google.Chrome"
-    "LGUG2Z.komorebi"
-    "LGUG2Z.whkd"
-    "LibreWolf.LibreWolf"
+    # "LGUG2Z.komorebi"
+    # "LGUG2Z.whkd"
+    # "LibreWolf.LibreWolf"
     "Logitech.LGS"
-    "Microsoft.PowerShell"
     "Microsoft.PowerShell"
     "Microsoft.PowerToys"
     "Microsoft.SQLServerManagementStudio"
@@ -24,11 +23,13 @@ $applications = @(
     "Microsoft.WindowsTerminal"
     "Neovim.Neovim"
     "OpenJS.NodeJS"
-    "PhraseExpress.PhraseExpress"
+    # "PhraseExpress.PhraseExpress"
     "Python.Launcher"
     "Python.Python.3.10"
     "SlackTechnologies.Slack"
     "vim.vim"
+    "Mozilla.Thunderbird"
+    "ajeetdsouza.zoxide"
 )
 
 foreach ($app in $applications)
@@ -61,6 +62,8 @@ if (-not (Get-Command scoop -ErrorAction SilentlyContinue))
 scoop bucket add versions
 scoop bucket add extras
 scoop bucket add main
+scoop bucket add nerd-fonts
+
 
 scoop install uutils-coreutils
 scoop install lsd
@@ -71,3 +74,9 @@ scoop install FiraCode-NF
 scoop install FiraCode-NF-Mono
 scoop install FiraCode-Script
 scoop install archwsl
+scoop install posh-git
+scoop install zoxide
+
+
+
+
