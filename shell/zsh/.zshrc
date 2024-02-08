@@ -195,4 +195,9 @@ if [[ -e $zoxide_path ]]; then
     eval "$(zoxide init zsh)"
 fi
 
+export GTK_IM_MODULE=fcitx
+export QT_IM_MODULE=fcitx
+export XMODIFIERS=@im=fcitx
+
+
 # echo ".zshrc is loaded"
