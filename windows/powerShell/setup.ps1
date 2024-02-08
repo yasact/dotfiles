@@ -7,10 +7,7 @@ if (-not (Test-Path -Path $PowerShellDir))
 {
     New-Item -Path $PowerShellDir -ItemType Directory
 }
-if (-not (Test-Path -Path $ScriptsDir))
-{
-    New-Item -Path $ScriptsDir -ItemType Directory
-}
+
 
 # ファイルをコピーする
 Copy-Item -Path .\profile\* -Destination $PowerShellDir
@@ -43,3 +40,16 @@ New-SymbolicLink -LinkPath "~\.vimrc" -TargetPath ".\dotfiles\vim\.vimrc"
 # .gitconfigのシンボリックリンクを作成
 New-SymbolicLink -LinkPath "~\.gitconfig" -TargetPath ".\dotfiles\git\.gitconfig"
 
+
+# nvim
+# nvim用のディレクトリがない場合は作成する
+# mkdir -p ~/.config/nvim
+$NeoVimDir = Join-Path -Path $HOME -ChildPath "\AppData\Local\nvim"
+if (-not (Test-Path -Path $NeoVimDir))
+{
+    New-Item -Path $NeoVimDIr -ItemType Directory
+}
+# nvim用のinit.vimをlinkする
+New-SymbolicLink -LinkPath $NeoVimDir\init.vim -TargetPath "~\dotfiles\vim\nvim\init.vim"
+
+# ln -sf "$DOTFILES_ROOT/vim/nvim/init.vim" ~/.config/nvim/init.vim
