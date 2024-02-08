@@ -71,6 +71,16 @@ v2になっていて、これの解説やサンプルコードがなさすぎる
 
 
 
+## 240208
+
+.gitconfigを共通にしたいので
+/dotfiles/git/.gitconfig
+windows側の.gitconfigの場所にリンクを張りたい。
+
+まず、windowsの.gitconfigの場所を特定する。
+home直下にあるらしいので
+ここへのリンクを作成すればOK。
+
 
 
 

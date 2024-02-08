@@ -29,6 +29,7 @@ $applications = @(
     "SlackTechnologies.Slack"
     "vim.vim"
     "Mozilla.Thunderbird"
+    "ajeetdsouza.zoxide"
 )
 
 foreach ($app in $applications)
@@ -73,3 +74,9 @@ scoop install FiraCode-NF
 scoop install FiraCode-NF-Mono
 scoop install FiraCode-Script
 scoop install archwsl
+scoop install posh-git
+scoop install zoxide
+
+
+
+
