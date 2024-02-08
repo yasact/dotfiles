@@ -7,7 +7,7 @@ set-Alias vim "C:\Program Files\Neovim\bin\nvim.exe"
 Set-Alias touch New-Item
 # Set-Alias ll Get-ChildItem
 # Set-Alias code code-insiders.cmd
-Set-Alias cdz zoxide.exe
+Set-Alias z zoxide.exe
 
 # lsdがインストールされてたらllでlsdをつかう
 if (Get-Command lsd -ErrorAction SilentlyContinue)
