@@ -9,6 +9,6 @@ call plug#begin('~/.vim/plugged')
   Plug 'neoclide/coc.nvim', {'branch': 'release'}
   Plug 'nvim-lua/plenary.nvim'
   Plug 'nvim-telescope/telescope.nvim', { 'tag': '0.1.5' }
-  " Plug 'unblevable/quick-scope' 
+  Plug 'unblevable/quick-scope' 
   " Plug 'sheerun/vim-polyglot'
 call plug#end()

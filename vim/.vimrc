@@ -247,6 +247,7 @@ nnoremap <leader>fb <cmd>Telescope buffers<cr>
 nnoremap <leader>fh <cmd>Telescope help_tags<cr>
 
 " quickscopeの設定
-
+" https://zenn.dev/neo/scraps/49266fed7ce6b6
+" これを入れないとハイライトがVSCodeに無視されてしまう
 highlight QuickScopePrimary guifg='#afff5f' gui=underline ctermfg=155 cterm=underline
 highlight QuickScopeSecondary guifg='#5fffff' gui=underline ctermfg=81 cterm=underline
