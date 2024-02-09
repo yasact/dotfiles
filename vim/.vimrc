@@ -35,8 +35,8 @@ set ruler "カーソル位置表示
 set virtualedit=onemore "行末の1文字先までカーソルを移動できるように
 " set autoindent "自動インデント
 " set smartindent "インデントはスマートインデント
-set noautoindent
-set nosmartindent
+" set noautoindent
+" set nosmartindent
 
 "文字・カーソル系
 "折り返し時に表示行単位での移動できるようにする
