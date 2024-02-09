@@ -30,6 +30,7 @@ $applications = @(
     "vim.vim"
     "Mozilla.Thunderbird"
     "ajeetdsouza.zoxide"
+    "Doist.Todoist"
 )
 
 foreach ($app in $applications)
