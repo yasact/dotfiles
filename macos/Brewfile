@@ -36,8 +36,8 @@ brew "yarn"
 brew "coursier/formulas/coursier"
 brew "fzf"
 brew "zoxide"
-brew "yabai"
-brew "skhd"
+# brew "yabai"
+# brew "skhd"
 
 
 # cask
