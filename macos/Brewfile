@@ -96,7 +96,7 @@ mas "Display Menu" , id:549083868
 mas "Dropover", id:1355679052
 mas "Music Converter Pro", id:468990782
 mas "LINE", id:539883307
-
+mas "iReal Pro", id:409035833
 
 # fonts
 cask "font-Hack-nerd-font"
