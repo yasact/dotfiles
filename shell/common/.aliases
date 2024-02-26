@@ -29,7 +29,7 @@ alias ocaml='rlwrap ocaml'
 alias tm='tmux'
 
 # docker-compose用のエイリアスを設定
-alias fig='docker-compose'
+alias fig='docker compose'
 
 # VScode-insidersをcodeで起動できるように設定
 # alias code='code-insiders'
