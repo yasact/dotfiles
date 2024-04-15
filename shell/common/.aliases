@@ -79,28 +79,63 @@ elif [[ $ostype == "linux" ]]; then
     zoxide_path="/usr/sbin/zoxide_path"
 fi
 
-# batがinstallされていたら、catの代わりにbatをつかう
-if [[ -e $bat_path ]]; then
-    alias cat='bat'
+isInstalled(){
+    which  "$1" > /dev/null 2>&1
+}
+
+isBatInstalled=false
+isLsdInstalled=false
+isZoxideInstalled=false
+
+if isInstalled "bat"; then
+    bat_path=$(which bat)
+    isBatInstalled=true
+    echo "bat is installed"
 fi
+
+if isInstalled "lsd"; then
+    lsd_path=$(which lsd)
+    alias ls='lsd'
+    alias ll='lsd -alF'
+    isLsdInstalled=true
+    echo "lsd is installed"
+else 
+    alias ll="ls -alFG --color=auto"
+fi
+
+if isInstalled "zoxide"; then
+    zoxide_path=$(which zoxide)
+    isZoxideInstalled=true
+    alias cd='z'
+    alias cdi='zi'
+    echo "zoxide is installed"
+fi
+
+
+
+
+# batがinstallされていたら、catの代わりにbatをつかう
+; if [[ -e $bat_path ]]; then
+;     alias cat='bat'
+; fi
 
 # lsd(ls Deluxe)が入っていたら
 #   ll->lsd -alF
 #   ls->lsd
 # 入っていなかったら
 #   ll->ls -alFG --color=auto
-if [[ -e $lsd_path ]]; then
-    alias ls='lsd'
-    alias ll='lsd -alF'
-else
-    alias ll="ls -alFG --color=auto"
-fi
+; if [[ -e $lsd_path ]]; then
+;     alias ls='lsd'
+;     alias ll='lsd -alF'
+; else
+;     alias ll="ls -alFG --color=auto"
+; fi
 
 # zoxideが入っていたらcdをzに置き換える
-if [[ -e $zoxide_path ]]; then
-    alias cd='z'
-    alias cdi='zi'
-fi
+; if [[ -e $zoxide_path ]]; then
+;     alias cd='z'
+;     alias cdi='zi'
+; fi
 
 
 echo ".aliases is loaded"

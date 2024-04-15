@@ -12,4 +12,6 @@ function setOsType() {
     else
         ostype="linux"
     fi
+
+    echo This OS is $ostype
 }
