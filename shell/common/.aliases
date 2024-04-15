@@ -71,7 +71,8 @@ if [[ $ostype = "mac" ]]; then #OSがmacのとき
 elif [[ $ostype == "wsl" ]]; then
     bat_path="/usr/sbin/bat"
     lsd_path="/usr/sbin/lsd"
-    zoxide_path="/usr/sbin/zoxide"
+    # zoxide_path="/usr/sbin/zoxide"
+    zoxide_path="/usr/bin/zoxide"
 elif [[ $ostype == "linux" ]]; then
     bat_path="/usr/sbin/bat"
     lsd_path="/usr/sbin/lsd"
