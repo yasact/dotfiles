@@ -48,7 +48,6 @@ if [ -n "$ZSH_VERSION" ]; then
 fi 
 
 
-
 # windowsでwslの時にelでexplorerを起動したい
 # macだったらfinderで表示したいのでopenにすればいいか
 # linuxの場合もopenで起動できる
@@ -59,83 +58,42 @@ elif [[ $ostype == "wsl" ]]; then
 elif [[ $ostype == "linux" ]]; then
         alias el='open'
 fi
-# 代替コマンドの実行ファイルがあるかどうか確認する
-# 代替コマンドのパスを格納する
-bat_path=""
-lsd_path=""
-zoxide_path=""
-if [[ $ostype = "mac" ]]; then #OSがmacのとき
-    bat_path="/opt/homebrew/bin/bat"
-    lsd_path="/opt/homebrew/bin/lsd"
-    zoxide_path="/opt/homebrew/bin/zoxide"
-elif [[ $ostype == "wsl" ]]; then
-    bat_path="/usr/sbin/bat"
-    lsd_path="/usr/sbin/lsd"
-    # zoxide_path="/usr/sbin/zoxide"
-    zoxide_path="/usr/bin/zoxide"
-elif [[ $ostype == "linux" ]]; then
-    bat_path="/usr/sbin/bat"
-    lsd_path="/usr/sbin/lsd"
-    zoxide_path="/usr/sbin/zoxide_path"
-fi
 
+# 代替コマンドの実行ファイルがあるかどうか確認する
 isInstalled(){
     which  "$1" > /dev/null 2>&1
 }
 
-isBatInstalled=false
-isLsdInstalled=false
-isZoxideInstalled=false
-
-if isInstalled "bat"; then
-    bat_path=$(which bat)
-    isBatInstalled=true
-    echo "bat is installed"
+if isInstalled bat; then
+    alias cat='bat'
+    echo "bat: installed"
+else
+    echo "bat: not installed"
 fi
-
-if isInstalled "lsd"; then
-    lsd_path=$(which lsd)
-    alias ls='lsd'
-    alias ll='lsd -alF'
-    isLsdInstalled=true
-    echo "lsd is installed"
-else 
-    alias ll="ls -alFG --color=auto"
-fi
-
-if isInstalled "zoxide"; then
-    zoxide_path=$(which zoxide)
-    isZoxideInstalled=true
-    alias cd='z'
-    alias cdi='zi'
-    echo "zoxide is installed"
-fi
-
-
-
-
-# batがinstallされていたら、catの代わりにbatをつかう
-; if [[ -e $bat_path ]]; then
-;     alias cat='bat'
-; fi
 
 # lsd(ls Deluxe)が入っていたら
 #   ll->lsd -alF
 #   ls->lsd
 # 入っていなかったら
 #   ll->ls -alFG --color=auto
-; if [[ -e $lsd_path ]]; then
-;     alias ls='lsd'
-;     alias ll='lsd -alF'
-; else
-;     alias ll="ls -alFG --color=auto"
-; fi
+if isInstalled lsd; then
+    alias ls='lsd'
+    alias ll='lsd -alF'
+    echo "lsd: installed"
+else
+    alias ll="ls -alFG --color=auto"
+    echo "lsd: not installed"
+fi
 
 # zoxideが入っていたらcdをzに置き換える
-; if [[ -e $zoxide_path ]]; then
-;     alias cd='z'
-;     alias cdi='zi'
-; fi
+if isInstalled zoxide; then
+    alias cd='z'
+    alias cdi='zi'
+    echo "zoxide: installed"
+else
+    echo "zoxide: not installed"
+fi
+
 
 
 echo ".aliases is loaded"
