@@ -208,7 +208,11 @@ export XMODIFIERS=@im=fcitx
 # echo ".zshrc is loaded"
 
 # pnpm
+<<<<<<< HEAD
 export PNPM_HOME="/Users/ysn/Library/pnpm"
+=======
+export PNPM_HOME="/home/ysn/.local/share/pnpm"
+>>>>>>> 879ed6bb8ba89121fefeae98ce491f8257dc06fb
 case ":$PATH:" in
   *":$PNPM_HOME:"*) ;;
   *) export PATH="$PNPM_HOME:$PATH" ;;
