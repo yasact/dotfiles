@@ -208,11 +208,15 @@ export XMODIFIERS=@im=fcitx
 # echo ".zshrc is loaded"
 
 # pnpm
-<<<<<<< HEAD
-export PNPM_HOME="/Users/ysn/Library/pnpm"
-=======
-export PNPM_HOME="/home/ysn/.local/share/pnpm"
->>>>>>> 879ed6bb8ba89121fefeae98ce491f8257dc06fb
+# macだったらこっち
+if [[ $ostype = "mac" ]]; then
+    export PNPM_HOME="/Users/ysn/Library/pnpm"
+elif [[ $ostype =  "wsl" ]]; then
+    export PNPM_HOME="/home/ysn/.local/share/pnpm"
+elif [[ $ostype = "linux" ]]; then
+    export PNPM_HOME="/home/ysn/.local/share/pnpm"
+fi
+
 case ":$PATH:" in
   *":$PNPM_HOME:"*) ;;
   *) export PATH="$PNPM_HOME:$PATH" ;;
