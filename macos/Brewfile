@@ -88,6 +88,9 @@ cask "zoom"
 cask "visual-studio-code"
 cask "ocenaudio"
 # cask "warp"
+cask "openinterminal-lite"
+cask "openineditor-lite"
+cask "notion"
 
 # mas
 # masを使うにはmasをinstallしてから
