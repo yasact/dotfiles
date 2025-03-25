@@ -13,4 +13,6 @@ gr = log --graph --date=short --decorate=short --pretty=format:'%Cgreen%h %Crese
 ac = !git add . && git commit
 [user]
 name = ysn
-email = ysn3844@skiff.com
+	email = yasunaga.akutsu@gmail.com
+[use]
+	email = yasunaga.akutsu@gmail.com
