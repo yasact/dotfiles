@@ -66,17 +66,23 @@ scoop bucket add main
 scoop bucket add nerd-fonts
 
 
-scoop install uutils-coreutils
-scoop install lsd
-scoop install sudo
+# scoop install uutils-coreutils
+# scoop install lsd
+# scoop install sudo
 scoop install FiraCode
 scoop install FiraCode
 scoop install FiraCode-NF
 scoop install FiraCode-NF-Mono
 scoop install FiraCode-Script
 scoop install archwsl
-scoop install posh-git
+# scoop install posh-git
 scoop install zoxide
+# PowerShell公式モジュールを使ったposh-gitのインストール（推奨）
+if (-not (Get-Module -ListAvailable -Name posh-git))
+{
+    Install-Module posh-git -Scope CurrentUser -Force
+}
+
 
 
 
