@@ -145,4 +145,10 @@ fi
 
 # fzf(fuzzy finder)の設定
 export FZF_DEFAULT_OPTS='--height 40% --reverse --border'
+<<<<<<< HEAD
 . "/Users/ysn/.deno/env"
+=======
+
+# zoxideを初期化する
+eval "$(zoxide init bash)"
+>>>>>>> 6b9983d78a7480ec4ee99f108c1f0d316c0690e3
