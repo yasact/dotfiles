@@ -66,11 +66,11 @@ isInstalled(){
 
 if isInstalled bat; then
     alias cat='bat'
-    echo "bat: installed"
+    # echo "bat: installed"
 elif isInstalled batcat; then
     alias bat='batcat'
     alias cat='batcat'
-    echo "batcat: used as bat"
+     echo "batcat: used as bat"
 else
     echo "bat: not installed"
 fi
