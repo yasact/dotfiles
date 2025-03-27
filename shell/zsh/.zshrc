@@ -121,26 +121,26 @@ setopt no_beep
 # disable beep sound after completion
 setopt nolistbeep
 
-# ### Added by Zinit's installer
-# if [[ ! -f $HOME/.local/share/zinit/zinit.git/zinit.zsh ]]; then
-#     print -P "%F{33} %F{220}Installing %F{33}ZDHARMA-CONTINUUM%F{220} Initiative Plugin Manager (%F{33}zdharma-continuum/zinit%F{220})…%f"
-#     command mkdir -p "$HOME/.local/share/zinit" && command chmod g-rwX "$HOME/.local/share/zinit"
-#     command git clone https://github.com/zdharma-continuum/zinit "$HOME/.local/share/zinit/zinit.git" && \
-#         print -P "%F{33} %F{34}Installation successful.%f%b" || \
-#         print -P "%F{160} The clone has failed.%f%b"
-# fi
-# source "$HOME/.local/share/zinit/zinit.git/zinit.zsh"
-# autoload -Uz _zinit
-# (( ${+_comps} )) && _comps[zinit]=_zinit
-# # Load a few important annexes, without Turbo
-# # (this is currently required for annexes)
-# before=$(date +%s.%N)
-# zinit light-mode for \
-#     zdharma-continuum/zinit-annex-as-monitor \
-#     zdharma-continuum/zinit-annex-bin-gem-node \
-#     zdharma-continuum/zinit-annex-patch-dl \
-#     zdharma-continuum/zinit-annex-rust
-# ### End of Zinit's installer chunk
+### Added by Zinit's installer
+if [[ ! -f $HOME/.local/share/zinit/zinit.git/zinit.zsh ]]; then
+    print -P "%F{33} %F{220}Installing %F{33}ZDHARMA-CONTINUUM%F{220} Initiative Plugin Manager (%F{33}zdharma-continuum/zinit%F{220})…%f"
+    command mkdir -p "$HOME/.local/share/zinit" && command chmod g-rwX "$HOME/.local/share/zinit"
+    command git clone https://github.com/zdharma-continuum/zinit "$HOME/.local/share/zinit/zinit.git" && \
+        print -P "%F{33} %F{34}Installation successful.%f%b" || \
+        print -P "%F{160} The clone has failed.%f%b"
+fi
+source "$HOME/.local/share/zinit/zinit.git/zinit.zsh"
+autoload -Uz _zinit
+(( ${+_comps} )) && _comps[zinit]=_zinit
+# Load a few important annexes, without Turbo
+# (this is currently required for annexes)
+before=$(date +%s.%N)
+zinit light-mode for \
+    zdharma-continuum/zinit-annex-as-monitor \
+    zdharma-continuum/zinit-annex-bin-gem-node \
+    zdharma-continuum/zinit-annex-patch-dl \
+    zdharma-continuum/zinit-annex-rust
+### End of Zinit's installer chunk
 
 
 if [ -f ~/dotfiles/shell/zsh/.zshplugins ]; then
@@ -231,40 +231,3 @@ case ":$PATH:" in
   *) export PATH="$PNPM_HOME:$PATH" ;;
 esac
 # pnpm end
-<<<<<<< HEAD
-. "/Users/ysn/.deno/env"
-=======
-
-# Created by `pipx` on 2025-02-26 01:52:42
-export PATH="$PATH:/home/ysn/.local/bin"
-
-# Lazy-load zinit on first command prompt
-autoload -Uz add-zsh-hook
-add-zsh-hook precmd lazy_zinit_load
-
-lazy_zinit_load() {
-  # フックは一回だけ実行したいので削除
-  add-zsh-hook -d precmd lazy_zinit_load
-
-#   if [[ -f $HOME/.local/share/zinit/zinit.git/zinit.zsh ]]; then
-if [[ -f $HOME/.local/share/zinit/zinit.zsh ]]; then
-
-    echo "⚡ Lazy-loading zinit..."
-    source "$HOME/.local/share/zinit/zinit.zsh"
-    autoload -Uz _zinit
-    (( ${+_comps} )) && _comps[zinit]=_zinit
-
-    # 必要なプラグインを読み込む
-    zinit light-mode for \
-      zdharma-continuum/zinit-annex-as-monitor \
-      zdharma-continuum/zinit-annex-bin-gem-node \
-      zdharma-continuum/zinit-annex-patch-dl \
-      zdharma-continuum/zinit-annex-rust
-
-    # もし .zshplugins があればここで読む
-    if [[ -f ~/dotfiles/shell/zsh/.zshplugins ]]; then
-      . ~/dotfiles/shell/zsh/.zshplugins
-    fi
-  fi
-}
->>>>>>> 6b9983d78a7480ec4ee99f108c1f0d316c0690e3
