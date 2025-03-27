@@ -145,3 +145,6 @@ fi
 
 # fzf(fuzzy finder)の設定
 export FZF_DEFAULT_OPTS='--height 40% --reverse --border'
+
+# zoxideを初期化する
+eval "$(zoxide init bash)"
