@@ -30,7 +30,7 @@ PROMPT='%F{blue}%~%f$(git_prompt_info) %# '
 
 # Basic aliases
 alias ls='ls --color=auto'
-alias ll='ls -la'
+alias ll='ls -la --color=auto '
 alias la='ls -a'
 alias grep='grep --color=auto'
 
@@ -55,6 +55,8 @@ alias mv='mv -i'
 
 # Editor
 export EDITOR=vim
+
+bindkey -e
 
 # Path (必要に応じて追加)
 # export PATH=$HOME/.local/bin:$PATH
