@@ -11,8 +11,22 @@ setopt share_history     # 履歴を共有
 autoload -Uz compinit && compinit
 zstyle ':completion:*' matcher-list 'm:{a-z}={A-Z}'  # 大文字小文字を区別しない
 
-# Simple prompt
-PROMPT='%F{blue}%~%f %# '
+# Git情報を取得する関数
+git_prompt_info() {
+    local branch=$(git symbolic-ref --short HEAD 2>/dev/null)
+    if [ -n "$branch" ]; then
+        local git_status=""
+        # 変更がある場合は*を表示
+        if ! git diff --quiet 2>/dev/null || ! git diff --cached --quiet 2>/dev/null; then
+            git_status="*"
+        fi
+        echo " %F{green}($branch$git_status)%f"
+    fi
+}
+
+# プロンプトの設定
+setopt prompt_subst  # プロンプト内で変数展開を有効に
+PROMPT='%F{blue}%~%f$(git_prompt_info) %# '
 
 # Basic aliases
 alias ls='ls --color=auto'
