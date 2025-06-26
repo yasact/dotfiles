@@ -45,6 +45,9 @@ alias gl='git log --oneline -10'
 alias ..='cd ..'
 alias ...='cd ../..'
 
+# tmux
+alias tm='tmux'
+
 # Safety aliases
 alias rm='rm -i'
 alias cp='cp -i'
