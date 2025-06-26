@@ -1,16 +1,26 @@
-[alias]
-aa = add .
-st = status -sb
-co = checkout
-cob = checkout -b
-br = branch
-brd = branch -d
-loga = log --graph --oneline
-com = commit
-mr = merge
-p = push
-gr = log --graph --date=short --decorate=short --pretty=format:'%Cgreen%h %Creset%cd %Cblue%cn %Cred%d %Creset%s'
-ac = !git add . && git commit
 [user]
-name = ysn
+	name = ysn
 	email = yasunaga.akutsu@gmail.com
+
+[alias]
+	# 基本的なエイリアスのみ
+	st = status
+	co = checkout
+	br = branch
+	ci = commit
+	
+	# よく使う組み合わせ
+	aa = add .
+	ac = !git add . && git commit
+
+[core]
+	editor = vim
+
+[push]
+	default = current
+
+[pull]
+	rebase = false
+
+[init]
+	defaultBranch = main
