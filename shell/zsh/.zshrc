@@ -81,4 +81,5 @@ esac
 
 
 
-alias claude="/home/ysn/.claude/local/claude"
+
+. "$HOME/.local/bin/env"
