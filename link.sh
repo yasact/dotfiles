@@ -20,9 +20,11 @@ echo "✓ .vimrc linked"
 ln -sf ~/dotfiles/tmux/.tmux.conf ~/.tmux.conf
 echo "✓ .tmux.conf linked"
 
-# nvim
-ln -sf ~/dotfiles/vim/nvim/init.vim ~/.config/nvim/init.vim
-echo "✓ nvim/init.vim linked"
+# nvim (LazyVim config files)
+mkdir -p ~/.config/nvim/lua/config
+ln -sf ~/dotfiles/vim/nvim/lua/config/options.lua ~/.config/nvim/lua/config/options.lua
+ln -sf ~/dotfiles/vim/nvim/lua/config/keymaps.lua ~/.config/nvim/lua/config/keymaps.lua
+echo "✓ nvim config files linked"
 
 echo "Setup complete!"
 echo "Please restart your terminal or run: source ~/.zshrc"
