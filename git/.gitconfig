@@ -30,3 +30,5 @@
 [credential "https://gist.github.com"]
 	helper = 
 	helper = !/usr/bin/gh auth git-credential
+[coderabbit]
+	machineId = cli/5441ae17d8774253bd33ec6ca07b18fb
