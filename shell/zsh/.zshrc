@@ -77,9 +77,20 @@ esac
 # ~/.zshrc.local に以下のような内容を記載:
 # export NVM_DIR="$HOME/.nvm"
 # [ -s "$NVM_DIR/nvm.sh" ] && source "$NVM_DIR/nvm.sh"
-[ -f ~/.zshrc.local ] && source ~/.zshrc.local [ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
+[ -f ~/.zshrc.local ] && source ~/.zshrc.local
+[ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
 
 
 
 
-. "$HOME/.local/bin/env"
+# uv(Astral)のインストーラが書く行。中身は ~/.local/bin を PATH に足すだけで、
+# ~/.zshrc.local の PATH 設定と重複している。uv を消すとこのファイルだけ残って
+# 毎回 "no such file or directory" が出るので存在チェックで囲う。
+[ -f "$HOME/.local/bin/env" ] && . "$HOME/.local/bin/env"
+
+# Added by LM Studio CLI (lms)
+# 注: インストーラは /Users/ysn/... をハードコードで書き込む。
+# このrepoはWSL/Linuxでも使うので $HOME に直してある。lms再インストール時は再確認すること。
+[ -d "$HOME/.lmstudio/bin" ] && export PATH="$PATH:$HOME/.lmstudio/bin"
+# End of LM Studio CLI section
+
