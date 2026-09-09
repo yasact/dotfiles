@@ -1,9 +1,9 @@
 # Alias
 Set-Alias fig docker-compose
 # Set-Alias vi 'C:\Program Files\Vim\vim90\vim.exe'
-set-Alias vi "C:\Program Files\Noevim\bin\nvim.exe"
+Set-Alias vi "C:\Program Files\Git\usr\bin\vim.exe"
 # Set-Alias vim 'C:\Program Files\Vim\vim90\vim.exe'
-set-Alias vim "C:\Program Files\Neovim\bin\nvim.exe"
+Set-Alias vim "C:\Program Files\Git\usr\bin\vim.exe"
 Set-Alias touch New-Item
 Set-Alias ll Get-ChildItem
 Set-Alias ls Get-ChildItem

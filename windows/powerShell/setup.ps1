@@ -1,19 +1,23 @@
+# PowerShell setup for dotfiles
+#   Run from anywhere (paths are resolved relative to this script):
+#     pwsh -File ~\dotfiles\windows\powerShell\setup.ps1
+#   Symbolic links need Administrator or Developer Mode.
 
-# PowerShellのドキュメントディレクトリへのパスを結合する
-$PowerShellDir = Join-Path -Path $HOME -ChildPath "Documents\PowerShell"
+$dotfilesDir = Resolve-Path (Join-Path $PSScriptRoot "..\..")
 
-# ディレクトリが存在しない場合は作成する
+# ── 1. Profile ───────────────────────────────────────────────
+# Copy profile scripts into $PROFILE's directory
+$PowerShellDir = Split-Path -Parent $PROFILE
+
 if (-not (Test-Path -Path $PowerShellDir))
 {
-    New-Item -Path $PowerShellDir -ItemType Directory
+    New-Item -Path $PowerShellDir -ItemType Directory | Out-Null
 }
-# ファイルをコピーする
-Copy-Item -Path .\profile\* -Destination $PowerShellDir
 
+Copy-Item -Path (Join-Path $PSScriptRoot "profile\*") -Destination $PowerShellDir -Force
+Write-Host "Copied profile scripts to $PowerShellDir" -ForegroundColor Green
 
-
-
-# シンボリックリンクを作成する関数
+# ── 2. Symbolic links ────────────────────────────────────────
 function New-SymbolicLink
 {
     param (
@@ -21,24 +25,29 @@ function New-SymbolicLink
         [string]$TargetPath
     )
 
-    # ユーザーホームディレクトリを解決
-    # $resolvedLinkPath = Resolve-Path $LinkPath
-
-    # シンボリックリンクがすでに存在するかどうかを確認
-    if (Test-Path $LinkPath)
+    if (-not (Test-Path $TargetPath))
     {
-        # 存在する場合は削除
-        Remove-Item $LinkPath
+        Write-Warning "Target not found, skipping: $TargetPath"
+        return
     }
 
-    # シンボリックリンクを作成
-    sudo New-Item -ItemType SymbolicLink -Path $LinkPath -Target $TargetPath
+    if (Test-Path $LinkPath)
+    {
+        Remove-Item $LinkPath -Force
+    }
+
+    try
+    {
+        New-Item -ItemType SymbolicLink -Path $LinkPath -Target $TargetPath -ErrorAction Stop | Out-Null
+        Write-Host "Linked $LinkPath -> $TargetPath" -ForegroundColor Green
+    }
+    catch
+    {
+        Write-Warning "Failed to create symlink $LinkPath (run as Administrator or enable Developer Mode): $_"
+    }
 }
 
-# .vimrcのシンボリックリンクを作成
-New-SymbolicLink -LinkPath "~\.vimrc" -TargetPath ".\dotfiles\vim\.vimrc"
+New-SymbolicLink -LinkPath (Join-Path $HOME ".vimrc")     -TargetPath (Join-Path $dotfilesDir "vim\.vimrc")
+New-SymbolicLink -LinkPath (Join-Path $HOME ".gitconfig") -TargetPath (Join-Path $dotfilesDir "git\.gitconfig")
 
-# .gitconfigのシンボリックリンクを作成
-New-SymbolicLink -LinkPath "~\.gitconfig" -TargetPath ".\dotfiles\git\.gitconfig"
-
-
+Write-Host "Done. Restart PowerShell to apply the new prompt." -ForegroundColor Cyan
