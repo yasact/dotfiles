@@ -37,3 +37,4 @@ eval "$(/opt/homebrew/bin/brew shellenv)"
 - **git**: 最小限のalias設定
 - **vim**: 緊急時用の基本設定
 - **tmux**: ターミナルマルチプレクサ設定
+- **karabiner** (macOS): Karabiner-Elements 設定。`~/.config/karabiner` をディレクトリごと symlink

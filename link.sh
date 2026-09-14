@@ -26,5 +26,17 @@ ln -sf ~/dotfiles/vim/nvim/lua/config/options.lua ~/.config/nvim/lua/config/opti
 ln -sf ~/dotfiles/vim/nvim/lua/config/keymaps.lua ~/.config/nvim/lua/config/keymaps.lua
 echo "✓ nvim config files linked"
 
+# karabiner (macOS only)
+# Karabiner は保存のたびにファイルを置き換えるので、ファイルではなくディレクトリごと link する
+if [ "$(uname)" = "Darwin" ]; then
+  if [ -d ~/.config/karabiner ] && [ ! -L ~/.config/karabiner ]; then
+    mv ~/.config/karabiner ~/.config/karabiner.backup.$(date +%Y%m%d%H%M%S)
+  fi
+  mkdir -p ~/.config
+  ln -sfn ~/dotfiles/macos/karabiner ~/.config/karabiner
+  launchctl kickstart -k gui/$(id -u)/org.pqrs.service.agent.Karabiner-Console-User-Server 2>/dev/null || true
+  echo "✓ karabiner linked"
+fi
+
 echo "Setup complete!"
 echo "Please restart your terminal or run: source ~/.zshrc"

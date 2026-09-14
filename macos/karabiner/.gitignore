@@ -1,0 +1,7 @@
+# Karabiner が自動で作るもの
+automatic_backups/
+assets/
+# 手動バックアップ
+*.bak*
+*.before-*
+*.tmp
