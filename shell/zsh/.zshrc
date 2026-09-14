@@ -8,8 +8,6 @@ setopt hist_ignore_dups  # 重複を記録しない
 setopt share_history     # 履歴を共有
 
 # Basic completion
-# grok の補完 (fpath は compinit より前に足す必要がある)
-[ -d "$HOME/.grok/completions/zsh" ] && fpath=("$HOME/.grok/completions/zsh" $fpath)
 autoload -Uz compinit && compinit
 zstyle ':completion:*' matcher-list 'm:{a-z}={A-Z}'  # 大文字小文字を区別しない
 
@@ -76,29 +74,10 @@ esac
 
 # マシン固有の設定 (gitで管理しない)
 # 例: NVM、pyenv、特殊なPATH設定など
+# ~/.zshrc は dotfiles への symlink なので、ツールのインストーラが追記するとこのファイルが直接汚れる。
+# LM Studio・uv・grok などインストーラが足した行は ~/.zshrc.local に移すこと。
 # ~/.zshrc.local に以下のような内容を記載:
 # export NVM_DIR="$HOME/.nvm"
 # [ -s "$NVM_DIR/nvm.sh" ] && source "$NVM_DIR/nvm.sh"
 [ -f ~/.zshrc.local ] && source ~/.zshrc.local
 [ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
-
-
-
-
-# uv(Astral)のインストーラが書く行。中身は ~/.local/bin を PATH に足すだけで、
-# ~/.zshrc.local の PATH 設定と重複している。uv を消すとこのファイルだけ残って
-# 毎回 "no such file or directory" が出るので存在チェックで囲う。
-[ -f "$HOME/.local/bin/env" ] && . "$HOME/.local/bin/env"
-
-# Added by LM Studio CLI (lms)
-# 注: インストーラは /Users/ysn/... をハードコードで書き込む。
-# このrepoはWSL/Linuxでも使うので $HOME に直してある。lms再インストール時は再確認すること。
-[ -d "$HOME/.lmstudio/bin" ] && export PATH="$PATH:$HOME/.lmstudio/bin"
-# End of LM Studio CLI section
-
-# >>> grok installer >>>
-# 注: インストーラは compinit -C を末尾に足すが、上の Basic completion と二重になり、
-# キャッシュのせいで grok の補完が読まれないことがあるので、fpath は compinit の前に移した。
-# マーカーは再インストール時に二重追記されないよう残している。grok再インストール時は再確認すること。
-[ -d "$HOME/.grok/bin" ] && export PATH="$HOME/.grok/bin:$PATH"
-# <<< grok installer <<<
