@@ -8,6 +8,8 @@ setopt hist_ignore_dups  # 重複を記録しない
 setopt share_history     # 履歴を共有
 
 # Basic completion
+# grok の補完 (fpath は compinit より前に足す必要がある)
+[ -d "$HOME/.grok/completions/zsh" ] && fpath=("$HOME/.grok/completions/zsh" $fpath)
 autoload -Uz compinit && compinit
 zstyle ':completion:*' matcher-list 'm:{a-z}={A-Z}'  # 大文字小文字を区別しない
 
@@ -94,3 +96,9 @@ esac
 [ -d "$HOME/.lmstudio/bin" ] && export PATH="$PATH:$HOME/.lmstudio/bin"
 # End of LM Studio CLI section
 
+# >>> grok installer >>>
+# 注: インストーラは compinit -C を末尾に足すが、上の Basic completion と二重になり、
+# キャッシュのせいで grok の補完が読まれないことがあるので、fpath は compinit の前に移した。
+# マーカーは再インストール時に二重追記されないよう残している。grok再インストール時は再確認すること。
+[ -d "$HOME/.grok/bin" ] && export PATH="$HOME/.grok/bin:$PATH"
+# <<< grok installer <<<
