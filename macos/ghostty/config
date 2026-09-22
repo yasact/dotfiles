@@ -1,0 +1,38 @@
+# フォント設定
+font-family = JetBrains Mono
+font-size = 14
+font-thicken = true
+
+# テーマ
+theme = Catppuccin Mocha
+
+# ウィンドウ
+background-opacity = 0.5
+# 背景をぼかす（macOSのみ）
+background-blur = true
+
+
+window-padding-x = 10
+window-padding-y = 10
+
+macos-window-buttons = hidden
+macos-titlebar-style = tabs
+macos-titlebar-proxy-icon = hidden 
+
+
+# カーソル
+cursor-style = block
+cursor-style-blink = false
+# SSH連携
+# ssh-terminfo: 接続先に xterm-ghostty の terminfo を自動インストール(要: 接続先に tic)
+# ssh-env:      失敗時に TERM を xterm-256color へフォールバック
+shell-integration-features = cursor,no-sudo,title,ssh-env,ssh-terminfo,path
+
+
+# Quick Terminal 設定
+keybind = global:cmd+grave_accent=toggle_quick_terminal
+quick-terminal-screen = mouse
+
+# 起動時にウィンドウを開かない（常駐だけさせたい場合）
+initial-window = false
+keybind = super+enter=unbind

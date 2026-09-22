@@ -36,6 +36,14 @@ if [ "$(uname)" = "Darwin" ]; then
   ln -sfn ~/dotfiles/macos/karabiner ~/.config/karabiner
   launchctl kickstart -k gui/$(id -u)/org.pqrs.service.agent.Karabiner-Console-User-Server 2>/dev/null || true
   echo "✓ karabiner linked"
+
+  # ghostty
+  mkdir -p ~/.config/ghostty
+  if [ -f ~/.config/ghostty/config ] && [ ! -L ~/.config/ghostty/config ]; then
+    mv ~/.config/ghostty/config ~/.config/ghostty/config.backup.$(date +%Y%m%d%H%M%S)
+  fi
+  ln -sf ~/dotfiles/macos/ghostty/config ~/.config/ghostty/config
+  echo "✓ ghostty linked"
 fi
 
 echo "Setup complete!"
