@@ -21,6 +21,7 @@ set tabstop=4 "行頭以外のTab文字の表示幅(スペース幾つか分)
 set shiftwidth=4 "行頭でのTab文字の表示幅
 set ambiwidth=double "全角文字を正しく表示するための設定
 set mouse=a " ターミナル内のvimでマウススクロールを有効にする
+set clipboard=unnamed "yankをmacOSのクリップボードと共有する
 
 "見た目系
 set number "行番号を表示
