@@ -1,0 +1,30 @@
+[cli]
+installer = "internal"
+
+[marketplace]
+default_skills_installs_purged = true
+official_marketplace_auto_installed = true
+
+[[marketplace.sources]]
+name = "xAI Official"
+git = "https://github.com/xai-org/plugin-marketplace.git"
+
+[ui]
+max_thoughts_width = 120
+fork_secondary_model = "grok-4.6"
+yolo = false
+compact_mode = false
+permission_mode = "always-approve"
+voice_stt_language = "ja"
+theme = "tokyonight"
+screen_mode = "fullscreen"
+simple_mode = false
+vim_mode = true
+
+
+[privacy]
+privacy_banner_acked = "2026-09-14T02:04:19Z"
+
+[models]
+default = "grok-4.7"
+default_reasoning_effort = "high"

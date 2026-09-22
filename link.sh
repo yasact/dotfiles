@@ -28,6 +28,14 @@ fi
 ln -sfn ~/dotfiles/codex/config.toml ~/.codex/config.toml
 echo "✓ Codex config linked"
 
+# Grok (only config.toml; auth.json, sessions, and caches stay outside Git)
+mkdir -p ~/.grok
+if [ -e ~/.grok/config.toml ] && [ ! -L ~/.grok/config.toml ]; then
+  mv ~/.grok/config.toml ~/.grok/config.toml.backup.$(date +%Y%m%d%H%M%S)
+fi
+ln -sfn ~/dotfiles/grok/config.toml ~/.grok/config.toml
+echo "✓ Grok config linked"
+
 # nvim (LazyVim config files)
 mkdir -p ~/.config/nvim/lua/config
 ln -sf ~/dotfiles/vim/nvim/lua/config/options.lua ~/.config/nvim/lua/config/options.lua
