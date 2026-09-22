@@ -38,3 +38,12 @@ eval "$(/opt/homebrew/bin/brew shellenv)"
 - **vim**: 緊急時用の基本設定
 - **tmux**: ターミナルマルチプレクサ設定
 - **karabiner** (macOS): Karabiner-Elements 設定。`~/.config/karabiner` をディレクトリごと symlink
+
+## Codex
+
+`codex/config.toml` を `~/.codex/config.toml` からシンボリックリンクで参照する。
+`./link.sh` は既存の通常ファイルをバックアップしてからリンクを作成する。
+
+現在の設定をそのまま管理しているため、Mac 固有の絶対パス・MCP 設定・プロジェクト信頼設定も含む。
+別マシンでは内容を確認してから適用する。Codex が保存する設定変更もこのファイルに反映される。
+`auth.json`、セッション履歴、キャッシュなどは管理対象に含めない。API キーやトークンをこの TOML に直接追加しない。

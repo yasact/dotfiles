@@ -20,6 +20,14 @@ echo "✓ .vimrc linked"
 ln -sf ~/dotfiles/tmux/.tmux.conf ~/.tmux.conf
 echo "✓ .tmux.conf linked"
 
+# Codex (only config.toml; credentials and session data stay outside Git)
+mkdir -p ~/.codex
+if [ -e ~/.codex/config.toml ] && [ ! -L ~/.codex/config.toml ]; then
+  mv ~/.codex/config.toml ~/.codex/config.toml.backup.$(date +%Y%m%d%H%M%S)
+fi
+ln -sfn ~/dotfiles/codex/config.toml ~/.codex/config.toml
+echo "✓ Codex config linked"
+
 # nvim (LazyVim config files)
 mkdir -p ~/.config/nvim/lua/config
 ln -sf ~/dotfiles/vim/nvim/lua/config/options.lua ~/.config/nvim/lua/config/options.lua
