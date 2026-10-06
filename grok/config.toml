@@ -21,7 +21,6 @@ screen_mode = "fullscreen"
 simple_mode = false
 vim_mode = true
 
-
 [privacy]
 privacy_banner_acked = "2026-09-14T02:04:19Z"
 

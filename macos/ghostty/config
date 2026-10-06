@@ -36,3 +36,5 @@ quick-terminal-screen = mouse
 # 起動時にウィンドウを開かない（常駐だけさせたい場合）
 initial-window = false
 keybind = super+enter=unbind
+
+macos-option-as-alt = true

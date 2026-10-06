@@ -153,7 +153,7 @@
                                 },
                                 "to": [
                                     {
-                                        "key_code": "left_arrow",
+                                        "key_code": "up_arrow",
                                         "modifiers": [
                                             "left_control"
                                         ]
@@ -189,7 +189,7 @@
                                 },
                                 "to": [
                                     {
-                                        "key_code": "right_arrow",
+                                        "key_code": "left_arrow",
                                         "modifiers": [
                                             "left_control"
                                         ]
@@ -225,7 +225,7 @@
                                 },
                                 "to": [
                                     {
-                                        "key_code": "up_arrow",
+                                        "key_code": "right_arrow",
                                         "modifiers": [
                                             "left_control"
                                         ]
@@ -254,6 +254,44 @@
                                 ],
                                 "from": {
                                     "key_code": "f13",
+                                    "modifiers": {
+                                        "optional": [
+                                            "any"
+                                        ]
+                                    }
+                                },
+                                "to": [
+                                    {
+                                        "key_code": "f9",
+                                        "modifiers": [
+                                            "left_control",
+                                            "left_option",
+                                            "left_shift"
+                                        ]
+                                    }
+                                ]
+                            },
+                            {
+                                "type": "basic",
+                                "conditions": [
+                                    {
+                                        "type": "device_if",
+                                        "identifiers": [
+                                            {
+                                                "vendor_id": 1133,
+                                                "product_id": 49291
+                                            }
+                                        ]
+                                    },
+                                    {
+                                        "type": "frontmost_application_if",
+                                        "bundle_identifiers": [
+                                            "^com\\.microsoft\\.rdc\\.macos$"
+                                        ]
+                                    }
+                                ],
+                                "from": {
+                                    "key_code": "f14",
                                     "modifiers": {
                                         "optional": [
                                             "any"
@@ -291,44 +329,6 @@
                                     }
                                 ],
                                 "from": {
-                                    "key_code": "f14",
-                                    "modifiers": {
-                                        "optional": [
-                                            "any"
-                                        ]
-                                    }
-                                },
-                                "to": [
-                                    {
-                                        "key_code": "f8",
-                                        "modifiers": [
-                                            "left_control",
-                                            "left_option",
-                                            "left_shift"
-                                        ]
-                                    }
-                                ]
-                            },
-                            {
-                                "type": "basic",
-                                "conditions": [
-                                    {
-                                        "type": "device_if",
-                                        "identifiers": [
-                                            {
-                                                "vendor_id": 1133,
-                                                "product_id": 49291
-                                            }
-                                        ]
-                                    },
-                                    {
-                                        "type": "frontmost_application_if",
-                                        "bundle_identifiers": [
-                                            "^com\\.microsoft\\.rdc\\.macos$"
-                                        ]
-                                    }
-                                ],
-                                "from": {
                                     "key_code": "f15",
                                     "modifiers": {
                                         "optional": [
@@ -338,7 +338,7 @@
                                 },
                                 "to": [
                                     {
-                                        "key_code": "f9",
+                                        "key_code": "f8",
                                         "modifiers": [
                                             "left_control",
                                             "left_option",
