@@ -1,13 +1,19 @@
 # ─────────────────────────────────────────────────────────────
 # Custom prompt (self-made, no oh-my-posh / starship)
 #
-#   ┌[~\…\output\fetish_gacha\scripts] (master)
+#   ┌[<folder> ~\…\output\fetish_gacha\scripts] (<branch> master)
 #   └>
 #
 # - $HOME is shown as "~"
 # - Deep paths are truncated to the last $PromptMaxDepth segments
 # - Current git branch is shown when inside a repository
+# - Icons need a Nerd Font (e.g. "Cascadia Code NF")
 # ─────────────────────────────────────────────────────────────
+
+# Nerd Font glyphs, written as escapes so they survive any editor/font
+$global:PromptIconHome   = "`u{F015}"   # nf-fa-home
+$global:PromptIconFolder = "`u{F07C}"   # nf-fa-folder_open
+$global:PromptIconBranch = "`u{E0A0}"   # nf-pl-branch
 
 # How many trailing path segments to keep before truncating with "…"
 $global:PromptMaxDepth = 3
@@ -70,15 +76,18 @@ function prompt()
     # Preserve the exit status of the last command
     $lastSuccess = $?
 
+    $path = Get-PromptPath
+    $pathIcon = if ($path -eq "~") { $global:PromptIconHome } else { $global:PromptIconFolder }
+
     Write-Host -NoNewline "┌[" -ForegroundColor DarkYellow
-    Write-Host -NoNewline (Get-PromptPath) -ForegroundColor DarkCyan
+    Write-Host -NoNewline "$pathIcon $path" -ForegroundColor DarkCyan
     Write-Host -NoNewline "]" -ForegroundColor DarkYellow
 
     $branch = Get-PromptGitBranch
     if ($branch)
     {
         Write-Host -NoNewline " (" -ForegroundColor DarkYellow
-        Write-Host -NoNewline $branch -ForegroundColor Magenta
+        Write-Host -NoNewline "$($global:PromptIconBranch) $branch" -ForegroundColor Magenta
         Write-Host -NoNewline ")" -ForegroundColor DarkYellow
     }
     Write-Host ""

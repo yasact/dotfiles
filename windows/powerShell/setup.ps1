@@ -50,4 +50,30 @@ function New-SymbolicLink
 New-SymbolicLink -LinkPath (Join-Path $HOME ".vimrc")     -TargetPath (Join-Path $dotfilesDir "vim\.vimrc")
 New-SymbolicLink -LinkPath (Join-Path $HOME ".gitconfig") -TargetPath (Join-Path $dotfilesDir "git\.gitconfig")
 
+# ── 3. Windows Terminal ──────────────────────────────────────
+# Copied, not linked: Terminal replaces settings.json on save, which breaks symlinks.
+# The settings reference the "Cascadia Code NF" font (installed by appSetup.ps1).
+$terminalSettings = Join-Path $dotfilesDir "windows\terminal\settings.json"
+$terminalDirs = @(
+    "$env:LOCALAPPDATA\Packages\Microsoft.WindowsTerminal_8wekyb3d8bbwe\LocalState"
+    "$env:LOCALAPPDATA\Packages\Microsoft.WindowsTerminalPreview_8wekyb3d8bbwe\LocalState"
+    "$env:LOCALAPPDATA\Microsoft\Windows Terminal"
+) | Where-Object { Test-Path $_ }
+
+if (-not $terminalDirs)
+{
+    Write-Warning "Windows Terminal not found, skipping its settings"
+}
+
+foreach ($dir in $terminalDirs)
+{
+    $dest = Join-Path $dir "settings.json"
+    if (Test-Path $dest)
+    {
+        Copy-Item $dest "$dest.bak" -Force
+    }
+    Copy-Item $terminalSettings $dest -Force
+    Write-Host "Copied Windows Terminal settings to $dest" -ForegroundColor Green
+}
+
 Write-Host "Done. Restart PowerShell to apply the new prompt." -ForegroundColor Cyan
