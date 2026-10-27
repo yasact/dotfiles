@@ -7,12 +7,31 @@
       "space j": "vim::HelixJumpToWord",
       // VS Code の toggle-bool 相当。vim::Increment は数字の増加に加え true/false・yes/no・on/off を反転する
       "space i": "vim::Increment",
+      "space r": "editor::GoToDefinition",
+      // space j は easymotion に使うので下方向は ctrl-w j
+      "space h": "workspace::ActivatePaneLeft",
+      "space k": "workspace::ActivatePaneUp",
+      "space l": "workspace::ActivatePaneRight",
       "shift-h": "vim::StartOfLine",
       "shift-l": "vim::EndOfLine",
       "shift-j": "vim::Down",
       "q": "vim::SwitchToNormalMode",
       // 分割キーボードで片手だけで行yankしたいので対応
       "t t": ["workspace::SendKeystrokes", "y y"]
+    }
+  },
+  {
+    "context": "vim_mode == visual",
+    "bindings": {
+      // VS Code の editor.action.indentLines 相当（選択を残す）
+      ">": "editor::Indent",
+      "<": "editor::Outdent"
+    }
+  },
+  {
+    "context": "vim_mode == insert",
+    "bindings": {
+      "q q": "vim::NormalBefore"
     }
   },
   {
@@ -42,6 +61,48 @@
       "cmd-shift-l": "workspace::ActivateNextPane",
       "cmd-shift-left": ["workspace::MoveItemToPaneInDirection", { "direction": "left" }],
       "cmd-shift-right": ["workspace::MoveItemToPaneInDirection", { "direction": "right" }]
+    }
+  },
+  {
+    // Windows: Mac の cmd-* を ctrl-* に読み替え。ctrl-t は Mac の cmd-t（toggle）側に合わせ、focus は ctrl-` に逃がす
+    "context": "Workspace && os == windows",
+    "bindings": {
+      "ctrl-b": "workspace::ToggleRightDock",
+      "ctrl-t": "terminal_panel::Toggle",
+      "ctrl-`": "terminal_panel::ToggleFocus",
+      "ctrl-shift-`": "terminal_panel::Toggle",
+      "ctrl-e": "project_panel::ToggleFocus",
+      "ctrl-g": "git_panel::ToggleFocus",
+      "ctrl-shift-h": "workspace::ActivatePreviousPane",
+      "ctrl-shift-l": "workspace::ActivateNextPane",
+      "ctrl-shift-left": ["workspace::MoveItemToPaneInDirection", { "direction": "left" }],
+      "ctrl-shift-right": ["workspace::MoveItemToPaneInDirection", { "direction": "right" }],
+      "f11": null
+    }
+  },
+  {
+    "context": "Editor && os == windows",
+    "bindings": {
+      "ctrl-b": "workspace::ToggleRightDock",
+      "ctrl-t": "terminal_panel::Toggle",
+      "ctrl-e": "project_panel::ToggleFocus",
+      "ctrl-g": "git_panel::ToggleFocus",
+      "ctrl-shift-h": "workspace::ActivatePreviousPane",
+      "ctrl-shift-l": "workspace::ActivateNextPane",
+      "ctrl-shift-left": ["workspace::MoveItemToPaneInDirection", { "direction": "left" }],
+      "ctrl-shift-right": ["workspace::MoveItemToPaneInDirection", { "direction": "right" }],
+      "ctrl-shift-c": "workspace::CopyPath"
+    }
+  },
+  {
+    // vim の ctrl-w / ctrl-b / ctrl-e / ctrl-g / ctrl-t を上書き（ctrl-w h/j/k/l の chord は残るので単押しは timeout 後に発火）
+    "context": "VimControl && !menu && os == windows",
+    "bindings": {
+      "ctrl-w": ["pane::CloseActiveItem", { "close_pinned": false }],
+      "ctrl-b": "workspace::ToggleRightDock",
+      "ctrl-t": "terminal_panel::Toggle",
+      "ctrl-e": "project_panel::ToggleFocus",
+      "ctrl-g": "git_panel::ToggleFocus"
     }
   }
 ]
