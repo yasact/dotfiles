@@ -76,4 +76,22 @@ foreach ($dir in $terminalDirs)
     Write-Host "Copied Windows Terminal settings to $dest" -ForegroundColor Green
 }
 
+# ── 4. Zed ───────────────────────────────────────────────────
+# settings/keymap only
+$zedDir = Join-Path $env:APPDATA "Zed"
+if (-not (Test-Path -Path $zedDir))
+{
+    New-Item -Path $zedDir -ItemType Directory | Out-Null
+}
+foreach ($f in @("settings.json", "keymap.json"))
+{
+    # New-SymbolicLink は既存ファイルを消すので、実ファイルなら先に退避する
+    $existing = Get-Item (Join-Path $zedDir $f) -ErrorAction SilentlyContinue
+    if ($existing -and -not $existing.LinkType)
+    {
+        Move-Item $existing.FullName "$($existing.FullName).backup.$(Get-Date -Format yyyyMMddHHmmss)"
+    }
+    New-SymbolicLink -LinkPath (Join-Path $zedDir $f) -TargetPath (Join-Path $dotfilesDir "zed\$f")
+}
+
 Write-Host "Done. Restart PowerShell to apply the new prompt." -ForegroundColor Cyan

@@ -1,0 +1,47 @@
+[
+  {
+    // VS Code の easymotion bdw (<leader>f / <leader>j) 相当
+    "context": "vim_mode == normal || vim_mode == visual",
+    "bindings": {
+      "space f": "vim::HelixJumpToWord",
+      "space j": "vim::HelixJumpToWord",
+      // VS Code の toggle-bool 相当。vim::Increment は数字の増加に加え true/false・yes/no・on/off を反転する
+      "space i": "vim::Increment",
+      "shift-h": "vim::StartOfLine",
+      "shift-l": "vim::EndOfLine",
+      "shift-j": "vim::Down",
+      "q": "vim::SwitchToNormalMode",
+      // 分割キーボードで片手だけで行yankしたいので対応
+      "t t": ["workspace::SendKeystrokes", "y y"]
+    }
+  },
+  {
+    // Editor 側の標準 (cmd-e / cmd-g / cmd-shift-l 等) に負けないよう Workspace と Editor の両方に置く
+    "context": "Workspace",
+    "bindings": {
+      // ファイルツリー等は右ドック。disable_ai で左ドックは空なので cmd-b は右を開閉
+      "cmd-b": "workspace::ToggleRightDock",
+      "cmd-t": "terminal_panel::Toggle",
+      "ctrl-t": "terminal_panel::ToggleFocus",
+      "cmd-e": "project_panel::ToggleFocus",
+      "cmd-g": "git_panel::ToggleFocus",
+      "cmd-shift-h": "workspace::ActivatePreviousPane",
+      "cmd-shift-l": "workspace::ActivateNextPane",
+      "cmd-shift-left": ["workspace::MoveItemToPaneInDirection", { "direction": "left" }],
+      "cmd-shift-right": ["workspace::MoveItemToPaneInDirection", { "direction": "right" }]
+    }
+  },
+  {
+    "context": "Editor",
+    "bindings": {
+      "cmd-t": "terminal_panel::Toggle",
+      "ctrl-t": "terminal_panel::ToggleFocus",
+      "cmd-e": "project_panel::ToggleFocus",
+      "cmd-g": "git_panel::ToggleFocus",
+      "cmd-shift-h": "workspace::ActivatePreviousPane",
+      "cmd-shift-l": "workspace::ActivateNextPane",
+      "cmd-shift-left": ["workspace::MoveItemToPaneInDirection", { "direction": "left" }],
+      "cmd-shift-right": ["workspace::MoveItemToPaneInDirection", { "direction": "right" }]
+    }
+  }
+]

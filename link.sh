@@ -36,6 +36,16 @@ fi
 ln -sfn ~/dotfiles/grok/config.toml ~/.grok/config.toml
 echo "✓ Grok config linked"
 
+# zed (settings/keymap only; Windows は windows/powerShell/setup.ps1 で %APPDATA%\Zed に link)
+mkdir -p ~/.config/zed
+for f in settings.json keymap.json; do
+  if [ -e ~/.config/zed/$f ] && [ ! -L ~/.config/zed/$f ]; then
+    mv ~/.config/zed/$f ~/.config/zed/$f.backup.$(date +%Y%m%d%H%M%S)
+  fi
+  ln -sfn ~/dotfiles/zed/$f ~/.config/zed/$f
+done
+echo "✓ zed config linked"
+
 # nvim (LazyVim config files)
 mkdir -p ~/.config/nvim/lua/config
 ln -sf ~/dotfiles/vim/nvim/lua/config/options.lua ~/.config/nvim/lua/config/options.lua
