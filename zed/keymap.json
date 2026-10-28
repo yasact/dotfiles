@@ -60,7 +60,8 @@
       "cmd-shift-h": "workspace::ActivatePreviousPane",
       "cmd-shift-l": "workspace::ActivateNextPane",
       "cmd-shift-left": ["workspace::MoveItemToPaneInDirection", { "direction": "left" }],
-      "cmd-shift-right": ["workspace::MoveItemToPaneInDirection", { "direction": "right" }]
+      "cmd-shift-right": ["workspace::MoveItemToPaneInDirection", { "direction": "right" }],
+      "cmd-shift-c": "workspace::CopyPath"
     }
   },
   {
@@ -92,6 +93,13 @@
       "ctrl-shift-left": ["workspace::MoveItemToPaneInDirection", { "direction": "left" }],
       "ctrl-shift-right": ["workspace::MoveItemToPaneInDirection", { "direction": "right" }],
       "ctrl-shift-c": "workspace::CopyPath"
+    }
+  },
+  {
+    // ファイルツリーでも Editor と同じキーで絶対パスをコピー（secondary = Mac は cmd / Windows は ctrl）
+    "context": "ProjectPanel",
+    "bindings": {
+      "secondary-shift-c": "project_panel::CopyPath"
     }
   },
   {
