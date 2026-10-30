@@ -46,6 +46,14 @@ for f in settings.json keymap.json; do
 done
 echo "✓ zed config linked"
 
+# herdr (config.toml only; session/sock/log stay outside Git)
+mkdir -p ~/.config/herdr
+if [ -e ~/.config/herdr/config.toml ] && [ ! -L ~/.config/herdr/config.toml ]; then
+  mv ~/.config/herdr/config.toml ~/.config/herdr/config.toml.backup.$(date +%Y%m%d%H%M%S)
+fi
+ln -sfn ~/dotfiles/herdr/config.toml ~/.config/herdr/config.toml
+echo "✓ herdr config linked"
+
 # nvim (LazyVim config files)
 mkdir -p ~/.config/nvim/lua/config
 ln -sf ~/dotfiles/vim/nvim/lua/config/options.lua ~/.config/nvim/lua/config/options.lua

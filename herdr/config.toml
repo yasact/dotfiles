@@ -1,0 +1,24 @@
+onboarding = false
+
+[ui]
+status_indicators = "symbols"
+
+[keys]
+# prefix は ctrl+b のまま（使用頻度の低い操作用に残す）
+# Mod = a キーの左（mac: cmd / win: ctrl）。同じファイルを mac/win で共有するので両方並べる
+#   Mod+shift = 今いる tab の中（pane / sidebar）、Mod+alt = tab と space の移動
+# prefix+ctrl+<key>: ctrl が残ったまま押しても同じ操作にする（誤爆防止）
+toggle_sidebar     = ["prefix+b", "cmd+shift+b", "ctrl+shift+b"]
+focus_pane_left    = ["prefix+h", "prefix+ctrl+h", "cmd+shift+h", "ctrl+shift+h"]
+focus_pane_down    = ["prefix+j", "prefix+ctrl+j", "cmd+shift+j", "ctrl+shift+j"]
+focus_pane_up      = ["prefix+k", "prefix+ctrl+k", "cmd+shift+k", "ctrl+shift+k"]
+focus_pane_right   = ["prefix+l", "prefix+ctrl+l", "cmd+shift+l", "ctrl+shift+l"]
+# tab は [ ]、space は sidebar で縦並びなので k/j。
+# mac の cmd+opt+h は OS の「ほかを隠す」に取られるので h/l は win（ctrl+alt）だけ
+previous_tab       = ["prefix+p", "cmd+alt+[", "ctrl+alt+[", "ctrl+alt+h"]
+next_tab           = ["prefix+n", "cmd+alt+]", "ctrl+alt+]", "ctrl+alt+l"]
+previous_workspace = ["cmd+alt+k", "ctrl+alt+k"]
+next_workspace     = ["cmd+alt+j", "ctrl+alt+j"]
+# switch_tab / split は Ghostty・macOS・Karabiner に取られるので prefix のまま（既定値）
+new_tab            = ["prefix+c", "prefix+ctrl+c", "ctrl+alt+c"]
+zoom               = ["prefix+z", "prefix+ctrl+z", "ctrl+alt+z"]

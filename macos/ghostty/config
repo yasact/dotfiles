@@ -37,4 +37,7 @@ quick-terminal-screen = mouse
 initial-window = false
 keybind = super+enter=unbind
 
+# herdr（~/dotfiles/herdr/config.toml）に cmd 系を渡すため Ghostty 既定を外す
+keybind = super+shift+j=unbind
+
 macos-option-as-alt = true
