@@ -19,6 +19,8 @@ previous_tab       = ["prefix+p", "cmd+alt+[", "ctrl+alt+[", "ctrl+alt+h"]
 next_tab           = ["prefix+n", "cmd+alt+]", "ctrl+alt+]", "ctrl+alt+l"]
 previous_workspace = ["cmd+alt+k", "ctrl+alt+k"]
 next_workspace     = ["cmd+alt+j", "ctrl+alt+j"]
+# mac の cmd+opt+n は Ghostty のメニュー「New Window」に取られるので shift を足す
+new_workspace      = ["prefix+shift+n", "cmd+alt+shift+n", "ctrl+alt+shift+n"]
 # switch_tab / split は Ghostty・macOS・Karabiner に取られるので prefix のまま（既定値）
 new_tab            = ["prefix+c", "prefix+ctrl+c", "ctrl+alt+c"]
 zoom               = ["prefix+z", "prefix+ctrl+z", "ctrl+alt+z"]
